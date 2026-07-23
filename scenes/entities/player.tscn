@@ -13,3 +13,7 @@ shape = SubResource("CapsuleShape2D_ndaap")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1445284836]
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=1061173486]
+wait_time = 0.5
+one_shot = true

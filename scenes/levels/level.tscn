@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://djh3khl33k11"]
 
 [ext_resource type="PackedScene" uid="uid://b8s3h0di0rx57" path="res://scenes/entities/player.tscn" id="1_377w7"]
+[ext_resource type="Script" uid="uid://d072lk7ej47mb" path="res://scenes/levels/level.gd" id="1_bovvr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndaap"]
 size = Vector2(400, 219)
 
 [node name="Level" type="Node2D" unique_id=87256982]
+script = ExtResource("1_bovvr")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=637110994]
 

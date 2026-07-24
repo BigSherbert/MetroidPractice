@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b8s3h0di0rx57" path="res://scenes/entities/player.tscn" id="1_377w7"]
 [ext_resource type="Script" uid="uid://d072lk7ej47mb" path="res://scenes/levels/level.gd" id="1_bovvr"]
-[ext_resource type="Texture2D" uid="uid://cc3tpyc7nlu2a" path="res://KyleUFO.png" id="2_b2cq8"]
+[ext_resource type="Texture2D" uid="uid://cc3tpyc7nlu2a" path="res://graphics/random/KyleUFO.png" id="2_b2cq8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndaap"]
 size = Vector2(400, 219)

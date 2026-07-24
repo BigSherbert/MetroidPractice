@@ -14,6 +14,18 @@ extends CharacterBody2D
 #Creating a Custom Signal
 signal shoot(pos: Vector2, dir: Vector2)
 
+#Create dictionary for gun directions
+const gun_directions = {
+	Vector2i(1,0):   0,
+	Vector2i(1,1):   1,
+	Vector2i(0,1):   2,
+	Vector2i(-1,1):  3,
+	Vector2i(-1,0):  4,
+	Vector2i(-1,-1): 5,
+	Vector2i(0,-1):  6,
+	Vector2i(1,-1):  7,
+	}
+
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += gravity * delta
@@ -41,8 +53,9 @@ func _physics_process(delta: float) -> void:
 	
 	#Choose Torso animation after movement but before shooting
 	var torsodirection = get_local_mouse_position().normalized()
-	var adjustedtorsodirection = Vector2(round(torsodirection.x),round(torsodirection.y))
-	print(adjustedtorsodirection)
+	var adjustedtorsodirection = Vector2i(round(torsodirection.x),round(torsodirection.y))
+	#print(adjustedtorsodirection)
+	$Torso.frame = gun_directions[adjustedtorsodirection]
 
 	if Input.is_action_just_pressed("shoot") and $ReloadTimer.time_left == 0.0:
 		shoot.emit(global_position,(get_global_mouse_position() - global_position).normalized())

@@ -102,7 +102,7 @@ frame = 16
 libraries/ = SubResource("AnimationLibrary_42nxq")
 autoplay = &"idle"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1960090430]
+[node name="Torso" type="Sprite2D" parent="." unique_id=1960090430]
 position = Vector2(0, -5)
 texture = ExtResource("2_08t41")
 hframes = 8

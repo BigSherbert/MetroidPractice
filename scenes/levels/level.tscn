@@ -19,3 +19,7 @@ shape = SubResource("RectangleShape2D_ndaap")
 
 [node name="Player" parent="Entities" unique_id=1849349854 instance=ExtResource("1_377w7")]
 position = Vector2(326, 189)
+
+[node name="Bullets" type="Node2D" parent="." unique_id=124244421]
+
+[connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]

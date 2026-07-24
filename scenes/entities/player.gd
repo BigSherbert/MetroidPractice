@@ -11,6 +11,10 @@ var playerspeed : int = 100
 #@export allows us to expose these variables to the inspector
 @export var gravity : float = 981.0
 
+#Creating a Custom Signal
+signal shoot(pos: Vector2, dir: Vector2)
+
+
 func _physics_process(delta: float) -> void:
 	#Player Movement
 	
@@ -20,6 +24,9 @@ func _physics_process(delta: float) -> void:
 	
 	#If the player presses jump move the character up on y axis, but only if they are on a platform.
 	if Input.is_action_just_pressed("jump") and is_on_floor() :
+		
+		#Need Jump Animation HERE!!!!!
+		
 		velocity.y += jump_velocity
 	
 	#Gravity will handle Y Axis, so we only need to worry about X axis movement.
@@ -28,17 +35,28 @@ func _physics_process(delta: float) -> void:
 	
 	if playerdirection :
 		velocity.x = playerdirection * playerspeed
+		#if playerdirection > 0 :
+			#$AnimationPlayer.current_animation = "RunAnimation"
+			#$Legs.flip_h = false
+		#else :
+			#$AnimationPlayer.current_animation = "RunAnimation"
+			#$Legs.flip_h = true
 	else:
 		#Clunky movement
 		#velocity.x = 0.0
 		#Better Movement
 		velocity.x = move_toward(velocity.x, 0, playerspeed)
+		#$AnimationPlayer.current_animation = "IdleAnimation"
 	
 	move_and_slide()
 	
 	#Player Shooting Mechanic
 	if Input.is_action_just_pressed("shoot") and $ReloadTimer.time_left == 0.0 :
-		print("PEW!")
+		#print("PEW!")
+		#One method
+		#shoot.emit(position,get_local_mouse_position().normalized())
+		#That new school method
+		shoot.emit(global_position, (get_global_mouse_position() - global_position).normalized())
 		$ReloadTimer.start()
 	
 	

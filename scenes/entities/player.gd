@@ -45,18 +45,28 @@ func _physics_process(delta: float) -> void:
 	
 	# Choose Legs animation after movement.
 	if !is_on_floor():
-		$AnimationPlayer.play("jumping")
+		$LegsAnimationPlayer.play("jumping")
 	elif playerdirection != 0:
-		$AnimationPlayer.play("run")
+		$LegsAnimationPlayer.play("run")
 	else:
-		$AnimationPlayer.play("idle")
+		$LegsAnimationPlayer.play("idle")
 	
 	#Choose Torso animation after movement but before shooting
 	var torsodirection = get_local_mouse_position().normalized()
 	var adjustedtorsodirection = Vector2i(round(torsodirection.x),round(torsodirection.y))
 	#print(adjustedtorsodirection)
 	$Torso.frame = gun_directions[adjustedtorsodirection]
+	
+	#Logic for Mouse Marker
+	#we could probably create functions for all these animations and what not
+	#would make things more neat, but meh
+	$Crosshair.position =  (get_global_mouse_position() - global_position).limit_length(50)
+	
 
 	if Input.is_action_just_pressed("shoot") and $ReloadTimer.time_left == 0.0:
 		shoot.emit(global_position,(get_global_mouse_position() - global_position).normalized())
+		#Tweens are POWERFUL for adjusting properties of nodes super quick
+		var tween = get_tree().create_tween()
+		tween.tween_property($Crosshair, "scale",Vector2(.1,.1),.25)
+		tween.tween_property($Crosshair, "scale",Vector2(.5,.5),.25)
 		$ReloadTimer.start()

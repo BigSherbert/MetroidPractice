@@ -99,7 +99,7 @@ hframes = 8
 vframes = 3
 frame = 16
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=13294831]
+[node name="LegsAnimationPlayer" type="AnimationPlayer" parent="." unique_id=13294831]
 libraries/ = SubResource("AnimationLibrary_42nxq")
 autoplay = &"idle"
 
@@ -110,5 +110,5 @@ hframes = 8
 vframes = 3
 
 [node name="Crosshair" type="Sprite2D" parent="." unique_id=271332396]
-visible = false
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_42nxq")

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b8s3h0di0rx57" path="res://scenes/entities/player.tscn" id="1_377w7"]
 [ext_resource type="Script" uid="uid://d072lk7ej47mb" path="res://scenes/levels/level.gd" id="1_bovvr"]
-[ext_resource type="Texture2D" uid="uid://umouuttstq53" path="res://icon.svg" id="2_b2cq8"]
+[ext_resource type="Texture2D" uid="uid://cc3tpyc7nlu2a" path="res://KyleUFO.png" id="2_b2cq8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndaap"]
 size = Vector2(400, 219)
@@ -17,8 +17,8 @@ position = Vector2(362, 322)
 shape = SubResource("RectangleShape2D_ndaap")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1140735738]
-position = Vector2(362, 321.5)
-scale = Vector2(3.1249998, 1.7109374)
+position = Vector2(231, 130.99997)
+scale = Vector2(0.25, 0.124)
 texture = ExtResource("2_b2cq8")
 
 [node name="Entities" type="Node2D" parent="." unique_id=629147067]

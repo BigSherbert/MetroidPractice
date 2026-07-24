@@ -14,49 +14,34 @@ var playerspeed : int = 100
 #Creating a Custom Signal
 signal shoot(pos: Vector2, dir: Vector2)
 
-
 func _physics_process(delta: float) -> void:
-	#Player Movement
-	
-	#If the player is not on a platform, use gravity.
 	if !is_on_floor():
 		velocity.y += gravity * delta
-	
-	#If the player presses jump move the character up on y axis, but only if they are on a platform.
-	if Input.is_action_just_pressed("jump") and is_on_floor() :
-		
-		#Need Jump Animation HERE!!!!!
-		
-		velocity.y += jump_velocity
-	
-	#Gravity will handle Y Axis, so we only need to worry about X axis movement.
-	#We will store axis direction as a variable so we can test it every process.
-	var playerdirection = Input.get_axis("left","right")
-	
-	if playerdirection :
+
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = jump_velocity
+
+	var playerdirection := Input.get_axis("left", "right")
+
+	if playerdirection != 0:
 		velocity.x = playerdirection * playerspeed
-		#if playerdirection > 0 :
-			#$AnimationPlayer.current_animation = "RunAnimation"
-			#$Legs.flip_h = false
-		#else :
-			#$AnimationPlayer.current_animation = "RunAnimation"
-			#$Legs.flip_h = true
+		$Legs.flip_h = playerdirection < 0
 	else:
-		#Clunky movement
-		#velocity.x = 0.0
-		#Better Movement
 		velocity.x = move_toward(velocity.x, 0, playerspeed)
-		#$AnimationPlayer.current_animation = "IdleAnimation"
-	
+
 	move_and_slide()
-	
-	#Player Shooting Mechanic
-	if Input.is_action_just_pressed("shoot") and $ReloadTimer.time_left == 0.0 :
-		#print("PEW!")
-		#One method
-		#shoot.emit(position,get_local_mouse_position().normalized())
-		#That new school method
-		shoot.emit(global_position, (get_global_mouse_position() - global_position).normalized())
+
+	# Choose animation after movement.
+	if !is_on_floor():
+		$AnimationPlayer.play("jumping")
+	elif playerdirection != 0:
+		$AnimationPlayer.play("run")
+	else:
+		$AnimationPlayer.play("idle")
+
+	if Input.is_action_just_pressed("shoot") and $ReloadTimer.time_left == 0.0:
+		shoot.emit(
+			global_position,
+			(get_global_mouse_position() - global_position).normalized()
+		)
 		$ReloadTimer.start()
-	
-	

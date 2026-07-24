@@ -1,7 +1,7 @@
 extends Area2D
 
 var direction : Vector2
-@export var speed : = 30
+@export var speed : = 500
 
 #Instead of trying to explicitly state properties elsewhere, we just send them in a simple function!
 #This is helpful because we might want specific adjustments for scenes/characters

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://b8s3h0di0rx57"]
 
 [ext_resource type="Script" uid="uid://fpfypo3clla7" path="res://scenes/entities/player.gd" id="1_ucweq"]
+[ext_resource type="Texture2D" uid="uid://xjr28pnf8gs0" path="res://graphics/characters/playerupdated.png" id="2_1ie0h"]
 [ext_resource type="Texture2D" uid="uid://de5wf7al0hknv" path="res://graphics/characters/player.png" id="2_08t41"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ndaap"]
-height = 34.0
 
 [sub_resource type="Animation" id="Animation_08t41"]
 length = 0.001
@@ -81,6 +81,7 @@ _data = {
 script = ExtResource("1_ucweq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1802290569]
+position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_ndaap")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1445284836]
@@ -92,7 +93,7 @@ one_shot = true
 
 [node name="Legs" type="Sprite2D" parent="." unique_id=1255759013]
 position = Vector2(0, -3)
-texture = ExtResource("2_08t41")
+texture = ExtResource("2_1ie0h")
 hframes = 8
 vframes = 3
 frame = 16
@@ -100,3 +101,9 @@ frame = 16
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=13294831]
 libraries/ = SubResource("AnimationLibrary_42nxq")
 autoplay = &"idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1960090430]
+position = Vector2(0, -5)
+texture = ExtResource("2_08t41")
+hframes = 8
+vframes = 3

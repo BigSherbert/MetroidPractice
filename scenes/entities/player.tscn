@@ -79,6 +79,8 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=1849349854]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_ucweq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1802290569]

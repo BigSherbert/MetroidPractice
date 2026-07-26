@@ -88,6 +88,7 @@ position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_ndaap")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1445284836]
+offset = Vector2(0, -75)
 zoom = Vector2(3, 3)
 
 [node name="ReloadTimer" type="Timer" parent="." unique_id=1061173486]

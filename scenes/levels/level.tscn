@@ -12,14 +12,17 @@ script = ExtResource("1_bovvr")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=637110994]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1906583208]
+[node name="TestFloor" type="CollisionShape2D" parent="StaticBody2D" unique_id=1906583208]
 position = Vector2(362, 322)
 shape = SubResource("RectangleShape2D_ndaap")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1140735738]
+[node name="UFOPIC" type="Sprite2D" parent="StaticBody2D" unique_id=1140735738]
 position = Vector2(231, 130.99997)
 scale = Vector2(0.25, 0.124)
 texture = ExtResource("2_b2cq8")
+
+[node name="UFO" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1518232931]
+polygon = PackedVector2Array(256, 97, 289, 114, 329, 123, 358, 130, 363, 135, 351, 141, 321, 147, 300, 152, 274, 154, 270, 158, 247, 158, 199, 157, 177, 154, 150, 149, 122, 145, 104, 138, 98, 135, 105, 128, 125, 125, 155, 119, 177, 114, 198, 99, 221, 95)
 
 [node name="Entities" type="Node2D" parent="." unique_id=629147067]
 
@@ -27,5 +30,7 @@ texture = ExtResource("2_b2cq8")
 position = Vector2(326, 189)
 
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=923689668]
 
 [connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]

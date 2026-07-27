@@ -3222,7 +3222,7 @@ tile_set = SubResource("TileSet_gbge6")
 [node name="Entities" type="Node2D" parent="." unique_id=629147067]
 
 [node name="Player" parent="Entities" unique_id=1849349854 instance=ExtResource("1_377w7")]
-position = Vector2(175, -571)
+position = Vector2(2341, -952)
 
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
 

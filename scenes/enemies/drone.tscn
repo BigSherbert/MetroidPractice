@@ -100,7 +100,6 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_ndaap")
 
 [node name="Explosion" type="Sprite2D" parent="." unique_id=478221840]
-visible = false
 position = Vector2(0, -6)
 texture = ExtResource("3_dyfay")
 hframes = 8

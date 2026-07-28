@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 #Character Physics
 #@export allows us to expose these variables to the inspector
-@export var playerspeed : int = 100
+@export var playerspeed : int = 120
 @export var jump_velocity : int = -450
 #Global Gravity is stored in Project Settings (Physics) of Godot so we could call that or we could state explicitly.
 #Calling Gravity

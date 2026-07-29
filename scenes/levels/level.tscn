@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cgh7234wked4l" path="res://graphics/tilesets/walls.png" id="3_xb4v1"]
 [ext_resource type="Texture2D" uid="uid://c7v0ifpdabs2i" path="res://graphics/tilesets/subway.png" id="4_xb4v1"]
 [ext_resource type="PackedScene" uid="uid://by2r4p3pqmbju" path="res://scenes/enemies/drone.tscn" id="6_d4w6o"]
-[ext_resource type="PackedScene" uid="uid://dh5jqahm0m1d7" path="res://scenes/enemies/shooterdrone.tscn" id="7_mbbpy"]
+[ext_resource type="PackedScene" uid="uid://6geo2vekp1xq" path="res://scenes/enemies/sniperdrone.tscn" id="7_mbbpy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xb4v1"]
 texture = ExtResource("4_xb4v1")
@@ -3241,12 +3241,15 @@ position = Vector2(2223, -949)
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
 metadata/_edit_lock_ = true
 
+[node name="Lasers" type="Node2D" parent="." unique_id=63172689]
+
 [node name="Enemies" type="Node2D" parent="." unique_id=512384362]
 
 [node name="Drone" parent="Enemies" unique_id=1412520183 instance=ExtResource("6_d4w6o")]
 position = Vector2(2389, -1014)
 
-[node name="ShooterDrone" parent="Enemies" unique_id=922621318 instance=ExtResource("7_mbbpy")]
-position = Vector2(2051, -1008)
+[node name="SniperDrone" parent="Enemies" unique_id=922621318 instance=ExtResource("7_mbbpy")]
+position = Vector2(2042, -1043)
 
 [connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]
+[connection signal="droneshoot" from="Enemies/SniperDrone" to="." method="_on_sniper_drone_droneshoot"]

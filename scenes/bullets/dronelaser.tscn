@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://drs5o5acwikam"]
+
+[ext_resource type="Texture2D" uid="uid://nss02ym145bd" path="res://graphics/fire/default.png" id="1_04h0g"]
+[ext_resource type="Script" uid="uid://ce5lahx5juu6s" path="res://scenes/bullets/dronelaser.gd" id="1_08aid"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ndaap"]
+radius = 1.0
+height = 6.0
+
+[node name="DroneLaser" type="Area2D" unique_id=1956545643]
+modulate = Color(0.16021082, 2.887845e-06, 0.72105235, 1)
+collision_layer = 16
+collision_mask = 3
+script = ExtResource("1_08aid")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1467737291]
+texture = ExtResource("1_04h0g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=272402761]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ndaap")

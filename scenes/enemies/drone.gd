@@ -7,6 +7,8 @@ var direction : Vector2
 @export var speed := 50
 var player: CharacterBody2D
 
+@export var health := 3
+
 
 func _physics_process(_delta: float) -> void:
 	
@@ -31,14 +33,16 @@ func _on_detection_area_body_exited(_detectedplayer: CharacterBody2D) -> void:
 	player = null
 
 #Explode on impact with Player
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	#This prevents a double triggering of the explosion animation.
+func _on_area_2d_body_entered(_body: Node2D) -> void:
 	drone_explode()
 
 #Drone is Shot At
 func ShotAt():
 	print("Drone was ShotAt")
-	drone_explode()
+	health -= 1
+	print("Drone Health: ", health)
+	if health <= 0 :
+		drone_explode()
 
 #Explosion Animation
 func drone_explode() :

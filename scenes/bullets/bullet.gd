@@ -1,7 +1,7 @@
 extends Area2D
 
 var direction : Vector2
-@export var speed : = 500
+@export var speed : = 100
 @export var offset : = 16
 
 func _ready() -> void:
@@ -21,3 +21,11 @@ func setup(pos: Vector2, dir : Vector2 ) :
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 	
+
+#When the bullet hits something
+func _on_body_entered(body: Node2D) -> void:
+	#We want to determine if the body being hit is affected by the bullet. To do this we inserted a function ShotAt into the script of vulnerable entities.
+	if "ShotAt" in body :
+		body.ShotAt()
+	#Delete the bullet after it collides with something.
+	queue_free()

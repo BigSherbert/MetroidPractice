@@ -18,3 +18,5 @@ texture = ExtResource("1_mkf8s")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1808080798]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_rxo6g")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

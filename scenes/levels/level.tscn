@@ -3242,21 +3242,7 @@ metadata/_edit_lock_ = true
 
 [node name="Enemies" type="Node2D" parent="." unique_id=512384362]
 
-[node name="Drone2" parent="Enemies" unique_id=13234808 instance=ExtResource("6_d4w6o")]
-position = Vector2(2512, -1047.0001)
-scale = Vector2(10, 10)
-speed = 1
-
 [node name="Drone" parent="Enemies" unique_id=922621318 instance=ExtResource("6_d4w6o")]
-position = Vector2(2496, -1052)
-
-[node name="Drone3" parent="Enemies" unique_id=274938948 instance=ExtResource("6_d4w6o")]
-position = Vector2(2411, -1032)
-
-[node name="Drone4" parent="Enemies" unique_id=901879706 instance=ExtResource("6_d4w6o")]
-position = Vector2(2421, -978)
-
-[node name="Drone5" parent="Enemies" unique_id=1195602799 instance=ExtResource("6_d4w6o")]
-position = Vector2(2372, -1047)
+position = Vector2(2389, -1014)
 
 [connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]

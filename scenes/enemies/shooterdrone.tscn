@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dh5jqahm0m1d7"]
+
+[ext_resource type="PackedScene" uid="uid://by2r4p3pqmbju" path="res://scenes/enemies/drone.tscn" id="1_jvqn0"]
+
+[node name="ShooterDrone" unique_id=922621318 instance=ExtResource("1_jvqn0")]
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1466721568]
+modulate = Color(1, 0.74509805, 0.42745098, 1)

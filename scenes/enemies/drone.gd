@@ -17,6 +17,10 @@ func _physics_process(_delta: float) -> void:
 	if player :
 		direction = (player.position - position).normalized()
 		velocity = direction * speed
+		if velocity.x > 0:
+			$AnimatedSprite2D.flip_h = true
+		elif velocity.x < 0:
+			$AnimatedSprite2D.flip_h = false
 		move_and_slide()
 
 

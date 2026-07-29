@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://doqmde3mjhy4f" path="res://scenes/enemies/sniperdrone.gd" id="1_vdot7"]
 [ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="2_ckp0d"]
 [ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="3_v1wfb"]
+[ext_resource type="Texture2D" uid="uid://b6ql7ncfh1ow2" path="res://graphics/fire/MuzzleFlash.png" id="4_ckp0d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y3ws1"]
 atlas = ExtResource("2_ckp0d")
@@ -108,6 +109,7 @@ _data = {
 radius = 13.038404
 
 [node name="SniperDrone" type="CharacterBody2D" unique_id=922621318]
+modulate = Color(0.38457766, 0.55954933, 0.28156254, 1)
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_vdot7")
@@ -118,13 +120,16 @@ sprite_frames = SubResource("SpriteFrames_ndaap")
 autoplay = "default"
 
 [node name="DroneCollisionArea" type="CollisionPolygon2D" parent="." unique_id=1753711551]
+visible = false
 polygon = PackedVector2Array(4, -7, 4, -6, 3, -6, 3, -3, 2, -3, 2, -4, -2, -4, -2, -6, -3, -6, -3, -7, -9, -7, -9, -6, -10, -6, -10, -2, -9, -2, -9, -1, -6, -1, -6, 4, -5, 4, -5, 5, -4, 5, -4, 6, -3, 6, -3, 7, 2, 7, 2, 6, 3, 6, 3, 5, 4, 5, 4, 4, 5, 4, 5, 0, 5, -1, 6, -1, 10, -1, 10, -2, 11, -2, 11, -6, 10, -6, 10, -7)
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=159991383]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="DetectAreaCollision" type="CollisionShape2D" parent="DetectionArea" unique_id=1583521899]
+visible = false
 shape = SubResource("CircleShape2D_ndaap")
 
 [node name="Explosion" type="Sprite2D" parent="." unique_id=478221840]
@@ -137,14 +142,22 @@ hframes = 8
 libraries/ = SubResource("AnimationLibrary_cq5ml")
 
 [node name="SelfDestructArea" type="Area2D" parent="." unique_id=73665796]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="SelfDestructCollision" type="CollisionShape2D" parent="SelfDestructArea" unique_id=876128156]
+visible = false
 shape = SubResource("CircleShape2D_rxo6g")
 
 [node name="ReloadTimer" type="Timer" parent="." unique_id=264844534]
 one_shot = true
+
+[node name="MuzzleFlash" type="Sprite2D" parent="." unique_id=300175660]
+visible = false
+position = Vector2(0, -1)
+texture = ExtResource("4_ckp0d")
+centered = false
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

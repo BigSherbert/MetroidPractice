@@ -5,19 +5,25 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ndaap"]
 radius = 1.0
-height = 6.0
+height = 12.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ndaap"]
 
 [node name="Laser" type="Area2D" unique_id=1956545643]
-modulate = Color(0.16021082, 2.887845e-06, 0.72105235, 1)
+modulate = Color(0.37254903, 1, 0, 1)
 collision_layer = 16
 collision_mask = 3
 script = ExtResource("1_yb6li")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1467737291]
+scale = Vector2(2, 1)
 texture = ExtResource("2_ty11f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=272402761]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ndaap")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=726416040]
+texture = SubResource("CanvasTexture_ndaap")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

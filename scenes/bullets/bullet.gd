@@ -16,7 +16,8 @@ func setup(pos: Vector2, dir : Vector2 ) :
 	#Here we want the starting position of the bullet to be the character position adding the direction and moving
 	#it away from center by 16
 	global_position = pos + dir * offset
-	direction = dir
+	direction = dir.normalized()
+	rotation = direction.angle()
 
 func _physics_process(delta: float) -> void:
 	global_position += direction * speed * delta

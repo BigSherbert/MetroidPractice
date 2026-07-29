@@ -15,17 +15,17 @@ func _ready() -> void:
 func setup(pos: Vector2, dir : Vector2 ) :
 	#Here we want the starting position of the bullet to be the character position adding the direction and moving
 	#it away from center by 16
-	position = pos + dir * offset
+	global_position = pos + dir * offset
 	direction = dir
 
 func _physics_process(delta: float) -> void:
-	position += direction * speed * delta
+	global_position += direction * speed * delta
 	
 
 #When the bullet hits something
 func _on_body_entered(body: Node2D) -> void:
-	#We want to determine if the body being hit is affected by the bullet. To do this we inserted a function ShotAt into the script of vulnerable entities.
-	if "ShotAt" in body :
-		body.ShotAt()
+	#We want to determine if the body being hit is affected by the bullet. To do this we inserted a function shot_at into the script of vulnerable entities.
+	if body.has_method("shot_at") :
+		body.shot_at()
 	#Delete the bullet after it collides with something.
 	queue_free()

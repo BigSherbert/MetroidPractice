@@ -1,7 +1,7 @@
 extends Node2D
 
 const BULLET_SCENE = preload("res://scenes/bullets/bullet.tscn")
-const LASER_SCENE = preload("res://scenes/bullets/dronelaser.tscn")
+const LASER_SCENE = preload("res://scenes/bullets/laser.tscn")
 
 func _on_player_shoot(pos: Vector2, dir: Vector2) -> void:
 	#print("PEW",pos,dir)

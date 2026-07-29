@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-var playerdetected = false
 var exploding := false
 
 var direction : Vector2
@@ -12,10 +11,9 @@ var player: CharacterBody2D
 
 func _physics_process(_delta: float) -> void:
 	
-	#if playerdetected == true :
 	#Move the drone towards the player. Delta is accounted for in Move_and_slide
 	if player :
-		direction = (player.position - position).normalized()
+		direction = (player.global_position - global_position).normalized()
 		velocity = direction * speed
 		if velocity.x > 0:
 			$AnimatedSprite2D.flip_h = true
@@ -28,7 +26,6 @@ func _physics_process(_delta: float) -> void:
 #Drone Detection
 #Triggered when Player (Or characterbody2d in Player Collision Layer) enters the Detection Area
 func _on_detection_area_body_entered(detectedplayer: CharacterBody2D) -> void:
-	#playerdetected = true
 	player = detectedplayer
 
 #Cancel Drone Detection
@@ -41,8 +38,8 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 	drone_explode()
 
 #Drone is Shot At
-func ShotAt():
-	print("Drone was ShotAt")
+func shot_at():
+	print("Drone was shot_at")
 	health -= 1
 	print("Drone Health: ", health)
 	if health <= 0 :

@@ -57,6 +57,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_lt60k"]
 resource_name = "explode"
@@ -73,12 +85,27 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cq5ml"]
 _data = {
 &"RESET": SubResource("Animation_xgp3v"),
 &"explode": SubResource("Animation_lt60k")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rxo6g"]
+radius = 13.038404
 
 [node name="Drone" type="CharacterBody2D" unique_id=922621318]
 collision_layer = 4
@@ -100,6 +127,7 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_ndaap")
 
 [node name="Explosion" type="Sprite2D" parent="." unique_id=478221840]
+visible = false
 position = Vector2(0, -6)
 texture = ExtResource("3_dyfay")
 hframes = 8
@@ -107,5 +135,14 @@ hframes = 8
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=84576907]
 libraries/ = SubResource("AnimationLibrary_cq5ml")
 
+[node name="SelfDestructArea" type="Area2D" parent="." unique_id=73665796]
+collision_layer = 0
+collision_mask = 2
+
+[node name="SelfDestructCollision" type="CollisionShape2D" parent="SelfDestructArea" unique_id=876128156]
+shape = SubResource("CircleShape2D_rxo6g")
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="SelfDestructArea" to="." method="_on_area_2d_body_entered"]

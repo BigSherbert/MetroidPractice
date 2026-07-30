@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://keb51y8nyf71"
-path="res://.godot/imported/ScanningLight.png-588d16209169d426733aa5ae13e41173.ctex"
+uid="uid://lf71uxgp7wtq"
+path="res://.godot/imported/ScanningLIght70FadeAntiAliasing.png-2a58b78edbdfd2c948c7add9ee988667.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/lights/ScanningLight.png"
-dest_files=["res://.godot/imported/ScanningLight.png-588d16209169d426733aa5ae13e41173.ctex"]
+source_file="res://graphics/lights/ScanningLIght70FadeAntiAliasing.png"
+dest_files=["res://.godot/imported/ScanningLIght70FadeAntiAliasing.png-2a58b78edbdfd2c948c7add9ee988667.ctex"]
 
 [params]
 

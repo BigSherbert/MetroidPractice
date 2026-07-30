@@ -3246,7 +3246,7 @@ metadata/_edit_lock_ = true
 [node name="Enemies" type="Node2D" parent="." unique_id=512384362]
 
 [node name="Drone" parent="Enemies" unique_id=1412520183 instance=ExtResource("6_d4w6o")]
-position = Vector2(2802, -1150)
+position = Vector2(2098, -1080)
 
 [node name="Drone2" parent="Enemies" unique_id=922621318 instance=ExtResource("6_d4w6o")]
 position = Vector2(2798, -1115)

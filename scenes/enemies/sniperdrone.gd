@@ -15,9 +15,10 @@ var player: CharacterBody2D
 
 #Scanning Variables
 @export var scan_speed := 1.5
-@export var scan_angle := 45.0
 @export var flash_speed := 8.0
 var scan_time := 0.0
+@export var scan_min_angle := -65.0
+@export var scan_max_angle := 25.0
 
 
 
@@ -45,8 +46,9 @@ func _physics_process(delta: float) -> void:
 			$MuzzleFlash.scale.x = -1
 		move_and_slide()
 	else:
+		velocity = Vector2.ZERO
 		scan_with_light(delta)
-		#velocity = Vector2.ZERO
+
 
 
 
@@ -55,16 +57,22 @@ func _physics_process(delta: float) -> void:
 func scan_with_light(delta: float) -> void:
 	scan_time += delta * scan_speed
 	#Sweep back and forth.
-	$ScanPivot.rotation = sin(scan_time) * deg_to_rad(scan_angle)
-	#Slowly brighten and dim.
-	var alpha := remap(
-		sin(scan_time * 2.0),
+	var scan_rotation := remap(
+		sin(scan_time),
 		-1.0,
 		1.0,
-		0.15,
-		0.45
+		scan_min_angle,
+		scan_max_angle
 	)
-	$ScanPivot/ScanningLight.modulate = Color(0.3, 0.7, 1.0, alpha)
+	
+	if $AnimatedSprite2D.flip_h:
+		#Drone is facing left: Use the normal scanning angle.
+		$ScanPivot.rotation_degrees = scan_rotation
+	else:
+		#Drone is facing right: Reverse the scanning angle.
+		$ScanPivot.rotation_degrees = 180.0 - scan_rotation
+	
+	$ScanPivot/ScanningLight.modulate = Color(0.3, 0.7, 1.0, 0.35)
 
 func track_player_with_light(delta: float) -> void:
 	scan_time += delta * flash_speed
@@ -72,14 +80,14 @@ func track_player_with_light(delta: float) -> void:
 	#Point directly at the player.
 	$ScanPivot.global_rotation = direction_to_player.angle()
 	#Flash red.
-	var alpha := remap(
+	var redflash := remap(
 		sin(scan_time),
 		-1.0,
 		1.0,
 		0.2,
 		0.9
 	)
-	$ScanPivot/ScanningLight.modulate = Color(1.0, 0.1, 0.1, alpha)
+	$ScanPivot/ScanningLight.modulate = Color(1.0, 0.1, 0.1, redflash)
 
 
 #Triggered when Player (Or characterbody2d in Player Collision Layer) enters the Detection Area
@@ -143,7 +151,7 @@ func drone_explode() :
 	exploding = true
 	#print("Play Explosion")
 	speed = 0
-	
+	velocity = Vector2.ZERO
 	$DroneCollisionArea.set_deferred("disabled", true)
 	$ScanPivot/ScanningLight.visible = false
 	$AnimatedSprite2D.visible = false

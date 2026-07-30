@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bgcjvm7vh2ji0" path="res://scenes/enemies/drone.gd" id="1_y3ws1"]
 [ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="1_y6iu8"]
 [ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="3_dyfay"]
-[ext_resource type="Texture2D" uid="uid://keb51y8nyf71" path="res://graphics/lights/ScanningLight.png" id="4_xgp3v"]
+[ext_resource type="Texture2D" uid="uid://lf71uxgp7wtq" path="res://graphics/lights/ScanningLIght70FadeAntiAliasing.png" id="4_xgp3v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y3ws1"]
 atlas = ExtResource("1_y6iu8")
@@ -114,8 +114,11 @@ collision_mask = 11
 script = ExtResource("1_y3ws1")
 health = 1
 blast_radius = 35
+scan_min_angle = -25.0
+scan_max_angle = 65.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1466721568]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_ndaap")
 autoplay = "default"
 flip_h = true
@@ -125,12 +128,10 @@ visible = false
 polygon = PackedVector2Array(4, -7, 4, -6, 3, -6, 3, -3, 2, -3, 2, -4, -2, -4, -2, -6, -3, -6, -3, -7, -9, -7, -9, -6, -10, -6, -10, -2, -9, -2, -9, -1, -6, -1, -6, 4, -5, 4, -5, 5, -4, 5, -4, 6, -3, 6, -3, 7, 2, 7, 2, 6, 3, 6, 3, 5, 4, 5, 4, 4, 5, 4, 5, 0, 5, -1, 6, -1, 10, -1, 10, -2, 11, -2, 11, -6, 10, -6, 10, -7)
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=159991383]
-visible = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="DetectAreaCollision" type="CollisionShape2D" parent="DetectionArea" unique_id=1583521899]
-visible = false
 shape = SubResource("CircleShape2D_ndaap")
 
 [node name="Explosion" type="Sprite2D" parent="." unique_id=478221840]
@@ -154,7 +155,7 @@ shape = SubResource("CircleShape2D_rxo6g")
 [node name="ScanPivot" type="Node2D" parent="." unique_id=1268384249]
 
 [node name="ScanningLight" type="Sprite2D" parent="ScanPivot" unique_id=1632603900]
-position = Vector2(0, -30)
+position = Vector2(0, -32)
 texture = ExtResource("4_xgp3v")
 centered = false
 

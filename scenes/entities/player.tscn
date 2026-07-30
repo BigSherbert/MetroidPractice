@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://fpfypo3clla7" path="res://scenes/entities/player.gd" id="1_ucweq"]
 [ext_resource type="Texture2D" uid="uid://xjr28pnf8gs0" path="res://graphics/characters/playerupdated.png" id="2_1ie0h"]
-[ext_resource type="Texture2D" uid="uid://de5wf7al0hknv" path="res://graphics/characters/player.png" id="2_08t41"]
 [ext_resource type="Texture2D" uid="uid://otyoj5px7yk7" path="res://graphics/ui/crosshair.png" id="4_42nxq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ndaap"]
@@ -108,7 +107,7 @@ autoplay = &"idle"
 
 [node name="Torso" type="Sprite2D" parent="." unique_id=1960090430]
 position = Vector2(0, -5)
-texture = ExtResource("2_08t41")
+texture = ExtResource("2_1ie0h")
 hframes = 8
 vframes = 3
 

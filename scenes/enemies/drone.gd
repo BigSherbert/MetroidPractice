@@ -44,9 +44,9 @@ func _physics_process(delta: float) -> void:
 
 func scan_with_light(delta: float) -> void:
 	scan_time += delta * scan_speed
-	# Sweep back and forth.
+	#Sweep back and forth.
 	$ScanPivot.rotation = sin(scan_time) * deg_to_rad(scan_angle)
-	# Slowly brighten and dim.
+	#Slowly brighten and dim.
 	var alpha := remap(
 		sin(scan_time * 2.0),
 		-1.0,
@@ -59,9 +59,9 @@ func scan_with_light(delta: float) -> void:
 func track_player_with_light(delta: float) -> void:
 	scan_time += delta * flash_speed
 	var direction_to_player := player.global_position - global_position
-	# Point directly at the player.
+	#Point directly at the player.
 	$ScanPivot.global_rotation = direction_to_player.angle()
-	# Flash red.
+	#Flash red.
 	var alpha := remap(
 		sin(scan_time),
 		-1.0,

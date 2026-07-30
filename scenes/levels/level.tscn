@@ -3273,6 +3273,7 @@ position = Vector2(1949, -1017)
 [node name="Boss" type="Node2D" parent="." unique_id=326272805]
 
 [node name="BossDrone" parent="Boss" unique_id=1218550047 instance=ExtResource("8_ouxo3")]
+visible = false
 position = Vector2(1943, 216)
 
 [connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]

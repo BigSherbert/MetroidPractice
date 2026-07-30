@@ -3236,7 +3236,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Entities" unique_id=1849349854 instance=ExtResource("1_377w7")]
-position = Vector2(1394, 328)
+position = Vector2(2643, -955)
 
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
 metadata/_edit_lock_ = true
@@ -3246,26 +3246,28 @@ metadata/_edit_lock_ = true
 [node name="Enemies" type="Node2D" parent="." unique_id=512384362]
 
 [node name="Drone" parent="Enemies" unique_id=1412520183 instance=ExtResource("6_d4w6o")]
-position = Vector2(2389, -1014)
+position = Vector2(2802, -1150)
 
-[node name="SniperDrone" parent="Enemies" unique_id=922621318 instance=ExtResource("7_mbbpy")]
-position = Vector2(2042, -1043)
+[node name="Drone2" parent="Enemies" unique_id=922621318 instance=ExtResource("6_d4w6o")]
+position = Vector2(2798, -1115)
 
-[node name="SniperDrone2" parent="Enemies" unique_id=1896379550 instance=ExtResource("7_mbbpy")]
-position = Vector2(1547, 287)
+[node name="Drone3" parent="Enemies" unique_id=827515183 instance=ExtResource("6_d4w6o")]
+position = Vector2(2804, -1075)
 
-[node name="SniperDrone3" parent="Enemies" unique_id=1314467831 instance=ExtResource("7_mbbpy")]
-position = Vector2(1570, 303)
+[node name="Drone4" parent="Enemies" unique_id=51403581 instance=ExtResource("6_d4w6o")]
+position = Vector2(2809, -1041)
 
-[node name="SniperDrone4" parent="Enemies" unique_id=904828673 instance=ExtResource("7_mbbpy")]
-position = Vector2(1545, 264)
+[node name="Drone5" parent="Enemies" unique_id=898764035 instance=ExtResource("6_d4w6o")]
+position = Vector2(2811, -1011)
 
-[node name="SniperDrone5" parent="Enemies" unique_id=2075429064 instance=ExtResource("7_mbbpy")]
-position = Vector2(1551, 317)
+[node name="Drone6" parent="Enemies" unique_id=1529513079 instance=ExtResource("6_d4w6o")]
+position = Vector2(2813, -988)
+
+[node name="Drone7" parent="Enemies" unique_id=19186924 instance=ExtResource("6_d4w6o")]
+position = Vector2(2813, -969)
+
+[node name="SniperDrone" parent="Enemies" unique_id=607920499 instance=ExtResource("7_mbbpy")]
+position = Vector2(2480, -1038)
 
 [connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]
 [connection signal="droneshoot" from="Enemies/SniperDrone" to="." method="_on_sniper_drone_droneshoot"]
-[connection signal="droneshoot" from="Enemies/SniperDrone2" to="." method="_on_sniper_drone_droneshoot"]
-[connection signal="droneshoot" from="Enemies/SniperDrone3" to="." method="_on_sniper_drone_droneshoot"]
-[connection signal="droneshoot" from="Enemies/SniperDrone4" to="." method="_on_sniper_drone_droneshoot"]
-[connection signal="droneshoot" from="Enemies/SniperDrone5" to="." method="_on_sniper_drone_droneshoot"]

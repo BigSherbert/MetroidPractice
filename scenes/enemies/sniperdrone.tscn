@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="2_ckp0d"]
 [ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="3_v1wfb"]
 [ext_resource type="Texture2D" uid="uid://b6ql7ncfh1ow2" path="res://graphics/fire/MuzzleFlash.png" id="4_ckp0d"]
+[ext_resource type="Texture2D" uid="uid://keb51y8nyf71" path="res://graphics/lights/ScanningLight.png" id="5_v1wfb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y3ws1"]
 atlas = ExtResource("2_ckp0d")
@@ -108,16 +109,18 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_rxo6g"]
 radius = 13.038404
 
-[node name="SniperDrone" type="CharacterBody2D" unique_id=922621318]
-modulate = Color(0.38457766, 0.55954933, 0.28156254, 1)
+[node name="SniperDrone" type="CharacterBody2D" unique_id=922621318 groups=["Drones"]]
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_vdot7")
 speed = 1
+blast_radius = 35
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1466721568]
+modulate = Color(0.38431373, 0.56078434, 0.28235295, 1)
 sprite_frames = SubResource("SpriteFrames_ndaap")
 autoplay = "default"
+flip_h = true
 
 [node name="DroneCollisionArea" type="CollisionPolygon2D" parent="." unique_id=1753711551]
 visible = false
@@ -157,6 +160,14 @@ one_shot = true
 visible = false
 position = Vector2(0, -1)
 texture = ExtResource("4_ckp0d")
+centered = false
+
+[node name="ScanPivot" type="Node2D" parent="." unique_id=2032546888]
+
+[node name="ScanningLight" type="Sprite2D" parent="ScanPivot" unique_id=2007880969]
+position = Vector2(0, -30)
+scale = Vector2(1.1640625, 1)
+texture = ExtResource("5_v1wfb")
 centered = false
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

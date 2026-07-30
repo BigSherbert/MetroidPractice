@@ -26,6 +26,9 @@ const gun_directions = {
 	Vector2i(1,-1):  7,
 	}
 
+
+
+
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += gravity * delta

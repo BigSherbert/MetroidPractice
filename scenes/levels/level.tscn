@@ -3236,7 +3236,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Entities" unique_id=1849349854 instance=ExtResource("1_377w7")]
-position = Vector2(2643, -955)
+position = Vector2(2234, -957)
 
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
 metadata/_edit_lock_ = true
@@ -3267,7 +3267,7 @@ position = Vector2(2813, -988)
 position = Vector2(2813, -969)
 
 [node name="SniperDrone" parent="Enemies" unique_id=607920499 instance=ExtResource("7_mbbpy")]
-position = Vector2(2480, -1038)
+position = Vector2(1949, -1017)
 
 [connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]
 [connection signal="droneshoot" from="Enemies/SniperDrone" to="." method="_on_sniper_drone_droneshoot"]

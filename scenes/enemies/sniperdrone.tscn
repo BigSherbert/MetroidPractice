@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://lf71uxgp7wtq" path="res://graphics/lights/ScanningLIght70FadeAntiAliasing.png" id="5_v1wfb"]
 [ext_resource type="AudioStream" uid="uid://dtnqyh7corvdx" path="res://audio/explosion.wav" id="6_fujtf"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ndaap"]
+radius = 14.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iqa5j"]
 shader = ExtResource("3_k6bvu")
 shader_parameter/HitShaderColor = Color(0.584314, 0.517647, 0, 1)
@@ -49,9 +52,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ndaap"]
-radius = 146.08559
 
 [sub_resource type="Animation" id="Animation_xgp3v"]
 length = 0.001
@@ -127,6 +127,16 @@ scan_max_angle = 65.0
 
 [node name="ScanPivot" type="Node2D" parent="." unique_id=2032546888]
 
+[node name="DetectionArea" type="Area2D" parent="ScanPivot" unique_id=159991383]
+collision_layer = 0
+collision_mask = 2
+
+[node name="DetectionScanZone" type="CollisionPolygon2D" parent="ScanPivot/DetectionArea" unique_id=414957226]
+polygon = PackedVector2Array(0, 0, 126, -32, 126, 32)
+
+[node name="BroadRangeDetection" type="CollisionShape2D" parent="ScanPivot/DetectionArea" unique_id=1583521899]
+shape = SubResource("CircleShape2D_ndaap")
+
 [node name="ScanningLight" type="Sprite2D" parent="ScanPivot" unique_id=2007880969]
 position = Vector2(0, -32)
 texture = ExtResource("5_v1wfb")
@@ -145,15 +155,6 @@ polygon = PackedVector2Array(4, -7, 4, -6, 3, -6, 3, -3, 2, -3, 2, -4, -2, -4, -
 
 [node name="ShotAtSound" type="AudioStreamPlayer2D" parent="." unique_id=749825087]
 stream = ExtResource("5_8wdkm")
-
-[node name="DetectionArea" type="Area2D" parent="." unique_id=159991383]
-visible = false
-collision_layer = 0
-collision_mask = 2
-
-[node name="DetectAreaCollision" type="CollisionShape2D" parent="DetectionArea" unique_id=1583521899]
-visible = false
-shape = SubResource("CircleShape2D_ndaap")
 
 [node name="Explosion" type="Sprite2D" parent="." unique_id=478221840]
 visible = false
@@ -185,8 +186,8 @@ position = Vector2(0, -1)
 texture = ExtResource("4_ckp0d")
 centered = false
 
-[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="ScanPivot/DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="ScanPivot/DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="animation_finished" from="ExplosionAnimation" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="SelfDestructArea" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

@@ -27,6 +27,8 @@ signal droneshoot(pos: Vector2, dir: Vector2)
 
 
 func _ready() -> void:
+	#Give the drone its own shader
+	$AnimatedSprite2D.material = $AnimatedSprite2D.material.duplicate()
 	#Scanning Light
 	$ScanPivot/ScanningLight.modulate = Color(0.3, 0.7, 1.0, 0.35)
 
@@ -135,7 +137,6 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 func shot_at():
 	print("Drone was shot_at")
 	health -= 1
-	$DetectionArea/DetectAreaCollision.scale = Vector2(1.65,1.65)
 	print("Drone Health: ", health)
 	if health <= 0 :
 		drone_explode()

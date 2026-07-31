@@ -4311,7 +4311,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Entities" unique_id=1849349854 instance=ExtResource("1_377w7")]
-position = Vector2(4104, -209)
+position = Vector2(982, -1086)
 
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
 metadata/_edit_lock_ = true
@@ -4323,8 +4323,20 @@ metadata/_edit_lock_ = true
 [node name="Drone" parent="Enemies" unique_id=1412520183 instance=ExtResource("6_d4w6o")]
 position = Vector2(721, -1035)
 
+[node name="Drone2" parent="Enemies" unique_id=922621318 instance=ExtResource("6_d4w6o")]
+position = Vector2(740, -985)
+
+[node name="Drone3" parent="Enemies" unique_id=180735502 instance=ExtResource("6_d4w6o")]
+position = Vector2(697, -1000)
+
 [node name="SniperDrone" parent="Enemies" unique_id=607920499 instance=ExtResource("7_mbbpy")]
-position = Vector2(647, -1085)
+position = Vector2(618, -1093)
+
+[node name="SniperDrone2" parent="Enemies" unique_id=44778581 instance=ExtResource("7_mbbpy")]
+position = Vector2(538, -1032)
+
+[node name="SniperDrone3" parent="Enemies" unique_id=674311593 instance=ExtResource("7_mbbpy")]
+position = Vector2(562, -1051)
 
 [node name="Boss" type="Node2D" parent="." unique_id=326272805]
 
@@ -4335,3 +4347,5 @@ shadow_enabled = true
 
 [connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]
 [connection signal="droneshoot" from="Enemies/SniperDrone" to="." method="_on_sniper_drone_droneshoot"]
+[connection signal="droneshoot" from="Enemies/SniperDrone2" to="." method="_on_sniper_drone_droneshoot"]
+[connection signal="droneshoot" from="Enemies/SniperDrone3" to="." method="_on_sniper_drone_droneshoot"]

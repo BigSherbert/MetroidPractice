@@ -18,6 +18,9 @@ var scan_time := 0.0
 
 
 func _ready() -> void:
+	#Give the drone its own shader
+	$AnimatedSprite2D.material = $AnimatedSprite2D.material.duplicate()
+	
 	#Scanning Light
 	$ScanPivot/ScanningLight.modulate = Color(0.3, 0.7, 1.0, 0.35)
 

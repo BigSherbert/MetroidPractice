@@ -5,9 +5,10 @@ var direction : Vector2
 @export var offset : = 0
 
 func _ready() -> void:
-	
 	var tweenbscale = get_tree().create_tween()
 	tweenbscale.tween_property($Sprite2D, "scale",Vector2.ONE,.25).from(Vector2.ZERO)
+	#Delete if laser somehow lasts longer than 60 seconds.
+	get_tree().create_timer(60.0).timeout.connect(queue_free)
 
 #Instead of trying to explicitly state properties elsewhere, we just send them in a simple function!
 #This is helpful because we might want specific adjustments for scenes/characters

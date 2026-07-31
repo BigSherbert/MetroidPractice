@@ -3,7 +3,13 @@
 [ext_resource type="Script" uid="uid://bgcjvm7vh2ji0" path="res://scenes/enemies/drone.gd" id="1_y3ws1"]
 [ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="1_y6iu8"]
 [ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="3_dyfay"]
+[ext_resource type="Shader" uid="uid://brlvwobxcwrsk" path="res://scenes/shaders/drone.tres" id="3_lt60k"]
 [ext_resource type="Texture2D" uid="uid://lf71uxgp7wtq" path="res://graphics/lights/ScanningLIght70FadeAntiAliasing.png" id="4_xgp3v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xgp3v"]
+shader = ExtResource("3_lt60k")
+shader_parameter/HitShaderColor = Color(1, 1, 1, 1)
+shader_parameter/HitShaderMix = 0.50000002375
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y3ws1"]
 atlas = ExtResource("1_y6iu8")
@@ -112,8 +118,6 @@ radius = 13.038404
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_y3ws1")
-health = 1
-blast_radius = 35
 scan_min_angle = -25.0
 scan_max_angle = 65.0
 
@@ -125,6 +129,7 @@ texture = ExtResource("4_xgp3v")
 centered = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1466721568]
+material = SubResource("ShaderMaterial_xgp3v")
 sprite_frames = SubResource("SpriteFrames_ndaap")
 autoplay = "default"
 flip_h = true

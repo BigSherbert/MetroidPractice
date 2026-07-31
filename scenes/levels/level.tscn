@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://by2r4p3pqmbju" path="res://scenes/enemies/drone.tscn" id="6_d4w6o"]
 [ext_resource type="PackedScene" uid="uid://6geo2vekp1xq" path="res://scenes/enemies/sniperdrone.tscn" id="7_mbbpy"]
 [ext_resource type="Texture2D" uid="uid://6j2he24a4uda" path="res://graphics/lights/l3.png" id="7_xfk5q"]
-[ext_resource type="PackedScene" uid="uid://b8f6ixgjq2ah5" path="res://scenes/enemies/bossdrone.tscn" id="8_ouxo3"]
 [ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="9_icy5c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xb4v1"]
@@ -4312,7 +4311,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Entities" unique_id=1849349854 instance=ExtResource("1_377w7")]
-position = Vector2(928, -971)
+position = Vector2(982, -983)
 
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
 metadata/_edit_lock_ = true
@@ -4328,10 +4327,6 @@ position = Vector2(721, -1035)
 position = Vector2(647, -1085)
 
 [node name="Boss" type="Node2D" parent="." unique_id=326272805]
-
-[node name="BossDrone" parent="Boss" unique_id=1218550047 instance=ExtResource("8_ouxo3")]
-visible = false
-position = Vector2(1943, 216)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1867902884]
 color = Color(0.7647059, 0.7647059, 0.7647059, 1)

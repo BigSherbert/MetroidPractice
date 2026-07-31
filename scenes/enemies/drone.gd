@@ -7,7 +7,7 @@ var direction : Vector2
 var player: CharacterBody2D
 
 @export var health := 3
-@export var blast_radius := 20
+@export var blast_radius := 35
 
 #Scanning Variables
 @export var scan_speed := 1.5
@@ -83,8 +83,8 @@ func track_player_with_light(delta: float) -> void:
 
 #Triggered when Player (Or characterbody2d in Player Collision Layer) enters the Detection Area
 func _on_detection_area_body_entered(detectedplayer: CharacterBody2D) -> void:
-	scan_time = 0.0
-	player = detectedplayer
+		player = detectedplayer
+		scan_time = 0.0
 
 #Cancel Drone Detection
 #If player runs away and leaves detection area, stop the drone.

@@ -7,7 +7,7 @@ var direction : Vector2
 var player: CharacterBody2D
 
 @export var health := 3
-@export var blast_radius := 20
+@export var blast_radius := 35
 
 #Shooting Variables
 @export var reloadtime := 3.0
@@ -152,6 +152,7 @@ func drone_explode() :
 	exploding = true
 	#print("Play Explosion")
 	speed = 0
+	$ReloadTimer.stop()
 	velocity = Vector2.ZERO
 	$DroneCollisionArea.set_deferred("disabled", true)
 	$ScanPivot/ScanningLight.visible = false

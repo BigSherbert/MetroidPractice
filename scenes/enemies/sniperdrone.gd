@@ -139,6 +139,7 @@ func shot_at():
 	print("Drone Health: ", health)
 	if health <= 0 :
 		drone_explode()
+	$ShotAtSound.play()
 	var tween = create_tween()
 	tween.tween_property($AnimatedSprite2D.material,"shader_parameter/HitShaderMix",0.0,0.05)
 	tween.tween_property($AnimatedSprite2D.material,"shader_parameter/HitShaderMix",1.0,0.1)

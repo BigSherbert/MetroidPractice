@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="3_dyfay"]
 [ext_resource type="Shader" uid="uid://brlvwobxcwrsk" path="res://scenes/shaders/drone.tres" id="3_lt60k"]
 [ext_resource type="Texture2D" uid="uid://lf71uxgp7wtq" path="res://graphics/lights/ScanningLIght70FadeAntiAliasing.png" id="4_xgp3v"]
+[ext_resource type="AudioStream" uid="uid://bya7p4j2a1uh2" path="res://audio/hit.wav" id="5_md0p7"]
 [ext_resource type="AudioStream" uid="uid://dtnqyh7corvdx" path="res://audio/explosion.wav" id="6_cq5ml"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xgp3v"]
@@ -138,6 +139,9 @@ flip_h = true
 [node name="DroneCollisionArea" type="CollisionPolygon2D" parent="." unique_id=1753711551]
 visible = false
 polygon = PackedVector2Array(4, -7, 4, -6, 3, -6, 3, -3, 2, -3, 2, -4, -2, -4, -2, -6, -3, -6, -3, -7, -9, -7, -9, -6, -10, -6, -10, -2, -9, -2, -9, -1, -6, -1, -6, 4, -5, 4, -5, 5, -4, 5, -4, 6, -3, 6, -3, 7, 2, 7, 2, 6, 3, 6, 3, 5, 4, 5, 4, 4, 5, 4, 5, 0, 5, -1, 6, -1, 10, -1, 10, -2, 11, -2, 11, -6, 10, -6, 10, -7)
+
+[node name="ShotAtSound" type="AudioStreamPlayer2D" parent="." unique_id=1818574812]
+stream = ExtResource("5_md0p7")
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=159991383]
 visible = false

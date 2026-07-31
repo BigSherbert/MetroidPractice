@@ -3770,7 +3770,7 @@ tile_set = SubResource("TileSet_ndaap")
 metadata/_edit_lock_ = true
 
 [node name="BGDetailLayer" type="TileMapLayer" parent="Layers" unique_id=987701467]
-tile_map_data = PackedByteArray("AAAAAP7/AAANAAYAAAABAPz/AAAOAAQAAAABAP3/AAAOAAUAAAABAP7/AAAOAAYAAAACAPz/AAAPAAQAAAACAP3/AAAPAAUAAAACAP7/AAAPAAYAAAADAP7/AAAQAAYAAAANAP7/AAANAAYAAAAOAPz/AAAOAAQAAAAOAP3/AAAOAAUAAAAOAP7/AAAOAAYAAAAPAPz/AAAPAAQAAAAPAP3/AAAPAAUAAAAPAP7/AAAPAAYAAAAQAP7/AAAQAAYAAAAZAP7/AAANAAYAAAAaAPz/AAAOAAQAAAAaAP3/AAAOAAUAAAAaAP7/AAAOAAYAAAAbAPz/AAAPAAQAAAAbAP3/AAAPAAUAAAAbAP7/AAAPAAYAAAAcAP7/AAAQAAYAAAAjAP7/AAANAAYAAAAkAPz/AAAOAAQAAAAkAP3/AAAOAAUAAAAkAP7/AAAOAAYAAAAlAPz/AAAPAAQAAAAlAP3/AAAPAAUAAAAlAP7/AAAPAAYAAAAmAP7/AAAQAAYAAAAuAP7/AAANAAYAAAAvAPz/AAAOAAQAAAAvAP3/AAAOAAUAAAAvAP7/AAAOAAYAAAAwAPz/AAAPAAQAAAAwAP3/AAAPAAUAAAAwAP7/AAAPAAYAAAAxAP7/AAAQAAYAAAA5AP7/AAANAAYAAAA6APz/AAAOAAQAAAA6AP3/AAAOAAUAAAA6AP7/AAAOAAYAAAA7APz/AAAPAAQAAAA7AP3/AAAPAAUAAAA7AP7/AAAPAAYAAAA8AP7/AAAQAAYAAABNAAEAAAANAAYAAABOAP//AAAOAAQAAABOAAAAAAAOAAUAAABOAAEAAAAOAAYAAABPAP//AAAPAAQAAABPAAAAAAAPAAUAAABPAAEAAAAPAAYAAABQAAEAAAAQAAYAAACMALr/AAANAAYAAACNALr/AAAOAAYAAACOALr/AAAPAAYAAACPALr/AAAQAAYAAACCALr/AAANAAYAAACDALr/AAAOAAYAAACEALr/AAAPAAYAAACFALr/AAAQAAYAAAB3ALr/AAANAAYAAAB4ALr/AAAOAAYAAAB5ALr/AAAPAAYAAAB6ALr/AAAQAAYAAABsALr/AAANAAYAAABtALr/AAAOAAYAAABuALr/AAAPAAYAAABvALr/AAAQAAYAAABhALr/AAANAAYAAABiALr/AAAOAAYAAABjALr/AAAPAAYAAABkALr/AAAQAAYAAABWALr/AAANAAYAAABXALr/AAAOAAYAAABYALr/AAAPAAYAAABZALr/AAAQAAYAAABLALr/AAANAAYAAABMALr/AAAOAAYAAABNALr/AAAPAAYAAABOALr/AAAQAAYAAABAALr/AAANAAYAAABBALr/AAAOAAYAAABCALr/AAAPAAYAAABDALr/AAAQAAYAAAA1ALr/AAANAAYAAAA2ALr/AAAOAAYAAAA3ALr/AAAPAAYAAAA4ALr/AAAQAAYAAAAfALr/AAANAAYAAAAgALr/AAAOAAYAAAAhALr/AAAPAAYAAAAiALr/AAAQAAYAAAAUALr/AAANAAYAAAAVALr/AAAOAAYAAAAWALr/AAAPAAYAAAAXALr/AAAQAAYAAAAJALr/AAANAAYAAAAKALr/AAAOAAYAAAALALr/AAAPAAYAAAAMALr/AAAQAAYAAAArALr/AAAKAAIAAACPAMT/AAANAAIAAACPAMX/AAANAAMAAABkAMT/AAANAAIAAABkAMX/AAANAAMAAAAiAMT/AAANAAIAAAAiAMX/AAANAAMAAAABAMT/AAANAAIAAAABAMX/AAANAAMAAAAVAMT/AAARAAEAAAAVAMX/AAARAAIAAAAWAMT/AAASAAEAAAAWAMX/AAASAAIAAAB4AMT/AAARAAEAAAB4AMX/AAARAAIAAAB5AMT/AAASAAEAAAB5AMX/AAASAAIAAABMAMT/AAARAAUAAABMAMX/AAARAAYAAABNAMT/AAASAAUAAABNAMX/AAASAAYAAAAgAMT/AAARAAEAAAAgAMX/AAARAAIAAAAhAMT/AAASAAEAAAAhAMX/AAASAAIAAACOALj/AAALAAQAABCOALn/AAALAAUAABCNALn/AAAMAAUAABB2ALj/AAALAAQAABBgALj/AAALAAQAABBKALj/AAALAAQAABA0ALj/AAALAAQAABAeALj/AAALAAQAABAKAMH/AAAOAAEAAAALAMH/AAAPAAEAAAAXAND/AAAOAAAAAAAXANH/AAAOAAEAAAAYAND/AAAPAAAAAAAYANH/AAAPAAEAAAB8AN3/AAANAAIAAAB8AN7/AAANAAMAAAB7AN3/AAANAAIAAAB7AN7/AAANAAMAAABEAN3/AAANAAIAAABEAN7/AAANAAMAAAAiAN3/AAANAAIAAAAiAN7/AAANAAMAAAARAN3/AAARAAEAAAARAN7/AAARAAIAAAASAN3/AAASAAEAAAASAN7/AAASAAIAAACHAN3/AAARAAUAAACHAN7/AAARAAYAAACIAN3/AAASAAUAAACIAN7/AAASAAYAAACLAN3/AAARAAUAAACLAN7/AAARAAYAAACMAN3/AAASAAUAAACMAN7/AAASAAYAAADOAN3/AAARAAUAAADOAN7/AAARAAYAAADPAN3/AAASAAUAAADPAN7/AAASAAYAAADSAN3/AAARAAUAAADSAN7/AAARAAYAAADTAN3/AAASAAUAAADTAN7/AAASAAYAAADQAN3/AAARAAEAAADQAN7/AAARAAIAAADRAN3/AAASAAEAAADRAN7/AAASAAIAAADgAN3/AAARAAEAAADgAN7/AAARAAIAAADhAN3/AAASAAEAAADhAN7/AAASAAIAAADiAN3/AAARAAEAAADiAN7/AAARAAIAAADjAN3/AAASAAEAAADjAN7/AAASAAIAAADkAN3/AAARAAEAAADkAN7/AAARAAIAAADlAN3/AAASAAEAAADlAN7/AAASAAIAAAAZAdD/AAAOAAIAAAAZAdH/AAAOAAMAAAAaAdD/AAAPAAIAAAAaAdH/AAAPAAMAAAD2AN3/AAANAAIAAAD2AN7/AAANAAMAAAC2AN3/AAANAAIAAAC2AN7/AAANAAMAAAAtAM//AAAHAAEAAAAuAM//AAAIAAEAAAAvAM//AAAJAAEAAAAwAM//AAAKAAEAAAAwAND/AAAKAAIAAABfAM//AAAHAAEAAABgAM//AAAIAAEAAABhAM//AAAJAAEAAABiAM//AAAKAAEAAABiAND/AAAKAAIAAACfAM//AAAHAAEAAACgAM//AAAIAAEAAAChAM//AAAJAAEAAACiAM//AAAKAAEAAACiAND/AAAKAAIAAADmAM//AAAHAAEAAADnAM//AAAIAAEAAADoAM//AAAJAAEAAADpAM//AAAKAAEAAADpAND/AAAKAAIAAADJAM//AAAHAAEAAADKAM//AAAIAAEAAADLAM//AAAJAAEAAADMAM//AAAKAAEAAADMAND/AAAKAAIAAACEAM//AAAHAAEAAACFAM//AAAIAAEAAACGAM//AAAJAAEAAACHAM//AAAKAAEAAACHAND/AAAKAAIAAAAIAfH/AwAAAAgAAAAIAfL/AwAAAAkAAAAJAfH/AwABAAgAAAAJAfL/AwABAAkAAAAKAfH/AwACAAgAAAAKAfL/AwACAAkAAAALAfH/AwADAAgAAAALAfL/AwADAAkAAAAJAfP/AwAOAAAAAAAJAfT/AwAOAAEAAAAKAfP/AwAPAAAAAAAKAfT/AwAPAAEAAACMAPH/AwAAAAgAAACMAPL/AwAAAAkAAACNAPH/AwABAAgAAACNAPL/AwABAAkAAACOAPH/AwACAAgAAACOAPL/AwACAAkAAACPAPH/AwADAAgAAACPAPL/AwADAAkAAABSAPH/AwAAAAgAAABSAPL/AwAAAAkAAABTAPH/AwABAAgAAABTAPL/AwABAAkAAABUAPH/AwACAAgAAABUAPL/AwACAAkAAABVAPH/AwADAAgAAABVAPL/AwADAAkAAAAmAPL/AwAOAAAAAAAmAPP/AwAOAAEAAAAnAPL/AwAPAAAAAAAnAPP/AwAPAAEAAABDAPH/AwAOAAAAAABDAPL/AwAOAAEAAABEAPH/AwAPAAAAAABEAPL/AwAPAAEAAADlAO3/AwAAAAgAAADlAO7/AwAAAAkAAADmAO3/AwABAAgAAADmAO7/AwABAAkAAADnAO3/AwACAAgAAADnAO7/AwACAAkAAADoAO3/AwADAAgAAADoAO7/AwADAAkAAADLAPL/AwAAAAgAAADLAPP/AwAAAAkAAADMAPL/AwABAAgAAADMAPP/AwABAAkAAADNAPL/AwACAAgAAADNAPP/AwACAAkAAADOAPL/AwADAAgAAADOAPP/AwADAAkAAACrAOv/AwAWAAoAAACrAOz/AwAWAAsAAACsAOv/AwAXAAoAAACsAOz/AwAXAAsAAACtAOv/AwAYAAoAAACtAOz/AwAYAAsAAACuAOv/AwAZAAoAAACuAOz/AwAZAAsAAACuAO3/AwAAAAgAAACuAO7/AwAAAAkAAACvAO3/AwABAAgAAACvAO7/AwABAAkAAACwAO3/AwACAAgAAACwAO7/AwACAAkAAACxAO3/AwADAAgAAACxAO7/AwADAAkAAAARAOv/AwAWAAoAAAARAOz/AwAWAAsAAAASAOv/AwAXAAoAAAASAOz/AwAXAAsAAAATAOv/AwAYAAoAAAATAOz/AwAYAAsAAAAUAOv/AwAZAAoAAAAUAOz/AwAZAAsAAAARAO3/AwAWAAoAAAARAO7/AwAWAAsAAAASAO3/AwAXAAoAAAASAO7/AwAXAAsAAAATAO3/AwAYAAoAAAATAO7/AwAYAAsAAAAUAO3/AwAZAAoAAAAUAO7/AwAZAAsAAAARAO//AwAAAAgAAAARAPD/AwAAAAkAAAASAO//AwABAAgAAAASAPD/AwABAAkAAAATAO//AwACAAgAAAATAPD/AwACAAkAAAAUAO//AwADAAgAAAAUAPD/AwADAAkAAADXAO3/AwAOAAAAAADXAO7/AwAOAAEAAADYAO3/AwAPAAAAAADYAO7/AwAPAAEAAADXAO//AwAOAAAAAADXAPD/AwAOAAEAAADYAO//AwAPAAAAAADYAPD/AwAPAAEAAACLAO//AwAOAAAAAACLAPD/AwAOAAEAAACMAO//AwAPAAAAAACMAPD/AwAPAAEAAABeAO7/AwAOAAAAAABeAO//AwAOAAEAAABfAO7/AwAPAAAAAABfAO//AwAPAAEAAAAVAO//AwAOAAAAAAAVAPD/AwAOAAEAAAAWAO//AwAPAAAAAAAWAPD/AwAPAAEAAAAFAO//AwAOAAAAAAAFAPD/AwAOAAEAAAAGAO//AwAPAAAAAAAGAPD/AwAPAAEAAAAXAPX/AAANAAIAAAAXAPb/AAANAAMAAABHAPX/AAANAAIAAABHAPb/AAANAAMAAACxAPb/AAANAAIAAACxAPf/AAANAAMAAAD7APb/AAANAAIAAAD7APf/AAANAAMAAAAbAfX/AAANAAIAAAAbAfb/AAANAAMAAAAZAfX/AAARAAEAAAAZAfb/AAARAAIAAAAaAfX/AAASAAEAAAAaAfb/AAASAAIAAAAXAfX/AAARAAEAAAAXAfb/AAARAAIAAAAYAfX/AAASAAEAAAAYAfb/AAASAAIAAAAFAfX/AAARAAUAAAAFAfb/AAARAAYAAAAGAfX/AAASAAUAAAAGAfb/AAASAAYAAADjAPX/AAARAAUAAADjAPb/AAARAAYAAADkAPX/AAASAAUAAADkAPb/AAASAAYAAADlAPX/AAARAAUAAADlAPb/AAARAAYAAADmAPX/AAASAAUAAADmAPb/AAASAAYAAADnAPX/AAARAAUAAADnAPb/AAARAAYAAADoAPX/AAASAAUAAADoAPb/AAASAAYAAADTAPX/AAARAAUAAADTAPb/AAARAAYAAADUAPX/AAASAAUAAADUAPb/AAASAAYAAADNAPX/AAARAAUAAADNAPb/AAARAAYAAADOAPX/AAASAAUAAADOAPb/AAASAAYAAADPAPX/AAARAAUAAADPAPb/AAARAAYAAADQAPX/AAASAAUAAADQAPb/AAASAAYAAACrAPX/AAARAAUAAACrAPb/AAARAAYAAACsAPX/AAASAAUAAACsAPb/AAASAAYAAACLAPX/AAARAAUAAACLAPb/AAARAAYAAACMAPX/AAASAAUAAACMAPb/AAASAAYAAAAxAPX/AAARAAUAAAAxAPb/AAARAAYAAAAyAPX/AAASAAUAAAAyAPb/AAASAAYAAAASAPX/AAARAAUAAAASAPb/AAARAAYAAAATAPX/AAASAAUAAAATAPb/AAASAAYAAAAUAPX/AAARAAUAAAAUAPb/AAARAAYAAAAVAPX/AAASAAUAAAAVAPb/AAASAAYAAACPALT/AAAKAAIAAGA=")
+tile_map_data = PackedByteArray("AAAAAP7/AAANAAYAAAABAPz/AAAOAAQAAAABAP3/AAAOAAUAAAABAP7/AAAOAAYAAAACAPz/AAAPAAQAAAACAP3/AAAPAAUAAAACAP7/AAAPAAYAAAADAP7/AAAQAAYAAAANAP7/AAANAAYAAAAOAPz/AAAOAAQAAAAOAP3/AAAOAAUAAAAOAP7/AAAOAAYAAAAPAPz/AAAPAAQAAAAPAP3/AAAPAAUAAAAPAP7/AAAPAAYAAAAQAP7/AAAQAAYAAAAZAP7/AAANAAYAAAAaAPz/AAAOAAQAAAAaAP3/AAAOAAUAAAAaAP7/AAAOAAYAAAAbAPz/AAAPAAQAAAAbAP3/AAAPAAUAAAAbAP7/AAAPAAYAAAAcAP7/AAAQAAYAAAAjAP7/AAANAAYAAAAkAPz/AAAOAAQAAAAkAP3/AAAOAAUAAAAkAP7/AAAOAAYAAAAlAPz/AAAPAAQAAAAlAP3/AAAPAAUAAAAlAP7/AAAPAAYAAAAmAP7/AAAQAAYAAAAuAP7/AAANAAYAAAAvAPz/AAAOAAQAAAAvAP3/AAAOAAUAAAAvAP7/AAAOAAYAAAAwAPz/AAAPAAQAAAAwAP3/AAAPAAUAAAAwAP7/AAAPAAYAAAAxAP7/AAAQAAYAAAA5AP7/AAANAAYAAAA6APz/AAAOAAQAAAA6AP3/AAAOAAUAAAA6AP7/AAAOAAYAAAA7APz/AAAPAAQAAAA7AP3/AAAPAAUAAAA7AP7/AAAPAAYAAAA8AP7/AAAQAAYAAABNAAEAAAANAAYAAABOAP//AAAOAAQAAABOAAAAAAAOAAUAAABOAAEAAAAOAAYAAABPAP//AAAPAAQAAABPAAAAAAAPAAUAAABPAAEAAAAPAAYAAABQAAEAAAAQAAYAAACMALr/AAANAAYAAACNALr/AAAOAAYAAACOALr/AAAPAAYAAACPALr/AAAQAAYAAACCALr/AAANAAYAAACDALr/AAAOAAYAAACEALr/AAAPAAYAAACFALr/AAAQAAYAAAB3ALr/AAANAAYAAAB4ALr/AAAOAAYAAAB5ALr/AAAPAAYAAAB6ALr/AAAQAAYAAABsALr/AAANAAYAAABtALr/AAAOAAYAAABuALr/AAAPAAYAAABvALr/AAAQAAYAAABhALr/AAANAAYAAABiALr/AAAOAAYAAABjALr/AAAPAAYAAABkALr/AAAQAAYAAABWALr/AAANAAYAAABXALr/AAAOAAYAAABYALr/AAAPAAYAAABZALr/AAAQAAYAAABLALr/AAANAAYAAABMALr/AAAOAAYAAABNALr/AAAPAAYAAABOALr/AAAQAAYAAABAALr/AAANAAYAAABBALr/AAAOAAYAAABCALr/AAAPAAYAAABDALr/AAAQAAYAAAA1ALr/AAANAAYAAAA2ALr/AAAOAAYAAAA3ALr/AAAPAAYAAAA4ALr/AAAQAAYAAAAfALr/AAANAAYAAAAgALr/AAAOAAYAAAAhALr/AAAPAAYAAAAiALr/AAAQAAYAAAAUALr/AAANAAYAAAAVALr/AAAOAAYAAAAWALr/AAAPAAYAAAAXALr/AAAQAAYAAAAJALr/AAANAAYAAAAKALr/AAAOAAYAAAALALr/AAAPAAYAAAAMALr/AAAQAAYAAAArALr/AAAKAAIAAACPAMT/AAANAAIAAACPAMX/AAANAAMAAABkAMT/AAANAAIAAABkAMX/AAANAAMAAAAiAMT/AAANAAIAAAAiAMX/AAANAAMAAAABAMT/AAANAAIAAAABAMX/AAANAAMAAAAVAMT/AAARAAEAAAAVAMX/AAARAAIAAAAWAMT/AAASAAEAAAAWAMX/AAASAAIAAAB4AMT/AAARAAEAAAB4AMX/AAARAAIAAAB5AMT/AAASAAEAAAB5AMX/AAASAAIAAABMAMT/AAARAAUAAABMAMX/AAARAAYAAABNAMT/AAASAAUAAABNAMX/AAASAAYAAAAgAMT/AAARAAEAAAAgAMX/AAARAAIAAAAhAMT/AAASAAEAAAAhAMX/AAASAAIAAACOALj/AAALAAQAABCOALn/AAALAAUAABCNALn/AAAMAAUAABB2ALj/AAALAAQAABBgALj/AAALAAQAABBKALj/AAALAAQAABA0ALj/AAALAAQAABAeALj/AAALAAQAABAKAMH/AAAOAAEAAAALAMH/AAAPAAEAAAAXAND/AAAOAAAAAAAXANH/AAAOAAEAAAAYAND/AAAPAAAAAAAYANH/AAAPAAEAAAB8AN3/AAANAAIAAAB8AN7/AAANAAMAAAB7AN3/AAANAAIAAAB7AN7/AAANAAMAAABEAN3/AAANAAIAAABEAN7/AAANAAMAAAAiAN3/AAANAAIAAAAiAN7/AAANAAMAAAARAN3/AAARAAEAAAARAN7/AAARAAIAAAASAN3/AAASAAEAAAASAN7/AAASAAIAAACHAN3/AAARAAUAAACHAN7/AAARAAYAAACIAN3/AAASAAUAAACIAN7/AAASAAYAAACLAN3/AAARAAUAAACLAN7/AAARAAYAAACMAN3/AAASAAUAAACMAN7/AAASAAYAAADOAN3/AAARAAUAAADOAN7/AAARAAYAAADPAN3/AAASAAUAAADPAN7/AAASAAYAAADSAN3/AAARAAUAAADSAN7/AAARAAYAAADTAN3/AAASAAUAAADTAN7/AAASAAYAAADQAN3/AAARAAEAAADQAN7/AAARAAIAAADRAN3/AAASAAEAAADRAN7/AAASAAIAAADgAN3/AAARAAEAAADgAN7/AAARAAIAAADhAN3/AAASAAEAAADhAN7/AAASAAIAAADiAN3/AAARAAEAAADiAN7/AAARAAIAAADjAN3/AAASAAEAAADjAN7/AAASAAIAAADkAN3/AAARAAEAAADkAN7/AAARAAIAAADlAN3/AAASAAEAAADlAN7/AAASAAIAAAAZAdD/AAAOAAIAAAAZAdH/AAAOAAMAAAAaAdD/AAAPAAIAAAAaAdH/AAAPAAMAAAD2AN3/AAANAAIAAAD2AN7/AAANAAMAAAC2AN3/AAANAAIAAAC2AN7/AAANAAMAAAAtAM//AAAHAAEAAAAuAM//AAAIAAEAAAAvAM//AAAJAAEAAAAwAM//AAAKAAEAAAAwAND/AAAKAAIAAABfAM//AAAHAAEAAABgAM//AAAIAAEAAABhAM//AAAJAAEAAABiAM//AAAKAAEAAABiAND/AAAKAAIAAACfAM//AAAHAAEAAACgAM//AAAIAAEAAAChAM//AAAJAAEAAACiAM//AAAKAAEAAACiAND/AAAKAAIAAADmAM//AAAHAAEAAADnAM//AAAIAAEAAADoAM//AAAJAAEAAADpAM//AAAKAAEAAADpAND/AAAKAAIAAADJAM//AAAHAAEAAADKAM//AAAIAAEAAADLAM//AAAJAAEAAADMAM//AAAKAAEAAADMAND/AAAKAAIAAACEAM//AAAHAAEAAACFAM//AAAIAAEAAACGAM//AAAJAAEAAACHAM//AAAKAAEAAACHAND/AAAKAAIA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AADTAPX/AAARAAUAAADTAPb/AAARAAYAAADUAPX/AAASAAUAAADUAPb/AAASAAYAAADNAPX/AAARAAUAAADNAPb/AAARAAYAAADOAPX/AAASAAUAAADOAPb/AAASAAYAAADPAPX/AAARAAUAAADPAPb/AAARAAYAAADQAPX/AAASAAUAAADQAPb/AAASAAYAAACrAPX/AAARAAUAAACrAPb/AAARAAYAAACsAPX/AAASAAUAAACsAPb/AAASAAYAAACLAPX/AAARAAUAAACLAPb/AAARAAYAAACMAPX/AAASAAUAAACMAPb/AAASAAYAAAAxAPX/AAARAAUAAAAxAPb/AAARAAYAAAAyAPX/AAASAAUAAAAyAPb/AAASAAYAAAASAPX/AAARAAUAAAASAPb/AAARAAYAAAATAPX/AAASAAUAAAATAPb/AAASAAYAAAAUAPX/AAARAAUAAAAUAPb/AAARAAYAAAAVAPX/AAASAAUAAAAVAPb/AAASAAYAAACPALT/AAAKAAIAAGAVAND/AAAKAAIAAAAUAc//AAAHAAEAAAAVAc//AAAIAAEAAAAWAc//AAAJAAEAAAAXAc//AAAKAAEAAAAXAdD/AAAKAAIAAAAVAM//AAAKAAEAAAASAM//AAAHAAEAAAATAM//AAAIAAEAAAAUAM//AAAJAAEAAAA=")
 tile_set = SubResource("TileSet_rxo6g")
 metadata/_edit_lock_ = true
 
@@ -3787,80 +3787,94 @@ metadata/_edit_lock_ = true
 [node name="Lighting" type="Node2D" parent="Layers" unique_id=1548392443]
 
 [node name="Entrance" type="Node2D" parent="Layers/Lighting" unique_id=1070523914]
+metadata/_edit_lock_ = true
 
 [node name="EntranceLights" type="Node2D" parent="Layers/Lighting/Entrance" unique_id=28185047]
+metadata/_edit_lock_ = true
 
 [node name="PillarLight" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceLights" unique_id=864003272]
 position = Vector2(2272, -1018)
 scale = Vector2(1, 3.78)
 energy = 2.0
 texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
 
 [node name="PillarLight2" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceLights" unique_id=1584696918]
 position = Vector2(2112, -1016.99994)
 scale = Vector2(1, 3.78)
 energy = 2.0
 texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
 
 [node name="PillarLight3" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceLights" unique_id=2018033949]
 position = Vector2(1936, -1018)
 scale = Vector2(1, 3.78)
 energy = 2.0
 texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
 
 [node name="PillarLight4" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceLights" unique_id=2053844054]
 position = Vector2(1760, -1018)
 scale = Vector2(1, 3.78)
 energy = 2.0
 texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
 
 [node name="PillarLight5" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceLights" unique_id=1356152889]
 position = Vector2(1584, -1018)
 scale = Vector2(1, 3.78)
 energy = 2.0
 texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
 
 [node name="PillarLight6" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceLights" unique_id=1284834503]
 position = Vector2(1408, -1018)
 scale = Vector2(1, 3.78)
 energy = 2.0
 texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
 
 [node name="PillarLight7" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceLights" unique_id=1929852793]
 position = Vector2(1233, -1018.00006)
 scale = Vector2(1, 3.78)
 energy = 2.0
 texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
 
 [node name="PillarLight8" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceLights" unique_id=274671079]
 position = Vector2(1055, -1019)
 scale = Vector2(1, 3.78)
 energy = 2.0
 texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
 
 [node name="PillarLight9" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceLights" unique_id=1834866787]
 position = Vector2(880, -1019)
 scale = Vector2(1, 3.78)
 energy = 2.0
 texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
 
 [node name="PillarLight11" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceLights" unique_id=2007839711]
 position = Vector2(528, -1018)
 scale = Vector2(1, 3.78)
 energy = 2.0
 texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
 
 [node name="PillarLight12" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceLights" unique_id=667180205]
 position = Vector2(352, -1019)
 scale = Vector2(1, 3.78)
 energy = 2.0
 texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
 
 [node name="PillarLight13" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceLights" unique_id=1487555354]
 position = Vector2(175, -1018)
 scale = Vector2(1, 3.78)
 energy = 2.0
 texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
 
 [node name="SpotLight" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceLights" unique_id=472991939]
 position = Vector2(2387, -1207.9999)
@@ -3868,54 +3882,437 @@ rotation = -1.5707964
 scale = Vector2(0.25625005, 3.78)
 energy = 2.0
 texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
 
 [node name="SpotLight2" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceLights" unique_id=1201621250]
 position = Vector2(695.25, -1018.00006)
 scale = Vector2(0.25625005, 3.78)
 energy = 2.0
 texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
 
 [node name="EntranceSigns" type="Node2D" parent="Layers/Lighting/Entrance" unique_id=1613433232]
+metadata/_edit_lock_ = true
 
 [node name="LargeSign" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceSigns" unique_id=896688107]
 position = Vector2(2272, -1128)
 texture = ExtResource("7_xfk5q")
+metadata/_edit_lock_ = true
 
 [node name="SmallSign" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceSigns" unique_id=9736787]
 position = Vector2(2280, -1143)
 scale = Vector2(0.5, 0.75)
 texture = ExtResource("7_xfk5q")
+metadata/_edit_lock_ = true
 
 [node name="SmallSign2" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceSigns" unique_id=1049795456]
 position = Vector2(1896, -1143)
 scale = Vector2(0.5, 0.75)
 texture = ExtResource("7_xfk5q")
+metadata/_edit_lock_ = true
 
 [node name="SmallSign3" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceSigns" unique_id=4909986]
 position = Vector2(1543, -1144)
 scale = Vector2(0.5, 0.75)
 texture = ExtResource("7_xfk5q")
+metadata/_edit_lock_ = true
 
 [node name="SmallSign4" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceSigns" unique_id=507638056]
 position = Vector2(1192, -1143)
 scale = Vector2(0.5, 0.75)
 texture = ExtResource("7_xfk5q")
+metadata/_edit_lock_ = true
 
 [node name="SmallSign5" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceSigns" unique_id=1713279163]
 position = Vector2(840, -1144)
 scale = Vector2(0.5, 0.75)
 texture = ExtResource("7_xfk5q")
+metadata/_edit_lock_ = true
 
 [node name="SmallSign6" type="PointLight2D" parent="Layers/Lighting/Entrance/EntranceSigns" unique_id=569502886]
 position = Vector2(487, -1143)
 scale = Vector2(0.5, 0.75)
 texture = ExtResource("7_xfk5q")
+metadata/_edit_lock_ = true
+
+[node name="SubFloor2" type="Node2D" parent="Layers/Lighting" unique_id=154908658]
+metadata/_edit_lock_ = true
+
+[node name="SubFloor2Lights" type="Node2D" parent="Layers/Lighting/SubFloor2" unique_id=1198282745]
+metadata/_edit_lock_ = true
+
+[node name="SpotLight" type="PointLight2D" parent="Layers/Lighting/SubFloor2/SubFloor2Lights" unique_id=307434015]
+position = Vector2(344, -638)
+scale = Vector2(0.25625005, 4.9500003)
+energy = 2.0
+texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
+
+[node name="SpotLight2" type="PointLight2D" parent="Layers/Lighting/SubFloor2/SubFloor2Lights" unique_id=243681761]
+position = Vector2(776, -636.75006)
+scale = Vector2(0.25625005, 4.9500003)
+energy = 2.0
+texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
+
+[node name="SpotLight3" type="PointLight2D" parent="Layers/Lighting/SubFloor2/SubFloor2Lights" unique_id=686414125]
+position = Vector2(1576, -709.375)
+scale = Vector2(0.25625005, 2.0549994)
+energy = 2.0
+texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
+
+[node name="SpotLight4" type="PointLight2D" parent="Layers/Lighting/SubFloor2/SubFloor2Lights" unique_id=1485461965]
+position = Vector2(2168, -637)
+scale = Vector2(0.25625005, 4.9500003)
+energy = 2.0
+texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
+
+[node name="SpotLight5" type="PointLight2D" parent="Layers/Lighting/SubFloor2/SubFloor2Lights" unique_id=993928715]
+position = Vector2(2600, -637)
+scale = Vector2(0.25625005, 4.9500003)
+energy = 2.0
+texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
+
+[node name="SpotLight6" type="PointLight2D" parent="Layers/Lighting/SubFloor2/SubFloor2Lights" unique_id=1468161065]
+position = Vector2(3271.9998, -638.00006)
+scale = Vector2(0.25625005, 4.9500003)
+energy = 2.0
+texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
+
+[node name="SpotLight7" type="PointLight2D" parent="Layers/Lighting/SubFloor2/SubFloor2Lights" unique_id=689776308]
+position = Vector2(3736, -637)
+scale = Vector2(0.25625005, 4.9500003)
+energy = 2.0
+texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
+
+[node name="SpotLight8" type="PointLight2D" parent="Layers/Lighting/SubFloor2/SubFloor2Lights" unique_id=1522093456]
+position = Vector2(4472, -637)
+scale = Vector2(0.25625005, 4.9500003)
+energy = 2.0
+texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
+
+[node name="SubFloor2Signs" type="Node2D" parent="Layers/Lighting/SubFloor2" unique_id=474074785]
+metadata/_edit_lock_ = true
+
+[node name="LargeSign" type="PointLight2D" parent="Layers/Lighting/SubFloor2/SubFloor2Signs" unique_id=2091478784]
+position = Vector2(384, -744)
+texture = ExtResource("7_xfk5q")
+metadata/_edit_lock_ = true
+
+[node name="LargeSign2" type="PointLight2D" parent="Layers/Lighting/SubFloor2/SubFloor2Signs" unique_id=108045041]
+position = Vector2(4511, -743)
+texture = ExtResource("7_xfk5q")
+metadata/_edit_lock_ = true
+
+[node name="SubFloor2Beams" type="Node2D" parent="Layers/Lighting/SubFloor2" unique_id=1108035236]
+metadata/_edit_lock_ = true
+
+[node name="WallBeam" type="PointLight2D" parent="Layers/Lighting/SubFloor2/SubFloor2Beams" unique_id=240417333]
+position = Vector2(119, -632)
+scale = Vector2(2, 2)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="WallBeam2" type="PointLight2D" parent="Layers/Lighting/SubFloor2/SubFloor2Beams" unique_id=266423869]
+position = Vector2(888, -635)
+scale = Vector2(2, 2)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="WallBeam3" type="PointLight2D" parent="Layers/Lighting/SubFloor2/SubFloor2Beams" unique_id=2019730703]
+position = Vector2(2070, -636)
+scale = Vector2(2, 2)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="WallBeam4" type="PointLight2D" parent="Layers/Lighting/SubFloor2/SubFloor2Beams" unique_id=1314694951]
+position = Vector2(2844, -636)
+scale = Vector2(2, 2)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="WallBeam5" type="PointLight2D" parent="Layers/Lighting/SubFloor2/SubFloor2Beams" unique_id=1920106570]
+position = Vector2(4022, -634)
+scale = Vector2(2, 2)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="SubFloor3" type="Node2D" parent="Layers/Lighting" unique_id=1261949671]
+metadata/_edit_lock_ = true
+
+[node name="SubFloor3Beams" type="Node2D" parent="Layers/Lighting/SubFloor3" unique_id=1971503482]
+metadata/_edit_lock_ = true
+
+[node name="WallBeam" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Beams" unique_id=1521443910]
+position = Vector2(4360, -234)
+scale = Vector2(2, 2)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="WallBeam2" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Beams" unique_id=941981475]
+position = Vector2(3176, -234)
+scale = Vector2(2, 2)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="WallBeam3" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Beams" unique_id=1216581540]
+position = Vector2(2412, -234)
+scale = Vector2(2, 2)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="WallBeam4" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Beams" unique_id=128672413]
+position = Vector2(1228, -234)
+scale = Vector2(2, 2)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="WallBeam5" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Beams" unique_id=210897113]
+position = Vector2(459, -234)
+scale = Vector2(2, 2)
+texture = ExtResource("9_icy5c")
+
+[node name="SubFloor3Monitors" type="Node2D" parent="Layers/Lighting/SubFloor3" unique_id=1025134473]
+metadata/_edit_lock_ = true
+
+[node name="BlueMonitor" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=529624457]
+position = Vector2(4257, -222)
+color = Color(0.23783365, 0.24231562, 1, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="BlueMonitor2" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=1726833135]
+position = Vector2(3699, -286)
+color = Color(0.23783365, 0.24231562, 1, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="BlueMonitor3" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=1929964734]
+position = Vector2(3282, -202)
+color = Color(0.23783365, 0.24231562, 1, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="BlueMonitor4" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=2047354545]
+position = Vector2(2814, -284)
+color = Color(0.23783365, 0.24231562, 1, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="BlueMonitor5" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=291731028]
+position = Vector2(2784, -322)
+color = Color(0.23783365, 0.24231562, 1, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="BlueMonitor6" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=1193412346]
+position = Vector2(2753, -322)
+color = Color(0.23783365, 0.24231562, 1, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="BlueMonitor7" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=1214141778]
+position = Vector2(2270, -222)
+color = Color(0.23783365, 0.24231562, 1, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="BlueMonitor8" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=1418239705]
+position = Vector2(1344, -222)
+color = Color(0.23783365, 0.24231562, 1, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="BlueMonitor9" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=283549553]
+position = Vector2(302, -250)
+color = Color(0.23783365, 0.24231562, 1, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="BlueMonitor10" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=439856470]
+position = Vector2(319, -287)
+color = Color(0.23783365, 0.24231562, 1, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="BlueMonitor11" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=745421537]
+position = Vector2(289, -287)
+color = Color(0.23783365, 0.24231562, 1, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="BlueMonitor12" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=1701958514]
+position = Vector2(319, -322)
+color = Color(0.23783365, 0.24231562, 1, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="BlueMonitor13" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=759064981]
+position = Vector2(287, -322)
+color = Color(0.23783365, 0.24231562, 1, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="GreenMonitor" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=1734874718]
+position = Vector2(94, -252)
+scale = Vector2(0.6, 0.43)
+color = Color(0.1764673, 0.7180733, 7.70092e-07, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="GreenMonitor2" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=945481050]
+position = Vector2(622.99994, -209)
+scale = Vector2(0.6, 0.43)
+color = Color(0.1764673, 0.7180733, 7.70092e-07, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="GreenMonitor3" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=1626719043]
+position = Vector2(1088, -222)
+scale = Vector2(0.6, 0.43)
+color = Color(0.1764673, 0.7180733, 7.70092e-07, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="GreenMonitor4" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=2139616690]
+position = Vector2(1518, -272)
+scale = Vector2(0.6, 0.43)
+color = Color(0.1764673, 0.7180733, 7.70092e-07, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="GreenMonitor5" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=1071250886]
+position = Vector2(2240, -252)
+scale = Vector2(0.6, 0.43)
+color = Color(0.1764673, 0.7180733, 7.70092e-07, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="GreenMonitor6" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=542282660]
+position = Vector2(3457, -286)
+scale = Vector2(0.6, 0.43)
+color = Color(0.1764673, 0.7180733, 7.70092e-07, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="GreenMonitor7" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=2014026925]
+position = Vector2(3458, -252)
+scale = Vector2(0.6, 0.43)
+color = Color(0.1764673, 0.7180733, 7.70092e-07, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="GreenMonitor8" type="PointLight2D" parent="Layers/Lighting/SubFloor3/SubFloor3Monitors" unique_id=2123540003]
+position = Vector2(4254, -187)
+scale = Vector2(0.6, 0.43)
+color = Color(0.1764673, 0.7180733, 7.70092e-07, 1)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="SubFloor4" type="Node2D" parent="Layers/Lighting" unique_id=920756511]
+metadata/_edit_lock_ = true
+
+[node name="SubFloor4Lights" type="Node2D" parent="Layers/Lighting/SubFloor4" unique_id=244452389]
+metadata/_edit_lock_ = true
+
+[node name="LargeLight" type="PointLight2D" parent="Layers/Lighting/SubFloor4/SubFloor4Lights" unique_id=1134501252]
+position = Vector2(31.749996, 249.50002)
+scale = Vector2(0.9812499, 10.9800005)
+texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
+
+[node name="LargeLight2" type="PointLight2D" parent="Layers/Lighting/SubFloor4/SubFloor4Lights" unique_id=1619266170]
+position = Vector2(238.99998, 248)
+scale = Vector2(0.9812499, 10.9800005)
+texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
+
+[node name="LargeLight3" type="PointLight2D" parent="Layers/Lighting/SubFloor4/SubFloor4Lights" unique_id=1965050432]
+position = Vector2(431, 247)
+scale = Vector2(0.9812499, 10.9800005)
+texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
+
+[node name="LargeLight4" type="PointLight2D" parent="Layers/Lighting/SubFloor4/SubFloor4Lights" unique_id=1795187147]
+position = Vector2(592, 248)
+scale = Vector2(0.9812499, 10.9800005)
+texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
+
+[node name="LargeLight5" type="PointLight2D" parent="Layers/Lighting/SubFloor4/SubFloor4Lights" unique_id=2016213012]
+position = Vector2(766.00006, 247)
+scale = Vector2(0.9812499, 10.9800005)
+texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
+
+[node name="LargeLight6" type="PointLight2D" parent="Layers/Lighting/SubFloor4/SubFloor4Lights" unique_id=311494216]
+position = Vector2(943, 247)
+scale = Vector2(0.9812499, 10.9800005)
+texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
+
+[node name="LargeLight7" type="PointLight2D" parent="Layers/Lighting/SubFloor4/SubFloor4Lights" unique_id=208786072]
+position = Vector2(1265, 272.25)
+scale = Vector2(0.9812499, 10.070001)
+texture = ExtResource("5_rmjfq")
+metadata/_edit_lock_ = true
+
+[node name="SubFloor4Beams" type="Node2D" parent="Layers/Lighting/SubFloor4" unique_id=1671538833]
+metadata/_edit_lock_ = true
+
+[node name="WallBeam" type="PointLight2D" parent="Layers/Lighting/SubFloor4/SubFloor4Beams" unique_id=1993673171]
+position = Vector2(935, 311)
+scale = Vector2(2, 2)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="WallBeam2" type="PointLight2D" parent="Layers/Lighting/SubFloor4/SubFloor4Beams" unique_id=1524004140]
+position = Vector2(940, 447)
+scale = Vector2(2, 2)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="WallBeam3" type="PointLight2D" parent="Layers/Lighting/SubFloor4/SubFloor4Beams" unique_id=993984638]
+position = Vector2(1116, 276)
+scale = Vector2(2, 2)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="WallBeam4" type="PointLight2D" parent="Layers/Lighting/SubFloor4/SubFloor4Beams" unique_id=1747756381]
+position = Vector2(1111, 151)
+scale = Vector2(2, 2)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="WallBeam5" type="PointLight2D" parent="Layers/Lighting/SubFloor4/SubFloor4Beams" unique_id=1150485622]
+position = Vector2(1288, 457)
+scale = Vector2(2, 2)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="WallBeam6" type="PointLight2D" parent="Layers/Lighting/SubFloor4/SubFloor4Beams" unique_id=1838263365]
+position = Vector2(1458, 448)
+scale = Vector2(2, 2)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
+
+[node name="WallBeam7" type="PointLight2D" parent="Layers/Lighting/SubFloor4/SubFloor4Beams" unique_id=1332732261]
+position = Vector2(1624, 447)
+scale = Vector2(2, 2)
+texture = ExtResource("9_icy5c")
+metadata/_edit_lock_ = true
 
 [node name="Entities" type="Node2D" parent="." unique_id=629147067]
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Entities" unique_id=1849349854 instance=ExtResource("1_377w7")]
-position = Vector2(856, -945)
+position = Vector2(419, -187)
 
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
 metadata/_edit_lock_ = true
@@ -3940,10 +4337,6 @@ position = Vector2(1943, 216)
 color = Color(0.7647059, 0.7647059, 0.7647059, 1)
 blend_mode = 2
 shadow_enabled = true
-
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1118315020]
-position = Vector2(3938, -280)
-texture = ExtResource("9_icy5c")
 
 [connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]
 [connection signal="droneshoot" from="Enemies/SniperDrone" to="." method="_on_sniper_drone_droneshoot"]

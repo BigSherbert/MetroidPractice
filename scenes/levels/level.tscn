@@ -4330,7 +4330,7 @@ position = Vector2(647, -1085)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1867902884]
 color = Color(0.7647059, 0.7647059, 0.7647059, 1)
-blend_mode = 1
+blend_mode = 2
 shadow_enabled = true
 
 [connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]

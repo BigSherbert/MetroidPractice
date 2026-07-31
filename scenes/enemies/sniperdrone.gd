@@ -139,6 +139,9 @@ func shot_at():
 	print("Drone Health: ", health)
 	if health <= 0 :
 		drone_explode()
+	var tween = create_tween()
+	tween.tween_property($AnimatedSprite2D.material,"shader_parameter/HitShaderMix",0.0,0.05)
+	tween.tween_property($AnimatedSprite2D.material,"shader_parameter/HitShaderMix",1.0,0.1)
 
 func explode_nearby_drones():
 	for drone in get_tree().get_nodes_in_group("Drones"):
@@ -158,6 +161,7 @@ func drone_explode() :
 	$ScanPivot/ScanningLight.visible = false
 	$AnimatedSprite2D.visible = false
 	$ExplosionAnimation.play("explode")
+	$ExplosionSound.play()
 	explode_nearby_drones()
 
 #Remove the drone when explosion finished.

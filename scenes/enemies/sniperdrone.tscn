@@ -2,9 +2,16 @@
 
 [ext_resource type="Script" uid="uid://doqmde3mjhy4f" path="res://scenes/enemies/sniperdrone.gd" id="1_vdot7"]
 [ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="2_ckp0d"]
+[ext_resource type="Shader" uid="uid://b5b57keca7ymr" path="res://scenes/shaders/sniperdrone.tres" id="3_k6bvu"]
 [ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="3_v1wfb"]
 [ext_resource type="Texture2D" uid="uid://b6ql7ncfh1ow2" path="res://graphics/fire/MuzzleFlash.png" id="4_ckp0d"]
 [ext_resource type="Texture2D" uid="uid://lf71uxgp7wtq" path="res://graphics/lights/ScanningLIght70FadeAntiAliasing.png" id="5_v1wfb"]
+[ext_resource type="AudioStream" uid="uid://dtnqyh7corvdx" path="res://audio/explosion.wav" id="6_fujtf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iqa5j"]
+shader = ExtResource("3_k6bvu")
+shader_parameter/HitShaderColor = Color(0.584314, 0.517647, 0, 1)
+shader_parameter/HitShaderMix = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y3ws1"]
 atlas = ExtResource("2_ckp0d")
@@ -126,6 +133,7 @@ centered = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1466721568]
 modulate = Color(0.38431373, 0.56078434, 0.28235295, 1)
+material = SubResource("ShaderMaterial_iqa5j")
 sprite_frames = SubResource("SpriteFrames_ndaap")
 autoplay = "default"
 flip_h = true
@@ -151,6 +159,9 @@ hframes = 8
 
 [node name="ExplosionAnimation" type="AnimationPlayer" parent="." unique_id=84576907]
 libraries/ = SubResource("AnimationLibrary_cq5ml")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="." unique_id=354372358]
+stream = ExtResource("6_fujtf")
 
 [node name="SelfDestructArea" type="Area2D" parent="." unique_id=73665796]
 visible = false

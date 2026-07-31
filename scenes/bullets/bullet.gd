@@ -8,6 +8,7 @@ func _ready() -> void:
 	#$firesprite.scale = Vector2.ZERO
 	var tweenbscale = get_tree().create_tween()
 	tweenbscale.tween_property($firesprite, "scale",Vector2.ONE,.25).from(Vector2.ZERO)
+	$PewPew.play()
 	#Delete if bullet somehow lasts longer than 60 seconds.
 	get_tree().create_timer(60.0).timeout.connect(queue_free)
 

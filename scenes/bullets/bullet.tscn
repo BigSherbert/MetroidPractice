@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://nss02ym145bd" path="res://graphics/fire/default.png" id="1_mkf8s"]
 [ext_resource type="Script" uid="uid://ds563qqa2yy1n" path="res://scenes/bullets/bullet.gd" id="1_y25gk"]
+[ext_resource type="AudioStream" uid="uid://1lxmf2dhxgm5" path="res://audio/gunfire.wav" id="3_lj7gv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rxo6g"]
 radius = 1.0
@@ -18,5 +19,8 @@ texture = ExtResource("1_mkf8s")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1808080798]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_rxo6g")
+
+[node name="PewPew" type="AudioStreamPlayer2D" parent="." unique_id=1363280898]
+stream = ExtResource("3_lj7gv")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

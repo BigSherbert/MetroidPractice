@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ce5lahx5juu6s" path="res://scenes/bullets/laser.gd" id="1_yb6li"]
 [ext_resource type="Texture2D" uid="uid://nss02ym145bd" path="res://graphics/fire/default.png" id="2_ty11f"]
+[ext_resource type="AudioStream" uid="uid://dciwr4xer0qxs" path="res://audio/laserblast.wav" id="3_ty11f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ndaap"]
 radius = 1.0
@@ -25,5 +26,8 @@ shape = SubResource("CapsuleShape2D_ndaap")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=726416040]
 texture = SubResource("CanvasTexture_ndaap")
+
+[node name="PewPew" type="AudioStreamPlayer2D" parent="." unique_id=75276245]
+stream = ExtResource("3_ty11f")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

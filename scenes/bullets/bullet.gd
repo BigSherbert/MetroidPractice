@@ -1,7 +1,7 @@
 extends Area2D
 
 var direction : Vector2
-@export var speed : = 100
+@export var speed : = 200
 @export var offset : = 16
 
 func _ready() -> void:

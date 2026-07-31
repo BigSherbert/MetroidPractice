@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://fpfypo3clla7" path="res://scenes/entities/player.gd" id="1_ucweq"]
 [ext_resource type="Texture2D" uid="uid://xjr28pnf8gs0" path="res://graphics/characters/playerupdated.png" id="2_1ie0h"]
+[ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="4_5u6hq"]
 [ext_resource type="Texture2D" uid="uid://otyoj5px7yk7" path="res://graphics/ui/crosshair.png" id="4_42nxq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ndaap"]
@@ -114,3 +115,6 @@ vframes = 3
 [node name="Crosshair" type="Sprite2D" parent="." unique_id=271332396]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_42nxq")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2132159943]
+texture = ExtResource("4_5u6hq")

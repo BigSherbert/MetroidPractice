@@ -122,7 +122,7 @@ func drone_explode() :
 	$DroneCollisionArea.set_deferred("disabled", true)
 	$ScanPivot/ScanningLight.visible = false
 	$AnimatedSprite2D.visible = false
-	$AnimationPlayer.play("explode")
+	$ExplosionAnimation.play("explode")
 	explode_nearby_drones()
 
 #Remove the drone when explosion finished.

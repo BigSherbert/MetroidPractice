@@ -44,6 +44,7 @@ func _physics_process(delta: float) -> void:
 		elif velocity.x < 0:
 			$AnimatedSprite2D.flip_h = false
 			$MuzzleFlash.scale.x = -1
+			
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
@@ -155,7 +156,7 @@ func drone_explode() :
 	$DroneCollisionArea.set_deferred("disabled", true)
 	$ScanPivot/ScanningLight.visible = false
 	$AnimatedSprite2D.visible = false
-	$AnimationPlayer.play("explode")
+	$ExplosionAnimation.play("explode")
 	explode_nearby_drones()
 
 #Remove the drone when explosion finished.

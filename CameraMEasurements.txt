@@ -1,0 +1,6 @@
+Entrance 2337.0, -940.0118
+SubFloor2 162, -540.0575
+Subfloor3 1876.0, -156.0084
+BossEntrance First Platform 158,179.9982
+BossEntrance Floor 183, 513.9324
+Boss Platform 1497, 355.9331

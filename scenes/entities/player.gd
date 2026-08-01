@@ -3,6 +3,7 @@ extends CharacterBody2D
 #Camera Physics
 #Im trying to prevent vertical movement except in scene transitions
 @onready var camera: Camera2D = $Camera2D
+@export var starting_camera_y: float = -950.0
 var camera_floor_y: float
 
 #Character Physics
@@ -41,17 +42,16 @@ const gun_directions = {
 	Vector2i(1,-1):  7,
 	}
 
+
 func _ready() -> void:
 	health = max_health
 	
-	var starting_camera_position := camera.global_position
 	camera.top_level = true
-	camera.global_position = starting_camera_position
-	camera_floor_y = starting_camera_position.y
-
+	camera_floor_y = starting_camera_y
+	camera.global_position = Vector2(global_position.x,camera_floor_y)
+	camera.reset_smoothing()
 
 func _physics_process(delta: float) -> void:
-	
 	if !is_on_floor():
 		velocity.y += gravity * delta
 	
@@ -133,3 +133,10 @@ func player_die() -> void:
 
 func reload_level() -> void:
 	get_tree().reload_current_scene()
+	
+
+#Camera Function
+func set_camera_floor(new_camera_y: float) -> void:
+	camera_floor_y = new_camera_y
+	camera.global_position.y = camera_floor_y
+	camera.reset_smoothing()

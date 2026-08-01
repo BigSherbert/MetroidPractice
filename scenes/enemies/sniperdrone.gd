@@ -23,8 +23,10 @@ var scan_time := 0.0
 #FrenzyMode
 @export var frenzy_duration := 5.0
 @export var give_up_distance := 350.0
+@export var keep_frenzy_distance := 150.0
 var frenzy_time_left := 0.0
 var starting_position: Vector2
+
 
 
 #Creating a Custom Signal
@@ -38,19 +40,26 @@ func _ready() -> void:
 	starting_position = global_position
 	#Scanning Light
 	$ScanPivot/ScanningLight.modulate = Color(0.3, 0.7, 1.0, 0.35)
-
+	#print(get_tree().get_first_node_in_group("Player"))
 
 func _physics_process(delta: float) -> void:
-	if frenzy_time_left > 0.0:
-		frenzy_time_left -= delta
-	
 	if player and frenzy_time_left > 0.0:
-		#Give up if the player gets very far away.
-		if global_position.distance_to(player.global_position) > give_up_distance:
+		frenzy_time_left -= delta
+		var distance_to_player := global_position.distance_to(player.global_position)
+		
+		if distance_to_player > give_up_distance:
 			player = null
 			frenzy_time_left = 0.0
 			$ReloadTimer.stop()
-		else:
+		
+		elif frenzy_time_left <= 0.0:
+			if distance_to_player <= keep_frenzy_distance:
+				frenzy_time_left = frenzy_duration
+			else:
+				player = null
+				frenzy_time_left = 0.0
+		
+		if player and frenzy_time_left > 0.0:
 			track_player_with_light(delta)
 			direction = (player.global_position - global_position).normalized()
 			velocity = direction * speed
@@ -74,6 +83,7 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		global_position = starting_position
 		scan_with_light(delta)
+
 
 
 
@@ -134,7 +144,8 @@ func _on_detection_area_body_exited(detectedplayer: CharacterBody2D) -> void:
 
 #Drone Shoots At Player
 func _on_reload_timer_timeout() -> void:
-	if player == null:
+	if player == null or frenzy_time_left <= 0.0:
+		$ReloadTimer.stop()
 		return
 	print("Fire!")
 	flash_laser_origin()
@@ -160,6 +171,13 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 
 #Drone is Shot At
 func shot_at():
+	var found_player := get_tree().get_first_node_in_group("Player")
+	if found_player:
+		player = found_player
+		frenzy_time_left = frenzy_duration
+		scan_time = 0.0
+		if $ReloadTimer.is_stopped():
+			$ReloadTimer.start(firstshottime)
 	print("Drone was shot_at")
 	health -= 1
 	print("Drone Health: ", health)

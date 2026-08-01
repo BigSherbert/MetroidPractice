@@ -121,9 +121,6 @@ radius = 13.038404
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_vdot7")
-speed = 1
-scan_min_angle = -25.0
-scan_max_angle = 65.0
 
 [node name="ScanPivot" type="Node2D" parent="." unique_id=2032546888]
 

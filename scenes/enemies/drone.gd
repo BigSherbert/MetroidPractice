@@ -21,6 +21,7 @@ var scan_time := 0.0
 @export var give_up_distance := 350.0
 var frenzy_time_left := 0.0
 var starting_position: Vector2
+@export var keep_frenzy_distance := 150.0
 
 
 func _ready() -> void:
@@ -32,28 +33,38 @@ func _ready() -> void:
 	$ScanPivot/ScanningLight.modulate = Color(0.3, 0.7, 1.0, 0.35)
 
 
+
 func _physics_process(delta: float) -> void:
-	if frenzy_time_left > 0.0:
-		frenzy_time_left -= delta
-	
 	if player and frenzy_time_left > 0.0:
-		#Give up if the player gets far away
-		if global_position.distance_to(player.global_position) > give_up_distance:
+		frenzy_time_left -= delta
+		var distance_to_player := global_position.distance_to(player.global_position)
+
+		#Immediately give up if the player gets far away.
+		if distance_to_player > give_up_distance:
 			player = null
 			frenzy_time_left = 0.0
-		else:
+
+		#When the timer expires, stay frenzied if the player is still close.
+		elif frenzy_time_left <= 0.0:
+			if distance_to_player <= keep_frenzy_distance:
+				frenzy_time_left = frenzy_duration
+			else:
+				player = null
+				frenzy_time_left = 0.0
+
+		if player and frenzy_time_left > 0.0:
 			track_player_with_light(delta)
 			direction = (player.global_position - global_position).normalized()
 			velocity = direction * speed
-			
+
 			if velocity.x > 0:
 				$AnimatedSprite2D.flip_h = true
 			elif velocity.x < 0:
 				$AnimatedSprite2D.flip_h = false
-			
+
 			move_and_slide()
 			return
-	
+
 	#Return to the original position.
 	if global_position.distance_to(starting_position) > 2.0:
 		direction = (starting_position - global_position).normalized()
@@ -124,6 +135,11 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 
 #Drone is Shot At
 func shot_at():
+	var found_player := get_tree().get_first_node_in_group("Player")
+	if found_player:
+		player = found_player
+		frenzy_time_left = frenzy_duration
+		scan_time = 0.0
 	print("Drone was shot_at")
 	health -= 1
 	print("Drone Health: ", health)

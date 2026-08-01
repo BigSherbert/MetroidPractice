@@ -4331,12 +4331,36 @@ position = Vector2(697, -1000)
 
 [node name="SniperDrone" parent="Enemies" unique_id=607920499 instance=ExtResource("7_mbbpy")]
 position = Vector2(618, -1093)
+health = 3
+blast_radius = 35
+reloadtime = 3.0
+firstshottime = 1.0
+scan_speed = 1.5
+flash_speed = 8.0
+frenzy_duration = 5.0
+give_up_distance = 350.0
 
 [node name="SniperDrone2" parent="Enemies" unique_id=44778581 instance=ExtResource("7_mbbpy")]
 position = Vector2(538, -1032)
+health = 3
+blast_radius = 35
+reloadtime = 3.0
+firstshottime = 1.0
+scan_speed = 1.5
+flash_speed = 8.0
+frenzy_duration = 5.0
+give_up_distance = 350.0
 
 [node name="SniperDrone3" parent="Enemies" unique_id=674311593 instance=ExtResource("7_mbbpy")]
 position = Vector2(562, -1051)
+health = 3
+blast_radius = 35
+reloadtime = 3.0
+firstshottime = 1.0
+scan_speed = 1.5
+flash_speed = 8.0
+frenzy_duration = 5.0
+give_up_distance = 350.0
 
 [node name="Boss" type="Node2D" parent="." unique_id=326272805]
 

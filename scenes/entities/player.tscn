@@ -78,7 +78,7 @@ _data = {
 &"run": SubResource("Animation_1ie0h")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=1849349854]
+[node name="Player" type="CharacterBody2D" unique_id=1849349854 groups=["Player"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_ucweq")

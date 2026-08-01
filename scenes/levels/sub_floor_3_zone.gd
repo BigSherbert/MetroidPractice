@@ -1,8 +1,8 @@
 extends Area2D
 
-@export var camera_limit_left: int = -10000000
-@export var camera_limit_right: int = 10000000
-@export var camera_y: float
+@export var camera_limit_left: int = -32
+@export var camera_limit_right: int = 4720
+@export var camera_y: float = -156.0
 
 
 func _on_body_entered(body: Node2D) -> void:

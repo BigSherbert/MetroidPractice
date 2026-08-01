@@ -3,7 +3,11 @@ extends CharacterBody2D
 #Camera Physics
 #Im trying to prevent vertical movement except in scene transitions
 @onready var camera: Camera2D = $Camera2D
-@export var starting_camera_y: float = -950.0
+@export var starting_camera_y: float = -540
+#Top floor:     -950
+#Second floor:  -540
+#Third floor:   -156
+#Boss floor:     250
 var camera_floor_y: float
 
 #Character Physics

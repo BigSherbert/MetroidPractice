@@ -4347,7 +4347,7 @@ shape = SubResource("RectangleShape2D_ndaap")
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Entities" unique_id=1849349854 instance=ExtResource("1_377w7")]
-position = Vector2(135, -295)
+position = Vector2(1683, -552)
 
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
 metadata/_edit_lock_ = true
@@ -4357,22 +4357,22 @@ metadata/_edit_lock_ = true
 [node name="Enemies" type="Node2D" parent="." unique_id=512384362]
 
 [node name="Drone" parent="Enemies" unique_id=1412520183 instance=ExtResource("6_d4w6o")]
-position = Vector2(721, -1035)
+position = Vector2(2159, -1046)
 
 [node name="Drone2" parent="Enemies" unique_id=922621318 instance=ExtResource("6_d4w6o")]
-position = Vector2(740, -985)
+position = Vector2(2178, -996)
 
 [node name="Drone3" parent="Enemies" unique_id=180735502 instance=ExtResource("6_d4w6o")]
-position = Vector2(697, -1000)
+position = Vector2(2135, -1011)
 
 [node name="SniperDrone" parent="Enemies" unique_id=607920499 instance=ExtResource("7_mbbpy")]
-position = Vector2(618, -1093)
+position = Vector2(2056, -1104)
 
 [node name="SniperDrone2" parent="Enemies" unique_id=44778581 instance=ExtResource("7_mbbpy")]
-position = Vector2(538, -1032)
+position = Vector2(1976, -1043)
 
 [node name="SniperDrone3" parent="Enemies" unique_id=674311593 instance=ExtResource("7_mbbpy")]
-position = Vector2(562, -1051)
+position = Vector2(2000, -1062)
 
 [node name="Boss" type="Node2D" parent="." unique_id=326272805]
 

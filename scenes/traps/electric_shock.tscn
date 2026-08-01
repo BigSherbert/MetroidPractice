@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dbke0t5u1n6ta" path="res://graphics/electricity/lightning_v2_13.png" id="13_4fhjq"]
 [ext_resource type="Texture2D" uid="uid://bpmoeen73gq21" path="res://graphics/electricity/lightning_v2_blank.png" id="15_ri85g"]
 [ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="17_8qvce"]
+[ext_resource type="Texture2D" uid="uid://tnynggd5lqo3" path="res://graphics/electricity/sparks-particle.png" id="18_1xpd4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndaap"]
 size = Vector2(104, 21)
@@ -76,6 +77,17 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8qvce"]
+particle_flag_disable_z = true
+direction = Vector3(1, -0.02, 0)
+spread = 165.0
+initial_velocity_min = 25.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 325, 0)
+scale_min = 0.08
+scale_max = 0.25
+color = Color(0.35710377, 0.54516083, 1, 1)
+
 [node name="ElectricShock" type="Area2D" unique_id=804037970]
 script = ExtResource("1_3t4mp")
 
@@ -96,5 +108,15 @@ frame_progress = 1.0
 position = Vector2(1.4999967, -3)
 scale = Vector2(0.735, 0.28)
 color = Color(0.27826327, 0.3890474, 1, 1)
-energy = 0.8
 texture = ExtResource("17_8qvce")
+texture_scale = 4.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=2105196753]
+emitting = false
+amount = 6
+texture = ExtResource("18_1xpd4")
+lifetime = 0.15000000000000002
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_8qvce")
+
+[connection signal="frame_changed" from="ElectricEffect" to="." method="_on_electric_effect_frame_changed"]

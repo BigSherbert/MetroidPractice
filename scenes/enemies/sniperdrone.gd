@@ -10,8 +10,8 @@ var player: CharacterBody2D
 @export var blast_radius := 35
 
 #Shooting Variables
-@export var reloadtime := 3.0
-@export var firstshottime := 1.0
+@export var reload_time := 3.0
+@export var first_shot_time := 1.0
 
 #Scanning Variables
 @export var scan_speed := 1.5
@@ -132,7 +132,7 @@ func _on_detection_area_body_entered(detectedplayer: CharacterBody2D) -> void:
 	frenzy_time_left = frenzy_duration
 	scan_time = 0.0
 	if $ReloadTimer.is_stopped():
-		$ReloadTimer.start(firstshottime)
+		$ReloadTimer.start(first_shot_time)
 
 #Cancel Drone Detection
 #If player runs away and leaves detection area, stop the drone.
@@ -150,7 +150,7 @@ func _on_reload_timer_timeout() -> void:
 	print("Fire!")
 	flash_laser_origin()
 	droneshoot.emit(global_position,(player.global_position - global_position).normalized())
-	$ReloadTimer.start(reloadtime)
+	$ReloadTimer.start(reload_time)
 
 #MuzzleFlash
 func flash_laser_origin() -> void:
@@ -177,7 +177,7 @@ func shot_at():
 		frenzy_time_left = frenzy_duration
 		scan_time = 0.0
 		if $ReloadTimer.is_stopped():
-			$ReloadTimer.start(firstshottime)
+			$ReloadTimer.start(first_shot_time)
 	print("Drone was shot_at")
 	health -= 1
 	print("Drone Health: ", health)

@@ -20,6 +20,11 @@ var scan_time := 0.0
 @export var scan_min_angle := -65.0
 @export var scan_max_angle := 25.0
 
+#FrenzyMode
+@export var frenzy_duration := 5.0
+@export var give_up_distance := 350.0
+var frenzy_time_left := 0.0
+var starting_position: Vector2
 
 
 #Creating a Custom Signal
@@ -29,27 +34,45 @@ signal droneshoot(pos: Vector2, dir: Vector2)
 func _ready() -> void:
 	#Give the drone its own shader
 	$AnimatedSprite2D.material = $AnimatedSprite2D.material.duplicate()
+	#Save Origin Position
+	starting_position = global_position
 	#Scanning Light
 	$ScanPivot/ScanningLight.modulate = Color(0.3, 0.7, 1.0, 0.35)
 
 
 func _physics_process(delta: float) -> void:
+	if frenzy_time_left > 0.0:
+		frenzy_time_left -= delta
 	
-	#Move the drone towards the player. Delta is accounted for in Move_and_slide
-	if player :
-		track_player_with_light(delta)
-		direction = (player.global_position - global_position).normalized()
-		velocity = direction * speed
-		if velocity.x > 0:
-			$AnimatedSprite2D.flip_h = true
-			$MuzzleFlash.scale.x = 1
-		elif velocity.x < 0:
-			$AnimatedSprite2D.flip_h = false
-			$MuzzleFlash.scale.x = -1
+	if player and frenzy_time_left > 0.0:
+		#Give up if the player gets very far away.
+		if global_position.distance_to(player.global_position) > give_up_distance:
+			player = null
+			frenzy_time_left = 0.0
+			$ReloadTimer.stop()
+		else:
+			track_player_with_light(delta)
+			direction = (player.global_position - global_position).normalized()
+			velocity = direction * speed
 			
+			if velocity.x > 0:
+				$AnimatedSprite2D.flip_h = true
+				$MuzzleFlash.scale.x = 1
+			elif velocity.x < 0:
+				$AnimatedSprite2D.flip_h = false
+				$MuzzleFlash.scale.x = -1
+			
+			move_and_slide()
+			return
+	
+	#Return to the original position.
+	if global_position.distance_to(starting_position) > 2.0:
+		direction = (starting_position - global_position).normalized()
+		velocity = direction * speed
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
+		global_position = starting_position
 		scan_with_light(delta)
 
 
@@ -96,13 +119,15 @@ func track_player_with_light(delta: float) -> void:
 #Triggered when Player (Or characterbody2d in Player Collision Layer) enters the Detection Area
 func _on_detection_area_body_entered(detectedplayer: CharacterBody2D) -> void:
 	player = detectedplayer
+	frenzy_time_left = frenzy_duration
 	scan_time = 0.0
-	$ReloadTimer.start(firstshottime)
+	if $ReloadTimer.is_stopped():
+		$ReloadTimer.start(firstshottime)
 
 #Cancel Drone Detection
 #If player runs away and leaves detection area, stop the drone.
 func _on_detection_area_body_exited(detectedplayer: CharacterBody2D) -> void:
-	if detectedplayer == player:
+	if detectedplayer == player and frenzy_time_left <= 0.0:
 		player = null
 		scan_time = 0.0
 		$ReloadTimer.stop()

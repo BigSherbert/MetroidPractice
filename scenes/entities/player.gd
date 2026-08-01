@@ -139,4 +139,6 @@ func reload_level() -> void:
 func set_camera_floor(new_camera_y: float) -> void:
 	camera_floor_y = new_camera_y
 	camera.global_position.y = camera_floor_y
-	camera.reset_smoothing()
+	#This would snap the camera, I kind of like having the smooth transition.
+	#I like setting smoothing speed to 10p/s in inspector. Looks way better.
+	#camera.reset_smoothing()

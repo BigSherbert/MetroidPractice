@@ -11,6 +11,16 @@ extends CharacterBody2D
 #@export allows us to expose these variables to the inspector
 @export var gravity : float = 981.0
 
+#Player Health System
+@export var max_health := 5
+var health := 5
+#Im not entirely sure i-frames are going to be the right route
+#If you get shot 3 times you should lose 3 health like the scrub you are.
+#Casuals gonna Casual though...
+var invincible := false
+#Starting with .5
+@export var invincibility_time := 0.5
+
 #Creating a Custom Signal
 signal shoot(pos: Vector2, dir: Vector2)
 
@@ -26,7 +36,8 @@ const gun_directions = {
 	Vector2i(1,-1):  7,
 	}
 
-
+func _ready() -> void:
+	health = max_health
 
 
 func _physics_process(delta: float) -> void:
@@ -73,3 +84,40 @@ func _physics_process(delta: float) -> void:
 		tween.tween_property($Crosshair, "scale",Vector2(.1,.1),.25)
 		tween.tween_property($Crosshair, "scale",Vector2(.5,.5),.25)
 		$ReloadTimer.start()
+
+#Player Damage Logic
+#Called by enemy lasers and other damaging objects.
+func shot_at() -> void:
+	take_damage(1)
+
+func take_damage(amount: int) -> void:
+	#i-frame nonsense
+	if invincible:
+		return
+	
+	invincible = true
+	health -= amount
+	
+	print("Player Health: ", health)
+	
+	if health <= 0:
+		player_die()
+		return
+	
+	#Use a tween to flash player, could use shader her but meh.
+	var tween := create_tween()
+	tween.tween_property(self, "modulate", Color(1.0, 0.2, 0.2), 0.05)
+	tween.tween_property(self, "modulate", Color.WHITE, 0.15)
+	
+	await get_tree().create_timer(invincibility_time).timeout
+	invincible = false
+
+
+func player_die() -> void:
+	print("Player died lol")
+	call_deferred("reload_level")
+	#Temporarily restart the current level.
+	#get_tree().reload_current_scene()
+
+func reload_level() -> void:
+	get_tree().reload_current_scene()

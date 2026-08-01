@@ -130,7 +130,11 @@ func _on_detection_area_body_exited(detectedplayer: CharacterBody2D) -> void:
 		scan_time = 0.0
 
 #Explode on impact with Player
-func _on_area_2d_body_entered(_body: Node2D) -> void:
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if exploding:
+		return
+	if body.has_method("take_damage"):
+		body.take_damage(2)
 	drone_explode()
 
 #Drone is Shot At
@@ -166,6 +170,7 @@ func drone_explode() :
 	speed = 0
 	velocity = Vector2.ZERO
 	$DroneCollisionArea.set_deferred("disabled", true)
+	$SelfDestructArea/SelfDestructCollision.set_deferred("disabled", true)
 	$ScanPivot/ScanningLight.visible = false
 	$AnimatedSprite2D.visible = false
 	$ExplosionAnimation.play("explode")

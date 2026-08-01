@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 #Character Physics
 #@export allows us to expose these variables to the inspector
-@export var playerspeed : int = 120
+@export var player_speed : int = 120
 @export var jump_velocity : int = -450
 #Global Gravity is stored in Project Settings (Physics) of Godot so we could call that or we could state explicitly.
 #Calling Gravity
@@ -39,10 +39,10 @@ func _physics_process(delta: float) -> void:
 	var playerdirection := Input.get_axis("left", "right")
 	
 	if playerdirection != 0:
-		velocity.x = playerdirection * playerspeed
+		velocity.x = playerdirection * player_speed
 		$Legs.flip_h = playerdirection < 0
 	else:
-		velocity.x = move_toward(velocity.x, 0, playerspeed)
+		velocity.x = move_toward(velocity.x, 0, player_speed)
 	
 	move_and_slide()
 	

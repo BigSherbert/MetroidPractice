@@ -90,6 +90,11 @@ shape = SubResource("CapsuleShape2D_ndaap")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1445284836]
 offset = Vector2(0, -75)
 zoom = Vector2(3, 3)
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [node name="ReloadTimer" type="Timer" parent="." unique_id=1061173486]
 wait_time = 0.05

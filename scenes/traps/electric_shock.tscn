@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://b20ucwcyv1fhm"]
+
+[ext_resource type="Script" uid="uid://bbciccumeaacy" path="res://scenes/traps/electric_shock.gd" id="1_3t4mp"]
+[ext_resource type="Texture2D" uid="uid://dju0jvym7xuy3" path="res://graphics/electricity/lightning_v2_1.png" id="1_6d1u0"]
+[ext_resource type="Texture2D" uid="uid://cbrg5aqxa45nj" path="res://graphics/electricity/lightning_v2_2.png" id="2_3t4mp"]
+[ext_resource type="Texture2D" uid="uid://cr1n20ept0me5" path="res://graphics/electricity/lightning_v2_3.png" id="3_ri85g"]
+[ext_resource type="Texture2D" uid="uid://cp60nl8hgtfct" path="res://graphics/electricity/lightning_v2_4.png" id="4_bcjpd"]
+[ext_resource type="Texture2D" uid="uid://b3uuu82c0tjkq" path="res://graphics/electricity/lightning_v2_5.png" id="5_8qvce"]
+[ext_resource type="Texture2D" uid="uid://j2cwshskw1a0" path="res://graphics/electricity/lightning_v2_6.png" id="6_1xpd4"]
+[ext_resource type="Texture2D" uid="uid://cv3piubx4kwb0" path="res://graphics/electricity/lightning_v2_7.png" id="7_ign11"]
+[ext_resource type="Texture2D" uid="uid://bpcic445xp7bh" path="res://graphics/electricity/lightning_v2_8.png" id="8_7ksta"]
+[ext_resource type="Texture2D" uid="uid://cfxdx2pk8yftt" path="res://graphics/electricity/lightning_v2_9.png" id="9_df8pn"]
+[ext_resource type="Texture2D" uid="uid://8nkrq6kuwgpl" path="res://graphics/electricity/lightning_v2_10.png" id="10_3t55s"]
+[ext_resource type="Texture2D" uid="uid://drjak75ravtm3" path="res://graphics/electricity/lightning_v2_11.png" id="11_b37xs"]
+[ext_resource type="Texture2D" uid="uid://bixlmu1c6gi34" path="res://graphics/electricity/lightning_v2_12.png" id="12_s6re8"]
+[ext_resource type="Texture2D" uid="uid://dbke0t5u1n6ta" path="res://graphics/electricity/lightning_v2_13.png" id="13_4fhjq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndaap"]
+size = Vector2(104, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ndaap"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6d1u0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3t4mp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ri85g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bcjpd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8qvce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1xpd4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ign11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7ksta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_df8pn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3t55s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_b37xs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_s6re8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_4fhjq")
+}],
+"loop": 0,
+"name": &"electrifying",
+"speed": 15.0
+}]
+
+[node name="ElectricShock" type="Area2D" unique_id=804037970]
+script = ExtResource("1_3t4mp")
+
+[node name="ElectricShockCollision" type="CollisionShape2D" parent="." unique_id=996560112]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_ndaap")
+
+[node name="Zap" type="AudioStreamPlayer2D" parent="." unique_id=1224461000]
+
+[node name="ElectricEffect" type="AnimatedSprite2D" parent="." unique_id=2096070834]
+sprite_frames = SubResource("SpriteFrames_ndaap")
+animation = &"electrifying"
+frame = 12
+frame_progress = 1.0

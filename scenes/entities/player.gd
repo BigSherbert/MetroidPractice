@@ -8,7 +8,8 @@ var camera_floor_y: float
 
 #Character Physics
 #@export allows us to expose these variables to the inspector
-@export var player_speed : int = 120
+#@export var player_speed : int = 120
+@export var player_speed : int = 500
 @export var jump_velocity : int = -450
 #Global Gravity is stored in Project Settings (Physics) of Godot so we could call that or we could state explicitly.
 #Calling Gravity

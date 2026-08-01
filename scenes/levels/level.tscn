@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://6j2he24a4uda" path="res://graphics/lights/l3.png" id="7_xfk5q"]
 [ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="9_icy5c"]
 [ext_resource type="Script" uid="uid://b1fvys42avbih" path="res://scenes/levels/SubFloor2Zone.gd" id="9_xfk5q"]
+[ext_resource type="Script" uid="uid://bjigih3ewk026" path="res://scenes/levels/sub_floor_3_zone.gd" id="10_8iyoh"]
+[ext_resource type="Script" uid="uid://bgg7u5y2dqyw7" path="res://scenes/levels/boss_floor_entrance.gd" id="11_mq31s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xb4v1"]
 texture = ExtResource("4_xb4v1")
@@ -3747,7 +3749,7 @@ texture = ExtResource("4_xb4v1")
 sources/0 = SubResource("TileSetAtlasSource_ouxo3")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndaap"]
-size = Vector2(213, 144)
+size = Vector2(213, 75.5)
 
 [node name="Level" type="Node2D" unique_id=87256982]
 script = ExtResource("1_bovvr")
@@ -4321,14 +4323,34 @@ script = ExtResource("9_xfk5q")
 camera_y = -540.0
 
 [node name="SubFloor2Collision" type="CollisionShape2D" parent="CameraZones/SubFloor2Zone" unique_id=1468162172]
-position = Vector2(170, -838)
+position = Vector2(170, -831.5)
+shape = SubResource("RectangleShape2D_ndaap")
+
+[node name="SubFloor3Zone" type="Area2D" parent="CameraZones" unique_id=1413610707]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("10_8iyoh")
+camera_y = -156.0
+
+[node name="SubFloor3Collision" type="CollisionShape2D" parent="CameraZones/SubFloor3Zone" unique_id=457673492]
+position = Vector2(4507, -442)
+shape = SubResource("RectangleShape2D_ndaap")
+
+[node name="BossFloorEntrance" type="Area2D" parent="CameraZones" unique_id=1892780091]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("11_mq31s")
+camera_y = 180.0
+
+[node name="BossFloorEntranceCollision" type="CollisionShape2D" parent="CameraZones/BossFloorEntrance" unique_id=1238049195]
+position = Vector2(135, -96.75)
 shape = SubResource("RectangleShape2D_ndaap")
 
 [node name="Entities" type="Node2D" parent="." unique_id=629147067]
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Entities" unique_id=1849349854 instance=ExtResource("1_377w7")]
-position = Vector2(290, -950)
+position = Vector2(3096, -1043)
 
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
 metadata/_edit_lock_ = true
@@ -4363,6 +4385,8 @@ blend_mode = 2
 shadow_enabled = true
 
 [connection signal="body_entered" from="CameraZones/SubFloor2Zone" to="CameraZones/SubFloor2Zone" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraZones/SubFloor3Zone" to="CameraZones/SubFloor3Zone" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraZones/BossFloorEntrance" to="CameraZones/BossFloorEntrance" method="_on_body_entered"]
 [connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]
 [connection signal="droneshoot" from="Enemies/SniperDrone" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/SniperDrone2" to="." method="_on_sniper_drone_droneshoot"]

@@ -1,5 +1,10 @@
 extends CharacterBody2D
 
+#Camera Physics
+#Im trying to prevent vertical movement except in scene transitions
+@onready var camera: Camera2D = $Camera2D
+var camera_floor_y: float
+
 #Character Physics
 #@export allows us to expose these variables to the inspector
 @export var player_speed : int = 120
@@ -38,9 +43,15 @@ const gun_directions = {
 
 func _ready() -> void:
 	health = max_health
+	
+	var starting_camera_position := camera.global_position
+	camera.top_level = true
+	camera.global_position = starting_camera_position
+	camera_floor_y = starting_camera_position.y
 
 
 func _physics_process(delta: float) -> void:
+	
 	if !is_on_floor():
 		velocity.y += gravity * delta
 	
@@ -56,6 +67,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, player_speed)
 	
 	move_and_slide()
+	camera.global_position = Vector2(global_position.x,camera_floor_y)
 	
 	# Choose Legs animation after movement.
 	if !is_on_floor():

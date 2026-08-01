@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://drjak75ravtm3" path="res://graphics/electricity/lightning_v2_11.png" id="11_b37xs"]
 [ext_resource type="Texture2D" uid="uid://bixlmu1c6gi34" path="res://graphics/electricity/lightning_v2_12.png" id="12_s6re8"]
 [ext_resource type="Texture2D" uid="uid://dbke0t5u1n6ta" path="res://graphics/electricity/lightning_v2_13.png" id="13_4fhjq"]
+[ext_resource type="Texture2D" uid="uid://bpmoeen73gq21" path="res://graphics/electricity/lightning_v2_blank.png" id="15_ri85g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndaap"]
 size = Vector2(104, 21)
@@ -64,6 +65,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("13_4fhjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ri85g")
 }],
 "loop": 0,
 "name": &"electrifying",
@@ -82,5 +86,5 @@ shape = SubResource("RectangleShape2D_ndaap")
 [node name="ElectricEffect" type="AnimatedSprite2D" parent="." unique_id=2096070834]
 sprite_frames = SubResource("SpriteFrames_ndaap")
 animation = &"electrifying"
-frame = 12
+frame = 13
 frame_progress = 1.0

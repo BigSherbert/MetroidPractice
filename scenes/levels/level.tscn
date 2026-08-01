@@ -3761,7 +3761,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="SpaceBackground" type="Sprite2D" parent="Layers/CanvasGroup" unique_id=1778701178]
-position = Vector2(3203, -1173)
+position = Vector2(3223, -1174)
 texture = ExtResource("2_urvlt")
 metadata/_edit_lock_ = true
 
@@ -4320,6 +4320,8 @@ metadata/_edit_lock_ = true
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_xfk5q")
+camera_limit_left = -32
+camera_limit_right = 4720
 camera_y = -540.0
 
 [node name="SubFloor2Collision" type="CollisionShape2D" parent="CameraZones/SubFloor2Zone" unique_id=1468162172]
@@ -4330,6 +4332,8 @@ shape = SubResource("RectangleShape2D_ndaap")
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("10_8iyoh")
+camera_limit_left = -32
+camera_limit_right = 4720
 camera_y = -156.0
 
 [node name="SubFloor3Collision" type="CollisionShape2D" parent="CameraZones/SubFloor3Zone" unique_id=457673492]
@@ -4340,7 +4344,8 @@ shape = SubResource("RectangleShape2D_ndaap")
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("11_mq31s")
-camera_y = 180.0
+camera_limit_left = -32
+camera_y = 514.0
 
 [node name="BossFloorEntranceCollision" type="CollisionShape2D" parent="CameraZones/BossFloorEntrance" unique_id=1238049195]
 position = Vector2(135, -96.75)
@@ -4350,7 +4355,7 @@ shape = SubResource("RectangleShape2D_ndaap")
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Entities" unique_id=1849349854 instance=ExtResource("1_377w7")]
-position = Vector2(3096, -1043)
+position = Vector2(135, -235)
 
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
 metadata/_edit_lock_ = true

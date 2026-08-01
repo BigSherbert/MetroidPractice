@@ -14,3 +14,9 @@ func _on_body_entered(body: Node2D) -> void:
 	camera.limit_left = camera_limit_left
 	camera.limit_right = camera_limit_right
 	body.set_camera_floor(camera_y)
+	
+	#Expiremental Zoom, probably should not be using reddit for code help. We will see.
+	var tween = camera.create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(camera, "zoom", Vector2(1, 1), 1)

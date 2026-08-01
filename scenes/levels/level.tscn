@@ -4347,7 +4347,7 @@ shape = SubResource("RectangleShape2D_ndaap")
 [node name="Traps" type="Node2D" parent="." unique_id=111803494]
 
 [node name="ElectricShock" parent="Traps" unique_id=804037970 instance=ExtResource("12_mq31s")]
-position = Vector2(1428, -538)
+position = Vector2(1458, -538)
 
 [node name="Entities" type="Node2D" parent="." unique_id=629147067]
 metadata/_edit_lock_ = true

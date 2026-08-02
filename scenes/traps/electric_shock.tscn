@@ -89,6 +89,8 @@ scale_max = 0.25
 color = Color(0.35710377, 0.54516083, 1, 1)
 
 [node name="ElectricShock" type="Area2D" unique_id=804037970]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_3t4mp")
 
 [node name="ElectricShockCollision" type="CollisionShape2D" parent="." unique_id=996560112]
@@ -119,4 +121,6 @@ lifetime = 0.15000000000000002
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_8qvce")
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="frame_changed" from="ElectricEffect" to="." method="_on_electric_effect_frame_changed"]

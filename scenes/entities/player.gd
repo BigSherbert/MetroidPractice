@@ -106,20 +106,20 @@ func _physics_process(delta: float) -> void:
 func shot_at() -> void:
 	take_damage(1)
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: int, knockback := Vector2.ZERO) -> void:
 	#i-frame nonsense
 	if invincible:
 		return
 	
 	invincible = true
 	health -= amount
-	
-	print("Player Health: ", health)
-	
+	print("Player Health: ",health)
 	if health <= 0:
 		player_die()
 		return
 	
+	velocity = knockback
+	$HurtSound.play()
 	#Use a tween to flash player, could use shader her but meh.
 	var tween := create_tween()
 	tween.tween_property(self, "modulate", Color(1.0, 0.2, 0.2), 0.05)
@@ -131,6 +131,9 @@ func take_damage(amount: int) -> void:
 
 func player_die() -> void:
 	print("Player died lol")
+	#Insert something here later for end screen or something.
+	$GameOver.play()
+	await $GameOver.finished
 	call_deferred("reload_level")
 	#Temporarily restart the current level.
 	#get_tree().reload_current_scene()

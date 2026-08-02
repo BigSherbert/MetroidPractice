@@ -4347,13 +4347,13 @@ shape = SubResource("RectangleShape2D_ndaap")
 [node name="Traps" type="Node2D" parent="." unique_id=111803494]
 
 [node name="ElectricShock" parent="Traps" unique_id=804037970 instance=ExtResource("12_mq31s")]
-position = Vector2(1458, -538)
+position = Vector2(1458, -534)
 
 [node name="ElectricShock2" parent="Traps" unique_id=317438652 instance=ExtResource("12_mq31s")]
-position = Vector2(1527, -538)
+position = Vector2(1527, -534)
 
 [node name="ElectricShock3" parent="Traps" unique_id=1548941636 instance=ExtResource("12_mq31s")]
-position = Vector2(1583, -538)
+position = Vector2(1583, -534)
 
 [node name="Entities" type="Node2D" parent="." unique_id=629147067]
 metadata/_edit_lock_ = true
@@ -4378,7 +4378,7 @@ position = Vector2(2178, -996)
 position = Vector2(2135, -1011)
 
 [node name="SniperDrone" parent="Enemies" unique_id=607920499 instance=ExtResource("7_mbbpy")]
-position = Vector2(2056, -1104)
+position = Vector2(1683, -652)
 
 [node name="SniperDrone2" parent="Enemies" unique_id=44778581 instance=ExtResource("7_mbbpy")]
 position = Vector2(1976, -1043)

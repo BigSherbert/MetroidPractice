@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://xjr28pnf8gs0" path="res://graphics/characters/playerupdated.png" id="2_1ie0h"]
 [ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="4_5u6hq"]
 [ext_resource type="Texture2D" uid="uid://otyoj5px7yk7" path="res://graphics/ui/crosshair.png" id="4_42nxq"]
+[ext_resource type="AudioStream" uid="uid://dcpxi5c23gh6p" path="res://audio/Hurt_1.wav" id="5_d4qa6"]
+[ext_resource type="AudioStream" uid="uid://blwjxfjcktbqq" path="res://audio/grand_piano_defeated.wav" id="6_ss7kx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ndaap"]
 
@@ -126,3 +128,9 @@ texture = ExtResource("4_42nxq")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=2132159943]
 texture = ExtResource("4_5u6hq")
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=148467845]
+stream = ExtResource("5_d4qa6")
+
+[node name="GameOver" type="AudioStreamPlayer2D" parent="." unique_id=1717465309]
+stream = ExtResource("6_ss7kx")

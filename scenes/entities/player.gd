@@ -34,7 +34,6 @@ var invincible := false
 #Creating a Custom Signals
 signal shoot(pos: Vector2, dir: Vector2)
 signal health_changed(current_health: int, maximum_health: int)
-signal player_died
 
 #Create dictionary for gun directions
 const gun_directions = {
@@ -48,15 +47,25 @@ const gun_directions = {
 	Vector2i(1,-1):  7,
 	}
 
-
 func _ready() -> void:
 	health = max_health
-	health_changed.emit(health, max_health)
+	invincible = false
 	
 	camera.top_level = true
-	camera_floor_y = starting_camera_y
-	camera.global_position = Vector2(global_position.x, camera_floor_y)
+	
+	if AutoloadState.has_checkpoint:
+		global_position = AutoloadState.checkpoint_position
+		camera_floor_y = AutoloadState.checkpoint_camera_y
+		camera.limit_left = AutoloadState.checkpoint_camera_limit_left
+		camera.limit_right = AutoloadState.checkpoint_camera_limit_right
+		camera.limit_bottom = AutoloadState.checkpoint_camera_limit_bottom
+	else:
+		camera_floor_y = starting_camera_y
+		AutoloadState.set_checkpoint(global_position,starting_camera_y,camera.limit_left,camera.limit_right,camera.limit_bottom)
+		
+	camera.global_position = Vector2(global_position.x,camera_floor_y)
 	camera.reset_smoothing()
+	health_changed.emit(health, max_health)
 
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
@@ -76,7 +85,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	camera.global_position = Vector2(global_position.x,camera_floor_y)
 	
-	# Choose Legs animation after movement.
+	#Choose Legs animation after movement.
 	if !is_on_floor():
 		$LegsAnimationPlayer.play("jumping")
 	elif playerdirection != 0:
@@ -143,16 +152,26 @@ func take_damage(amount: int, knockback := Vector2.ZERO) -> void:
 
 func player_die() -> void:
 	print("Player died lol")
+	set_physics_process(false)
+	var can_respawn := AutoloadState.lose_life()
 	#Insert something here later for end screen or something.
 	$GameOver.play()
 	await $GameOver.finished
-	call_deferred("reload_level")
+	if can_respawn:
+		call_deferred("reload_level")
+	else:
+		call_deferred("game_over")
 	#Temporarily restart the current level.
 	#get_tree().reload_current_scene()
 
+func game_over():
+	print("Game Over")
+	AutoloadState.reset_run()
+	get_tree().reload_current_scene()
+
 func reload_level() -> void:
 	get_tree().reload_current_scene()
-	
+
 
 #Camera Function
 func set_camera_floor(new_camera_y: float) -> void:

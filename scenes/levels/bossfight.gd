@@ -24,4 +24,4 @@ func _on_body_entered(body: Node2D) -> void:
 	tween.tween_property(camera, "zoom", Vector2(1.25, 1.25), 1)
 	tween.parallel().tween_property(camera, "offset", Vector2(0, 0), 1.5)
 	
-	AutoloadState.set_checkpoint($BossFloorEntranceRespawn.global_position,camera_y,camera_limit_left,camera_limit_right)
+	AutoloadState.set_checkpoint($BossFightCollision.global_position,camera_y,camera_limit_left,camera_limit_right)

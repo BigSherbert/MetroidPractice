@@ -9,13 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://c5lwv48m8byee" path="res://graphics/tilesets/props and items x1.png" id="5_7pb6i"]
 [ext_resource type="Texture2D" uid="uid://bo5lofshl02cv" path="res://graphics/lights/l0.png" id="5_rmjfq"]
 [ext_resource type="PackedScene" uid="uid://by2r4p3pqmbju" path="res://scenes/enemies/drone.tscn" id="6_d4w6o"]
-[ext_resource type="PackedScene" uid="uid://6geo2vekp1xq" path="res://scenes/enemies/sniperdrone.tscn" id="7_mbbpy"]
+[ext_resource type="PackedScene" uid="uid://6geo2vekp1xq" path="res://scenes/enemies/sniper_drone.tscn" id="7_mbbpy"]
 [ext_resource type="Texture2D" uid="uid://6j2he24a4uda" path="res://graphics/lights/l3.png" id="7_xfk5q"]
 [ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="9_icy5c"]
-[ext_resource type="Script" uid="uid://b1fvys42avbih" path="res://scenes/levels/SubFloor2Zone.gd" id="9_xfk5q"]
+[ext_resource type="Script" uid="uid://b1fvys42avbih" path="res://scenes/levels/sub_floor_2_zone.gd" id="9_xfk5q"]
 [ext_resource type="Script" uid="uid://bjigih3ewk026" path="res://scenes/levels/sub_floor_3_zone.gd" id="10_8iyoh"]
 [ext_resource type="Script" uid="uid://bgg7u5y2dqyw7" path="res://scenes/levels/boss_floor_entrance.gd" id="11_mq31s"]
 [ext_resource type="PackedScene" uid="uid://b20ucwcyv1fhm" path="res://scenes/traps/electric_shock.tscn" id="12_mq31s"]
+[ext_resource type="Script" uid="uid://broxq36b7hjpm" path="res://scenes/levels/bossfight.gd" id="13_qhnmj"]
 [ext_resource type="PackedScene" uid="uid://g1cvqgp54llm" path="res://scenes/ui/player_hud.tscn" id="17_b8j7q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xb4v1"]
@@ -3769,6 +3770,9 @@ sources/0 = SubResource("TileSetAtlasSource_ouxo3")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndaap"]
 size = Vector2(213, 75.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxo6g"]
+size = Vector2(12, 470)
+
 [node name="Level" type="Node2D" unique_id=87256982]
 script = ExtResource("1_bovvr")
 
@@ -4343,6 +4347,9 @@ script = ExtResource("9_xfk5q")
 position = Vector2(170, -831.5)
 shape = SubResource("RectangleShape2D_ndaap")
 
+[node name="SubFloor2Respawn" type="Marker2D" parent="CameraZones/SubFloor2Zone" unique_id=1903219732]
+position = Vector2(170, -575)
+
 [node name="SubFloor3Zone" type="Area2D" parent="CameraZones" unique_id=1413610707]
 collision_layer = 0
 collision_mask = 2
@@ -4352,6 +4359,9 @@ script = ExtResource("10_8iyoh")
 position = Vector2(4507, -442)
 shape = SubResource("RectangleShape2D_ndaap")
 
+[node name="SubFloor3Respawn" type="Marker2D" parent="CameraZones/SubFloor3Zone" unique_id=30247004]
+position = Vector2(4511, -209)
+
 [node name="BossFloorEntrance" type="Area2D" parent="CameraZones" unique_id=1892780091]
 collision_layer = 0
 collision_mask = 2
@@ -4360,6 +4370,20 @@ script = ExtResource("11_mq31s")
 [node name="BossFloorEntranceCollision" type="CollisionShape2D" parent="CameraZones/BossFloorEntrance" unique_id=1238049195]
 position = Vector2(135, -96.75)
 shape = SubResource("RectangleShape2D_ndaap")
+
+[node name="BossFloorEntranceRespawn" type="Marker2D" parent="CameraZones/BossFloorEntrance" unique_id=1937695733]
+
+[node name="BossFight" type="Area2D" parent="CameraZones" unique_id=792925544]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("13_qhnmj")
+
+[node name="BossFightCollision" type="CollisionShape2D" parent="CameraZones/BossFight" unique_id=431644300]
+position = Vector2(1299, 140)
+shape = SubResource("RectangleShape2D_rxo6g")
+
+[node name="BossFightRespwan" type="Marker2D" parent="CameraZones/BossFight" unique_id=775191826]
+position = Vector2(1322, 342)
 
 [node name="Traps" type="Node2D" parent="." unique_id=111803494]
 
@@ -4376,7 +4400,7 @@ position = Vector2(1583, -534)
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Entities" unique_id=1849349854 instance=ExtResource("1_377w7")]
-position = Vector2(2590, -946)
+position = Vector2(3544, -950)
 
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
 metadata/_edit_lock_ = true
@@ -4415,6 +4439,7 @@ shadow_enabled = true
 [connection signal="body_entered" from="CameraZones/SubFloor2Zone" to="CameraZones/SubFloor2Zone" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraZones/SubFloor3Zone" to="CameraZones/SubFloor3Zone" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraZones/BossFloorEntrance" to="CameraZones/BossFloorEntrance" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraZones/BossFight" to="CameraZones/BossFight" method="_on_body_entered"]
 [connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]
 [connection signal="droneshoot" from="Enemies/SniperDrone" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/SniperDrone2" to="." method="_on_sniper_drone_droneshoot"]

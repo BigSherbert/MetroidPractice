@@ -14,3 +14,5 @@ func _on_body_entered(body: Node2D) -> void:
 	camera.limit_left = camera_limit_left
 	camera.limit_right = camera_limit_right
 	body.set_camera_floor(camera_y)
+	
+	AutoloadState.set_checkpoint($SubFloor3Respawn.global_position,camera_y,camera_limit_left,camera_limit_right)

@@ -4372,6 +4372,7 @@ position = Vector2(135, -96.75)
 shape = SubResource("RectangleShape2D_ndaap")
 
 [node name="BossFloorEntranceRespawn" type="Marker2D" parent="CameraZones/BossFloorEntrance" unique_id=1937695733]
+position = Vector2(135, 140)
 
 [node name="BossFight" type="Area2D" parent="CameraZones" unique_id=792925544]
 collision_layer = 0

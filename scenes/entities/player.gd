@@ -59,7 +59,8 @@ func _ready() -> void:
 		camera.limit_left = AutoloadState.checkpoint_camera_limit_left
 		camera.limit_right = AutoloadState.checkpoint_camera_limit_right
 		camera.limit_bottom = AutoloadState.checkpoint_camera_limit_bottom
-		#FINISH THIS
+		camera.zoom = AutoloadState.checkpoint_camera_zoom
+		camera.offset = AutoloadState.checkpoint_camera_offset
 	else:
 		camera_floor_y = starting_camera_y
 		AutoloadState.set_checkpoint(global_position,starting_camera_y,camera.limit_left,camera.limit_right,camera.limit_bottom)

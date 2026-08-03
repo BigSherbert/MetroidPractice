@@ -3,7 +3,7 @@ extends CharacterBody2D
 #Camera Physics
 #Im trying to prevent vertical movement except in scene transitions
 @onready var camera: Camera2D = $Camera2D
-@export var starting_camera_y: float = -950
+@export var starting_camera_y: float = -540
 #Top floor:     -950
 #Second floor:  -540
 #Third floor:   -156
@@ -59,6 +59,7 @@ func _ready() -> void:
 		camera.limit_left = AutoloadState.checkpoint_camera_limit_left
 		camera.limit_right = AutoloadState.checkpoint_camera_limit_right
 		camera.limit_bottom = AutoloadState.checkpoint_camera_limit_bottom
+		#FINISH THIS
 	else:
 		camera_floor_y = starting_camera_y
 		AutoloadState.set_checkpoint(global_position,starting_camera_y,camera.limit_left,camera.limit_right,camera.limit_bottom)

@@ -16,14 +16,18 @@ var checkpoint_camera_y := -950.0
 var checkpoint_camera_limit_left := -32
 var checkpoint_camera_limit_right := 4720
 var checkpoint_camera_limit_bottom := 10000000
+var checkpoint_camera_zoom := Vector2(2.5,2.5)
+var checkpoint_camera_offset := Vector2(0.0,-105.0)
 
 
-func set_checkpoint(new_position: Vector2,new_camera_y: float,new_limit_left: int,new_limit_right: int,new_limit_bottom: int = 10000000) -> void:
+func set_checkpoint(new_position: Vector2,new_camera_y: float,new_limit_left: int,new_limit_right: int,new_limit_bottom: int = 10000000,new_camera_zoom: Vector2 = Vector2(2.5,2.5),new_camera_offset: Vector2 = Vector2(0.0,-105.0)) -> void:
 	checkpoint_position = new_position
 	checkpoint_camera_y = new_camera_y
 	checkpoint_camera_limit_left = new_limit_left
 	checkpoint_camera_limit_right = new_limit_right
 	checkpoint_camera_limit_bottom = new_limit_bottom
+	checkpoint_camera_zoom = new_camera_zoom
+	checkpoint_camera_offset = new_camera_offset
 	has_checkpoint = true
 
 	print("Checkpoint saved at: ", checkpoint_position)

@@ -84,6 +84,7 @@ _data = {
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_ucweq")
+max_health = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1802290569]
 position = Vector2(0, 3)

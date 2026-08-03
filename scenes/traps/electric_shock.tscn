@@ -99,6 +99,7 @@ shape = SubResource("RectangleShape2D_ndaap")
 
 [node name="Zap" type="AudioStreamPlayer2D" parent="." unique_id=1224461000]
 stream = ExtResource("2_bcjpd")
+max_distance = 300.0
 
 [node name="ElectricEffect" type="AnimatedSprite2D" parent="." unique_id=2096070834]
 sprite_frames = SubResource("SpriteFrames_ndaap")

@@ -31,9 +31,12 @@ var invincible := false
 #Starting with .5
 @export var invincibility_time := 0.5
 
+
 #Creating a Custom Signals
 signal shoot(pos: Vector2, dir: Vector2)
 signal health_changed(current_health: int, maximum_health: int)
+signal lives_changed(current_lives: int)
+
 
 #Create dictionary for gun directions
 const gun_directions = {
@@ -48,6 +51,8 @@ const gun_directions = {
 	}
 
 func _ready() -> void:
+	
+	lives_changed.emit(AutoloadState.lives)
 	health = max_health
 	invincible = false
 	
@@ -99,7 +104,8 @@ func _physics_process(delta: float) -> void:
 	var torsodirection = get_local_mouse_position().normalized()
 	var adjustedtorsodirection = Vector2i(round(torsodirection.x),round(torsodirection.y))
 	#print(adjustedtorsodirection)
-	$Torso.frame = gun_directions[adjustedtorsodirection]
+	#Adding if check to prevent Vector2(0,0) which isnt supported by the dictionary.
+	if gun_directions.has(adjustedtorsodirection): $Torso.frame = gun_directions[adjustedtorsodirection]
 	
 	#Logic for Mouse Marker
 	#we could probably create functions for all these animations and what not
@@ -156,6 +162,7 @@ func player_die() -> void:
 	print("Player died lol")
 	set_physics_process(false)
 	var can_respawn := AutoloadState.lose_life()
+	lives_changed.emit(AutoloadState.lives)
 	#Insert something here later for end screen or something.
 	$GameOver.play()
 	await $GameOver.finished

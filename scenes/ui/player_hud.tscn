@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://g1cvqgp54llm"]
 
 [ext_resource type="Script" uid="uid://bdf8dos4cdia8" path="res://scenes/ui/player_hud.gd" id="1_e6e0b"]
+[ext_resource type="Texture2D" uid="uid://dnrl1s0yy108y" path="res://icons/heart_red.png" id="2_31ty4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndaap"]
 bg_color = Color(0.10358504, 0.053474918, 0.22732651, 1)
@@ -16,6 +17,7 @@ corner_radius_bottom_left = 2
 
 [node name="PlayerHUD" type="CanvasLayer" unique_id=963443982]
 script = ExtResource("1_e6e0b")
+heart_texture = ExtResource("2_31ty4")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2041637968]
 anchors_preset = -1
@@ -26,6 +28,7 @@ offset_right = -24.0
 grow_horizontal = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=511169597]
+custom_minimum_size = Vector2(180, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ndaap")
 
@@ -51,3 +54,15 @@ layout_mode = 2
 max_value = 5.0
 value = 5.0
 show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/ContentAdjustment/VBoxContainer" unique_id=35078821]
+layout_mode = 2
+
+[node name="LivesLabel" type="Label" parent="MarginContainer/PanelContainer/ContentAdjustment/VBoxContainer/HBoxContainer" unique_id=687836709]
+layout_mode = 2
+text = "Lives"
+
+[node name="LivesContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/ContentAdjustment/VBoxContainer/HBoxContainer" unique_id=22042585]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 8

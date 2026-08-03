@@ -3,7 +3,7 @@ extends CharacterBody2D
 #Camera Physics
 #Im trying to prevent vertical movement except in scene transitions
 @onready var camera: Camera2D = $Camera2D
-@export var starting_camera_y: float = -540
+@export var starting_camera_y: float = -950
 #Top floor:     -950
 #Second floor:  -540
 #Third floor:   -156
@@ -22,8 +22,8 @@ var camera_floor_y: float
 @export var gravity : float = 981.0
 
 #Player Health System
-@export var max_health := 5
-var health := 5
+@export var max_health := 12
+var health: int
 #Im not entirely sure i-frames are going to be the right route
 #If you get shot 3 times you should lose 3 health like the scrub you are.
 #Casuals gonna Casual though...
@@ -31,8 +31,10 @@ var invincible := false
 #Starting with .5
 @export var invincibility_time := 0.5
 
-#Creating a Custom Signal
+#Creating a Custom Signals
 signal shoot(pos: Vector2, dir: Vector2)
+signal health_changed(current_health: int, maximum_health: int)
+signal player_died
 
 #Create dictionary for gun directions
 const gun_directions = {
@@ -49,10 +51,11 @@ const gun_directions = {
 
 func _ready() -> void:
 	health = max_health
+	health_changed.emit(health, max_health)
 	
 	camera.top_level = true
 	camera_floor_y = starting_camera_y
-	camera.global_position = Vector2(global_position.x,camera_floor_y)
+	camera.global_position = Vector2(global_position.x, camera_floor_y)
 	camera.reset_smoothing()
 
 func _physics_process(delta: float) -> void:
@@ -102,6 +105,11 @@ func _physics_process(delta: float) -> void:
 		$ReloadTimer.start()
 
 #Player Damage Logic
+
+func heal(amount: int) -> void:
+	health = min(health + amount, max_health)
+	health_changed.emit(health, max_health)
+
 #Called by enemy lasers and other damaging objects.
 func shot_at() -> void:
 	take_damage(1)
@@ -112,14 +120,18 @@ func take_damage(amount: int, knockback := Vector2.ZERO) -> void:
 		return
 	
 	invincible = true
-	health -= amount
+	health = max(health - amount, 0)
+	health_changed.emit(health, max_health)
+	
 	print("Player Health: ",health)
+	
 	if health <= 0:
 		player_die()
 		return
 	
 	velocity = knockback
 	$HurtSound.play()
+	
 	#Use a tween to flash player, could use shader her but meh.
 	var tween := create_tween()
 	tween.tween_property(self, "modulate", Color(1.0, 0.2, 0.2), 0.05)

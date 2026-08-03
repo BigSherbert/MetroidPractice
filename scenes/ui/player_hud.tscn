@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://g1cvqgp54llm"]
+
+[ext_resource type="Script" uid="uid://bdf8dos4cdia8" path="res://scenes/ui/player_hud.gd" id="1_e6e0b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndaap"]
+bg_color = Color(0.10358504, 0.053474918, 0.22732651, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4598698, 0.00012581378, 0.44986266, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="PlayerHUD" type="CanvasLayer" unique_id=963443982]
+script = ExtResource("1_e6e0b")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2041637968]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_top = 24.0
+offset_right = -24.0
+grow_horizontal = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=511169597]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ndaap")
+
+[node name="ContentAdjustment" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=493755539]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/ContentAdjustment" unique_id=635946410]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HealthIndicator" type="Label" parent="MarginContainer/PanelContainer/ContentAdjustment/VBoxContainer" unique_id=961163585]
+layout_mode = 2
+text = "Health  12/12"
+
+[node name="HealthProgressBar" type="ProgressBar" parent="MarginContainer/PanelContainer/ContentAdjustment/VBoxContainer" unique_id=373110147]
+modulate = Color(0.81288266, 0, 0.10016752, 1)
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+max_value = 5.0
+value = 5.0
+show_percentage = false

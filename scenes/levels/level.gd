@@ -3,8 +3,12 @@ extends Node2D
 const BULLET_SCENE = preload("res://scenes/bullets/bullet.tscn")
 const LASER_SCENE = preload("res://scenes/bullets/laser.tscn")
 
+@onready var player = $Entities/Player
+@onready var hud = $PlayerHUD
+
 func _ready() -> void:
 	#print(get_tree().get_nodes_in_group("Drones"))
+	hud.setup_player(player)
 	pass
 
 func _on_player_shoot(pos: Vector2, dir: Vector2) -> void:

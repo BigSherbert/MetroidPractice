@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c7mg3cwdpjo5y"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cje7i"]
-load_path = "res://.godot/imported/FloatingPLatform.png-3820577f2e6b6517c43e7c648a2a3371.ctex"
+[ext_resource type="Texture2D" uid="uid://c0iriqrd5f2ha" path="res://graphics/objects/FloatingPlatformHD.png" id="1_drf5d"]
 
 [sub_resource type="Animation" id="Animation_cje7i"]
 length = 0.001
@@ -48,7 +47,7 @@ size = Vector2(124, 14)
 collision_mask = 0
 
 [node name="PlatformSprite" type="Sprite2D" parent="." unique_id=1563525177]
-texture = SubResource("CompressedTexture2D_cje7i")
+texture = ExtResource("1_drf5d")
 hframes = 6
 
 [node name="PlatformAnimation" type="AnimationPlayer" parent="PlatformSprite" unique_id=617373261]

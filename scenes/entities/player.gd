@@ -3,7 +3,7 @@ extends CharacterBody2D
 #Camera Physics
 #Im trying to prevent vertical movement except in scene transitions
 @onready var camera: Camera2D = $Camera2D
-@export var starting_camera_y: float = -540
+@export var starting_camera_y: float = -950
 #Top floor:     -950
 #Second floor:  -540
 #Third floor:   -156
@@ -135,7 +135,7 @@ func take_damage(amount: int, knockback := Vector2.ZERO) -> void:
 	#i-frame nonsense
 	if invincible:
 		return
-	
+	shake()
 	invincible = true
 	health = max(health - amount, 0)
 	health_changed.emit(health, max_health)
@@ -189,3 +189,14 @@ func set_camera_floor(new_camera_y: float) -> void:
 	#This would snap the camera, I kind of like having the smooth transition.
 	#I like setting smoothing speed to 10p/s in inspector. Looks way better.
 	#camera.reset_smoothing()
+
+var shake_tween: Tween
+func shake(intensity := 6.0):
+	if shake_tween:
+		shake_tween.kill()
+	var base_offset : Vector2 = $Camera2D.offset
+	shake_tween = create_tween()
+	for i in 8:
+		var random_offset = Vector2(randf_range(-intensity, intensity),randf_range(-intensity, intensity))
+		shake_tween.tween_property($Camera2D, "offset", base_offset + random_offset, 0.02)
+	shake_tween.tween_property($Camera2D, "offset", base_offset, 0.03)

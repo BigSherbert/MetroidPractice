@@ -20,7 +20,7 @@ corner_detail = 1
 script = ExtResource("1_e6e0b")
 heart_texture = ExtResource("2_31ty4")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2041637968]
+[node name="PersistantHUD" type="MarginContainer" parent="." unique_id=2041637968]
 anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -28,27 +28,27 @@ offset_top = 24.0
 offset_right = -24.0
 grow_horizontal = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=511169597]
+[node name="PanelContainer" type="PanelContainer" parent="PersistantHUD" unique_id=511169597]
 custom_minimum_size = Vector2(180, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ndaap")
 
-[node name="ContentAdjustment" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=493755539]
+[node name="ContentAdjustment" type="MarginContainer" parent="PersistantHUD/PanelContainer" unique_id=493755539]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/ContentAdjustment" unique_id=635946410]
+[node name="VBoxContainer" type="VBoxContainer" parent="PersistantHUD/PanelContainer/ContentAdjustment" unique_id=635946410]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="HealthIndicator" type="Label" parent="MarginContainer/PanelContainer/ContentAdjustment/VBoxContainer" unique_id=961163585]
+[node name="HealthIndicator" type="Label" parent="PersistantHUD/PanelContainer/ContentAdjustment/VBoxContainer" unique_id=961163585]
 layout_mode = 2
 text = "Health  12/12"
 
-[node name="HealthProgressBar" type="ProgressBar" parent="MarginContainer/PanelContainer/ContentAdjustment/VBoxContainer" unique_id=373110147]
+[node name="HealthProgressBar" type="ProgressBar" parent="PersistantHUD/PanelContainer/ContentAdjustment/VBoxContainer" unique_id=373110147]
 modulate = Color(0.81288266, 0, 0.10016752, 1)
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
@@ -56,16 +56,36 @@ max_value = 5.0
 value = 5.0
 show_percentage = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/ContentAdjustment/VBoxContainer" unique_id=35078821]
+[node name="HBoxContainer" type="HBoxContainer" parent="PersistantHUD/PanelContainer/ContentAdjustment/VBoxContainer" unique_id=35078821]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 
-[node name="LivesLabel" type="Label" parent="MarginContainer/PanelContainer/ContentAdjustment/VBoxContainer/HBoxContainer" unique_id=687836709]
+[node name="LivesLabel" type="Label" parent="PersistantHUD/PanelContainer/ContentAdjustment/VBoxContainer/HBoxContainer" unique_id=687836709]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Lives"
 
-[node name="LivesContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/ContentAdjustment/VBoxContainer/HBoxContainer" unique_id=22042585]
+[node name="LivesContainer" type="HBoxContainer" parent="PersistantHUD/PanelContainer/ContentAdjustment/VBoxContainer/HBoxContainer" unique_id=22042585]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 8
+
+[node name="Notifcations" type="MarginContainer" parent="." unique_id=1429726608]
+visible = false
+anchors_preset = -1
+offset_left = 40.0
+offset_top = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Notifcations" unique_id=2049990095]
+layout_mode = 2
+
+[node name="ContentAdjustment" type="MarginContainer" parent="Notifcations/PanelContainer" unique_id=617813226]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="NotificationsLabel" type="Label" parent="Notifcations/PanelContainer/ContentAdjustment" unique_id=273161638]
+layout_mode = 2
+text = "Checkpoint Reached"

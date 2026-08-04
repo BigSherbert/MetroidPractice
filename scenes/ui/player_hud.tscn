@@ -9,11 +9,12 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.4598698, 0.00012581378, 0.44986266, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
+border_color = Color(0.9372549, 0.21176471, 0.21568628, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
 
 [node name="PlayerHUD" type="CanvasLayer" unique_id=963443982]
 script = ExtResource("1_e6e0b")
@@ -35,7 +36,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ndaap")
 [node name="ContentAdjustment" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=493755539]
 layout_mode = 2
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 5
+theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 6
 
@@ -56,13 +57,15 @@ value = 5.0
 show_percentage = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/ContentAdjustment/VBoxContainer" unique_id=35078821]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 
 [node name="LivesLabel" type="Label" parent="MarginContainer/PanelContainer/ContentAdjustment/VBoxContainer/HBoxContainer" unique_id=687836709]
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
 text = "Lives"
 
 [node name="LivesContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/ContentAdjustment/VBoxContainer/HBoxContainer" unique_id=22042585]
-custom_minimum_size = Vector2(0, 16)
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 8

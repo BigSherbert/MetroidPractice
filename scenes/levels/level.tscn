@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="9_icy5c"]
 [ext_resource type="Script" uid="uid://b1fvys42avbih" path="res://scenes/levels/sub_floor_2_zone.gd" id="9_xfk5q"]
 [ext_resource type="Script" uid="uid://bjigih3ewk026" path="res://scenes/levels/sub_floor_3_zone.gd" id="10_8iyoh"]
+[ext_resource type="PackedScene" uid="uid://c7mg3cwdpjo5y" path="res://scenes/environmentobjects/floatingplatform.tscn" id="10_jyre1"]
 [ext_resource type="Script" uid="uid://bgg7u5y2dqyw7" path="res://scenes/levels/boss_floor_entrance.gd" id="11_mq31s"]
 [ext_resource type="PackedScene" uid="uid://b20ucwcyv1fhm" path="res://scenes/traps/electric_shock.tscn" id="12_mq31s"]
 [ext_resource type="Script" uid="uid://broxq36b7hjpm" path="res://scenes/levels/bossfight.gd" id="13_qhnmj"]
@@ -4335,6 +4336,11 @@ position = Vector2(1624, 447)
 scale = Vector2(2, 2)
 texture = ExtResource("9_icy5c")
 metadata/_edit_lock_ = true
+
+[node name="Platforms" type="Node2D" parent="Layers" unique_id=1701884985]
+
+[node name="FloatingPlatform" parent="Layers/Platforms" unique_id=1764431275 instance=ExtResource("10_jyre1")]
+position = Vector2(2644, -966)
 
 [node name="CameraZones" type="Node2D" parent="." unique_id=968389540]
 

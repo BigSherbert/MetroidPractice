@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://c7mg3cwdpjo5y"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cje7i"]
+load_path = "res://.godot/imported/FloatingPLatform.png-3820577f2e6b6517c43e7c648a2a3371.ctex"
+
+[sub_resource type="Animation" id="Animation_cje7i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_d67hu"]
+resource_name = "hover"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_blr65"]
+_data = {
+&"RESET": SubResource("Animation_cje7i"),
+&"hover": SubResource("Animation_d67hu")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndaap"]
+size = Vector2(124, 14)
+
+[node name="FloatingPlatform" type="AnimatableBody2D" unique_id=1764431275]
+collision_mask = 0
+
+[node name="PlatformSprite" type="Sprite2D" parent="." unique_id=1563525177]
+texture = SubResource("CompressedTexture2D_cje7i")
+hframes = 6
+
+[node name="PlatformAnimation" type="AnimationPlayer" parent="PlatformSprite" unique_id=617373261]
+libraries/ = SubResource("AnimationLibrary_blr65")
+autoplay = &"hover"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1789741450]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_ndaap")

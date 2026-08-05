@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0iriqrd5f2ha"
-path="res://.godot/imported/FloatingPlatformHD.png-ca727ee6b808e63c77d35669d1c7dbe1.ctex"
+uid="uid://c8mpi4wmq5sb6"
+path="res://.godot/imported/FloatingPlatformHDV2.png-b5337fa5eb36097d6a76a3ffa66a94ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/objects/FloatingPlatformHD.png"
-dest_files=["res://.godot/imported/FloatingPlatformHD.png-ca727ee6b808e63c77d35669d1c7dbe1.ctex"]
+source_file="res://graphics/objects/FloatingPlatformHDV2.png"
+dest_files=["res://.godot/imported/FloatingPlatformHDV2.png-b5337fa5eb36097d6a76a3ffa66a94ba.ctex"]
 
 [params]
 

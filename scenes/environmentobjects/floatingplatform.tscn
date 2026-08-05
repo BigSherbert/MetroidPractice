@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c7mg3cwdpjo5y"]
 
-[ext_resource type="Texture2D" uid="uid://c0iriqrd5f2ha" path="res://graphics/objects/FloatingPlatformHD.png" id="1_drf5d"]
+[ext_resource type="Texture2D" uid="uid://c8mpi4wmq5sb6" path="res://graphics/objects/FloatingPlatformHDV2.png" id="1_drf5d"]
 
 [sub_resource type="Animation" id="Animation_cje7i"]
 length = 0.001

@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://by2r4p3pqmbju" path="res://scenes/enemies/drone.tscn" id="6_d4w6o"]
 [ext_resource type="PackedScene" uid="uid://6geo2vekp1xq" path="res://scenes/enemies/sniper_drone.tscn" id="7_mbbpy"]
 [ext_resource type="Texture2D" uid="uid://6j2he24a4uda" path="res://graphics/lights/l3.png" id="7_xfk5q"]
+[ext_resource type="PackedScene" uid="uid://dojpg57166o6e" path="res://scenes/enemies/laser_drone.tscn" id="8_laser_drone"]
 [ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="9_icy5c"]
 [ext_resource type="Script" uid="uid://b1fvys42avbih" path="res://scenes/levels/sub_floor_2_zone.gd" id="9_xfk5q"]
 [ext_resource type="Script" uid="uid://bjigih3ewk026" path="res://scenes/levels/sub_floor_3_zone.gd" id="10_8iyoh"]
@@ -4516,7 +4517,10 @@ metadata/_edit_lock_ = true
 position = Vector2(2142, -1037)
 
 [node name="SniperDrone" parent="Enemies" unique_id=607920499 instance=ExtResource("7_mbbpy")]
-position = Vector2(1683, -652)
+position = Vector2(2170, -1069)
+
+[node name="LaserDrone" parent="Enemies" unique_id=1736893057 instance=ExtResource("8_laser_drone")]
+position = Vector2(2126, -976)
 
 [node name="Boss" type="Node2D" parent="." unique_id=326272805]
 

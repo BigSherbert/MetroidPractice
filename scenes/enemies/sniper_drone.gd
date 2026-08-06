@@ -43,6 +43,14 @@ func _ready() -> void:
 	#print(get_tree().get_first_node_in_group("Player"))
 
 func _physics_process(delta: float) -> void:
+	
+	if player:
+		$AnimatedSprite2D.flip_h = player.global_position.x > global_position.x
+		if player.global_position.x > global_position.x :
+			$MuzzleFlash.scale.x = 1
+		else :
+			$MuzzleFlash.scale.x = -1
+	
 	if player and frenzy_time_left > 0.0:
 		frenzy_time_left -= delta
 		var distance_to_player := global_position.distance_to(player.global_position)
@@ -64,12 +72,6 @@ func _physics_process(delta: float) -> void:
 			direction = (player.global_position - global_position).normalized()
 			velocity = direction * speed
 			
-			if velocity.x > 0:
-				$AnimatedSprite2D.flip_h = true
-				$MuzzleFlash.scale.x = 1
-			elif velocity.x < 0:
-				$AnimatedSprite2D.flip_h = false
-				$MuzzleFlash.scale.x = -1
 			
 			move_and_slide()
 			return

@@ -4505,7 +4505,7 @@ scale = Vector2(2, 1)
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Entities" unique_id=1849349854 instance=ExtResource("1_377w7")]
-position = Vector2(2487, -951)
+position = Vector2(3066, -951)
 
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
 metadata/_edit_lock_ = true
@@ -4522,6 +4522,8 @@ position = Vector2(2170, -1069)
 
 [node name="LaserDrone" parent="Enemies" unique_id=1736893057 instance=ExtResource("8_laser_drone")]
 position = Vector2(2159, -969)
+
+[node name="Entrance" type="Node2D" parent="Enemies" unique_id=312418477]
 
 [node name="Boss" type="Node2D" parent="." unique_id=326272805]
 position = Vector2(1775, 206)

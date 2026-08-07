@@ -11,7 +11,7 @@ var scan_time := 0.0
 @export var laser_damage := 3
 @export var laser_length := 240.0
 @export var charge_time := 0.8
-@export var aim_lock_warning_time := 0.45
+@export var aim_lock_warning_time := 0.55
 @export var cooldown_time := 2.5
 
 const fire_time := 0.35

@@ -124,8 +124,8 @@ func laser_attack() -> void:
 	
 	# Track the player for the first part of the charge, then LOCK the beam.
 	# That locked warning line is the player's cue to dodge before damage begins.
-	var tracking_time := max(charge_time - aim_lock_warning_time, 0.0)
-	var aim_time := 0.0
+	var tracking_time: float = maxf(charge_time - aim_lock_warning_time, 0.0)
+	var aim_time: float = 0.0
 	while aim_time < tracking_time:
 		if player == null or exploding:
 			stop_attacking()

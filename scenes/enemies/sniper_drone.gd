@@ -24,6 +24,15 @@ var scan_time := 0.0
 @export var frenzy_duration := 5.0
 @export var give_up_distance := 350.0
 @export var keep_frenzy_distance := 150.0
+
+# Combat movement: stay near the player without ramming straight into them.
+@export var reposition_time := 1.4
+@export var strafe_min_distance := 100.0
+@export var strafe_max_distance := 180.0
+@export var strafe_vertical_range := 80.0
+var reposition_timer := 0.0
+var combat_target := Vector2.ZERO
+
 var frenzy_time_left := 0.0
 var starting_position: Vector2
 
@@ -53,7 +62,7 @@ func _physics_process(delta: float) -> void:
 	if player and frenzy_time_left > 0.0:
 		if not boss_summoned:
 			frenzy_time_left -= delta
-			var distance_to_player := global_position.distance_to(player.global_position)
+			var distance_to_player: float = global_position.distance_to(player.global_position)
 			if distance_to_player > give_up_distance:
 				player = null
 				frenzy_time_left = 0.0
@@ -66,10 +75,11 @@ func _physics_process(delta: float) -> void:
 					frenzy_time_left = 0.0
 		if player and frenzy_time_left > 0.0:
 			track_player_with_light(delta)
-			var target_position := player.global_position
-			if boss_summoned:
-				target_position.y -= boss_hover_height
-			direction = (target_position - global_position).normalized()
+			reposition_timer -= delta
+			if reposition_timer <= 0.0 or global_position.distance_to(combat_target) < 12.0:
+				choose_combat_target()
+
+			direction = (combat_target - global_position).normalized()
 			velocity = direction * speed
 			move_and_slide()
 			return
@@ -86,6 +96,20 @@ func _physics_process(delta: float) -> void:
 		scan_with_light(delta)
 
 
+func choose_combat_target() -> void:
+	if player == null:
+		return
+
+	# Pick a point off to either side of the player instead of aiming for their body.
+	var side: float = -1.0 if randf() < 0.5 else 1.0
+	var horizontal_offset: float = randf_range(strafe_min_distance, strafe_max_distance) * side
+	var vertical_offset: float = randf_range(-strafe_vertical_range, strafe_vertical_range)
+
+	combat_target = player.global_position + Vector2(horizontal_offset, vertical_offset)
+	if boss_summoned:
+		combat_target.y -= boss_hover_height
+
+	reposition_timer = reposition_time
 
 
 #Drone Detection
@@ -93,7 +117,7 @@ func _physics_process(delta: float) -> void:
 func scan_with_light(delta: float) -> void:
 	scan_time += delta * scan_speed
 	#Sweep back and forth.
-	var scan_rotation := remap(
+	var scan_rotation: float = remap(
 		sin(scan_time),
 		-1.0,
 		1.0,
@@ -112,11 +136,11 @@ func scan_with_light(delta: float) -> void:
 
 func track_player_with_light(delta: float) -> void:
 	scan_time += delta * flash_speed
-	var direction_to_player := player.global_position - global_position
+	var direction_to_player: Vector2 = player.global_position - global_position
 	#Point directly at the player.
 	$ScanPivot.global_rotation = direction_to_player.angle()
 	#Flash red.
-	var redflash := remap(
+	var redflash: float = remap(
 		sin(scan_time),
 		-1.0,
 		1.0,
@@ -130,6 +154,7 @@ func activate_boss_summon(target: CharacterBody2D) -> void:
 	player = target
 	frenzy_time_left = 999999.0
 	scan_time = 0.0
+	choose_combat_target()
 	if $ReloadTimer.is_stopped():
 		$ReloadTimer.start(first_shot_time)
 
@@ -138,6 +163,7 @@ func _on_detection_area_body_entered(detectedplayer: CharacterBody2D) -> void:
 	player = detectedplayer
 	frenzy_time_left = frenzy_duration
 	scan_time = 0.0
+	choose_combat_target()
 	if $ReloadTimer.is_stopped():
 		$ReloadTimer.start(first_shot_time)
 
@@ -182,11 +208,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 #Drone is Shot At
 func shot_at():
-	var found_player := get_tree().get_first_node_in_group("Player")
+	var found_player := get_tree().get_first_node_in_group("Player") as CharacterBody2D
 	if found_player:
 		player = found_player
 		frenzy_time_left = frenzy_duration
 		scan_time = 0.0
+		choose_combat_target()
 		if $ReloadTimer.is_stopped():
 			$ReloadTimer.start(first_shot_time)
 	print("Drone was shot_at")
@@ -195,7 +222,7 @@ func shot_at():
 	if health <= 0 :
 		drone_explode()
 	$ShotAtSound.play()
-	var tween = create_tween()
+	var tween: Tween = create_tween()
 	tween.tween_property($AnimatedSprite2D.material,"shader_parameter/HitShaderMix",0.0,0.05)
 	tween.tween_property($AnimatedSprite2D.material,"shader_parameter/HitShaderMix",1.0,0.1)
 

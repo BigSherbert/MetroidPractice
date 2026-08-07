@@ -5,14 +5,10 @@
 [ext_resource type="Shader" uid="uid://b5b57keca7ymr" path="res://scenes/shaders/sniper_drone.tres" id="3_k6bvu"]
 [ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="3_v1wfb"]
 [ext_resource type="AudioStream" uid="uid://bya7p4j2a1uh2" path="res://audio/hit.wav" id="5_8wdkm"]
-[ext_resource type="Texture2D" uid="uid://lf71uxgp7wtq" path="res://graphics/lights/ScanningLIght70FadeAntiAliasing.png" id="5_v1wfb"]
 [ext_resource type="AudioStream" uid="uid://dtnqyh7corvdx" path="res://audio/explosion.wav" id="6_fujtf"]
 [ext_resource type="AudioStream" uid="uid://cbv5f8upicq1l" path="res://audio/power_up.wav" id="8_4ayn4"]
 [ext_resource type="AudioStream" uid="uid://b7i74dviugu27" path="res://audio/laser_2.wav" id="9_dco0m"]
 [ext_resource type="Texture2D" uid="uid://c7y4v1bh7cebw" path="res://graphics/fire/LaserOrigin.png" id="10_dco0m"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ndaap"]
-radius = 14.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iqa5j"]
 shader = ExtResource("3_k6bvu")
@@ -126,27 +122,10 @@ size = Vector2(240, 8)
 radius = 82.0
 
 [node name="BossDrone" type="CharacterBody2D" unique_id=1702920544 groups=["Bosses"]]
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_vdot7")
-
-[node name="ScanPivot" type="Node2D" parent="." unique_id=2032546888]
-
-[node name="DetectionArea" type="Area2D" parent="ScanPivot" unique_id=159991383]
-collision_layer = 0
-collision_mask = 2
-
-[node name="DetectionScanZone" type="CollisionPolygon2D" parent="ScanPivot/DetectionArea" unique_id=414957226]
-polygon = PackedVector2Array(0, 0, 126, -32, 126, 32)
-
-[node name="BroadRangeDetection" type="CollisionShape2D" parent="ScanPivot/DetectionArea" unique_id=1583521899]
-shape = SubResource("CircleShape2D_ndaap")
-
-[node name="ScanningLight" type="Sprite2D" parent="ScanPivot" unique_id=2007880969]
-position = Vector2(0, -32)
-texture = ExtResource("5_v1wfb")
-centered = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1466721568]
 modulate = Color(0.6432914, 0.31885248, 0.8608111, 1)
@@ -252,6 +231,7 @@ position = Vector2(45, -75)
 layer = 10
 
 [node name="BossBar" type="ProgressBar" parent="BossHUD" unique_id=1439656665]
+modulate = Color(0.71985084, 0.0029511852, 0.96636945, 1)
 offset_left = 220.0
 offset_top = 24.0
 offset_right = 930.0
@@ -267,8 +247,6 @@ offset_bottom = 24.0
 text = "THEREMON-762 | SENTRY CLASS DEFENSE DRONE"
 horizontal_alignment = 1
 
-[connection signal="body_entered" from="ScanPivot/DetectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="ScanPivot/DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="animation_finished" from="ExplosionAnimation" to="." method="_on_explosion_animation_finished"]
 [connection signal="body_entered" from="SelfDestructArea" to="." method="_on_self_destruct_area_body_entered"]
 [connection signal="body_entered" from="LaserPivot/DamageArea" to="." method="_on_damage_area_body_entered"]

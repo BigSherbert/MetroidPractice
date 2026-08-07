@@ -4,22 +4,30 @@ const ENEMY_LASER_SCENE := preload("res://scenes/bullets/laser.tscn")
 const DRONE_SCENE := preload("res://scenes/enemies/drone.tscn")
 const SNIPER_DRONE_SCENE := preload("res://scenes/enemies/sniper_drone.tscn")
 const EXPLOSION_TEXTURE := preload("res://graphics/fire/explosion.png")
+const EXPLOSION_SOUND := preload("res://audio/explosion.wav")
 
 @export var max_health := 36
 @export var activation_range := 300.0
+@export var move_speed := 55.0
+@export var move_radius := 140.0
+@export var move_change_time := 2.0
 @export var laser_damage := 3
 @export var laser_length := 260.0
 @export var laser_charge_time := 0.9
-@export var laser_lock_delay := 0.6
+@export var laser_lock_delay := 0.8
 @export var aoe_damage := 3
 @export var aoe_radius := 82.0
 @export var aoe_charge_time := 1.15
 @export var frenzy_volleys := 10
 @export var frenzy_delay := 0.13
 @export var drones_per_summon := 3
-@export var summoned_drone_health :=1
+@export var summoned_drone_health := 1
+@export var max_summoned_drones := 3
 
 var health: int
+var starting_position: Vector2
+var move_target: Vector2
+var move_timer := 0.0
 var player: CharacterBody2D
 var active := false
 var attacking := false
@@ -29,6 +37,8 @@ var spawned_drones: Array[Node] = []
 
 func _ready() -> void:
 	health = max_health
+	starting_position = global_position
+	choose_move_target()
 	$AnimatedSprite2D.material = $AnimatedSprite2D.material.duplicate()
 	$BossHUD.visible = false
 	$BossHUD/BossBar.max_value = max_health
@@ -43,17 +53,31 @@ func _ready() -> void:
 	update_laser_length()
 	player = get_tree().get_first_node_in_group("Player") as CharacterBody2D
 
-func _physics_process(_delta: float) -> void:
+func choose_move_target() -> void:
+	var side := -1.0 if global_position.x > starting_position.x else 1.0
+	move_target = starting_position + Vector2(randf_range(60.0, move_radius) * side, randf_range(-60.0, 60.0))
+
+func _physics_process(delta: float) -> void:
 	if exploding:
 		return
+	if attacking:
+		velocity = velocity.move_toward(Vector2.ZERO, 200.0 * delta)
+		move_and_slide()
+		return
+	move_timer -= delta
+	if move_timer <= 0.0:
+		choose_move_target()
+		move_timer = move_change_time
+	var direction := global_position.direction_to(move_target)
+	velocity = direction * move_speed
+	if global_position.distance_to(move_target) < 10.0:
+		velocity = Vector2.ZERO
+	move_and_slide()
 	if player == null:
 		player = get_tree().get_first_node_in_group("Player") as CharacterBody2D
 	if player:
 		$AnimatedSprite2D.flip_h = player.global_position.x > global_position.x
-		if player.global_position.x > global_position.x :
-			$LaserOrigin.scale.x = 1
-		else :
-			$LaserOrigin.scale.x = -1
+		$LaserOrigin.scale.x = 1 if player.global_position.x > global_position.x else -1
 		if not active and global_position.distance_to(player.global_position) <= activation_range:
 			start_fight()
 
@@ -65,27 +89,37 @@ func start_fight() -> void:
 	var intro := create_tween()
 	intro.tween_property(self, "modulate", Color(1.5, 0.7, 0.7, 1.0), 0.12)
 	intro.tween_property(self, "modulate", Color.WHITE, 0.25)
-	await get_tree().create_timer(laser_lock_delay).timeout
+	await get_tree().create_timer(0.8).timeout
 	attack_loop()
 
 func attack_loop() -> void:
 	if attacking or exploding:
 		return
-	attacking = true
 	while active and not exploding and health > 0:
+		attacking = true
 		await laser_attack()
-		if exploding: break
+		attacking = false
+		if exploding:
+			break
 		await get_tree().create_timer(0.45 if phase_two else 0.7).timeout
+		attacking = true
 		await charge_aoe_attack()
-		if exploding: break
+		attacking = false
+		if exploding:
+			break
 		await get_tree().create_timer(0.45 if phase_two else 0.7).timeout
+		attacking = true
 		await bullet_frenzy()
-		if exploding: break
+		attacking = false
+		if exploding:
+			break
 		await get_tree().create_timer(0.5).timeout
+		attacking = true
 		await summon_drones()
-		if exploding: break
+		attacking = false
+		if exploding:
+			break
 		await get_tree().create_timer(0.8 if phase_two else 1.1).timeout
-	attacking = false
 
 func laser_attack() -> void:
 	if player == null or exploding:
@@ -101,12 +135,12 @@ func laser_attack() -> void:
 			stop_laser()
 			return
 		$LaserPivot.global_rotation = (player.global_position - $LaserPivot.global_position).angle()
-		var pulse := remap(sin(charge * 20.0),-1.0,1.0,0.2,1.0)
+		var pulse := remap(sin(charge * 20.0), -1.0, 1.0, 0.2, 1.0)
 		$LaserOrigin.modulate.a = pulse
 		charge += get_physics_process_delta_time()
 		await get_tree().physics_frame
 	$LaserOrigin.modulate.a = 1.0
-	await get_tree().create_timer(0.6).timeout
+	await get_tree().create_timer(laser_lock_delay).timeout
 	if exploding:
 		stop_laser()
 		return
@@ -125,14 +159,19 @@ func spawn_aoe_explosion() -> void:
 	explosion.hframes = 8
 	var angle := randf_range(0.0, TAU)
 	var distance := sqrt(randf()) * aoe_radius
-	explosion.position = Vector2(cos(angle),sin(angle)) * distance
+	explosion.position = Vector2(cos(angle), sin(angle)) * distance
 	explosion.scale = Vector2(1.5, 1.5)
 	$AOE.add_child(explosion)
+	var sound := AudioStreamPlayer2D.new()
+	sound.stream = EXPLOSION_SOUND
+	sound.pitch_scale = randf_range(0.9, 1.1)
+	sound.volume_db = -6.0
+	explosion.add_child(sound)
+	sound.play()
 	for frame in 8:
 		explosion.frame = frame
 		await get_tree().create_timer(0.06).timeout
 	explosion.queue_free()
-
 
 func charge_aoe_attack() -> void:
 	if exploding:
@@ -144,8 +183,8 @@ func charge_aoe_attack() -> void:
 	var tween := create_tween()
 	tween.set_trans(Tween.TRANS_QUAD)
 	tween.set_ease(Tween.EASE_IN)
-	tween.tween_property($AOE/WarningRing,"modulate:a",1.0,duration)
-	tween.parallel().tween_property($AOE/WarningRing,"width",5.0,duration)
+	tween.tween_property($AOE/WarningRing, "modulate:a", 1.0, duration)
+	tween.parallel().tween_property($AOE/WarningRing, "width", 5.0, duration)
 	var elapsed := 0.0
 	while elapsed < duration:
 		if exploding:
@@ -155,19 +194,17 @@ func charge_aoe_attack() -> void:
 		elapsed += 0.15
 	if exploding:
 		return
-	# Big burst of explosions when it actually detonates.
 	for i in 10:
 		spawn_aoe_explosion()
-	$AOE/DamageCollision.set_deferred("disabled", false)
 	$ExplosionSound.play()
 	if player and player.has_method("shake"):
 		player.shake(8.0)
-	await get_tree().physics_frame
-	for body in $AOE.get_overlapping_bodies():
-		if body.has_method("take_damage"):
-			body.take_damage(aoe_damage)
+	if player:
+		var distance_to_player: float = global_position.distance_to(player.global_position)
+		var actual_aoe_radius: float = aoe_radius * abs(global_scale.x)
+		if distance_to_player <= actual_aoe_radius:
+			player.take_damage(aoe_damage)
 	await get_tree().create_timer(0.12).timeout
-	$AOE/DamageCollision.set_deferred("disabled", true)
 	$AOE/WarningRing.visible = false
 	$AOE/WarningRing.width = 2.0
 
@@ -179,7 +216,6 @@ func bullet_frenzy() -> void:
 		if player == null or exploding:
 			return
 		var base_dir := (player.global_position - global_position).normalized()
-		#A small 3-shot fan is readable, but becomes nasty when repeated quickly.
 		spawn_enemy_laser(base_dir.rotated(deg_to_rad(-12.0)))
 		spawn_enemy_laser(base_dir)
 		spawn_enemy_laser(base_dir.rotated(deg_to_rad(12.0)))
@@ -201,15 +237,18 @@ func spawn_enemy_laser(dir: Vector2) -> void:
 
 func summon_drones() -> void:
 	clean_spawned_drones()
+	if spawned_drones.size() >= max_summoned_drones:
+		return
 	var points := $SpawnPoints.get_children()
-	var count: int = min(drones_per_summon + (1 if phase_two else 0), points.size())
+	var amount_needed: int = max_summoned_drones - spawned_drones.size()
+	var desired_summon: int = drones_per_summon + (1 if phase_two else 0)
+	var count: int = min(desired_summon, min(amount_needed, points.size()))
 	for i in count:
 		var scene := SNIPER_DRONE_SCENE if i % 2 == 0 else DRONE_SCENE
 		var drone := scene.instantiate()
 		drone.set("health", summoned_drone_health)
 		get_tree().current_scene.add_child(drone)
 		drone.global_position = points[i].global_position
-		#Existing drones already use these variables for frenzy mode.
 		drone.set("player", player)
 		drone.set("frenzy_time_left", 999.0)
 		drone.set("starting_position", drone.global_position)
@@ -292,6 +331,7 @@ func drone_explode() -> void:
 		return
 	exploding = true
 	active = false
+	attacking = false
 	stop_laser()
 	$AOE/WarningRing.visible = false
 	$AOE/DamageCollision.set_deferred("disabled", true)
@@ -308,13 +348,6 @@ func _on_explosion_animation_finished(anim_name: StringName) -> void:
 	if anim_name == &"explode":
 		queue_free()
 
-#Kept for LaserDrone scene connections remain valid
-func _on_detection_area_body_entered(body: CharacterBody2D) -> void:
-	if body.is_in_group("Player"):
-		player = body
-
-func _on_detection_area_body_exited(_body: CharacterBody2D) -> void:
-	pass
 
 func _on_self_destruct_area_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage") and not exploding:

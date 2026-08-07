@@ -18,10 +18,10 @@ var scan_time := 0.0
 
 #FrenzyMode
 @export var frenzy_duration := 5.0
-@export var give_up_distance := 350.0
+@export var give_up_distance := 475.0
 var frenzy_time_left := 0.0
 var starting_position: Vector2
-@export var keep_frenzy_distance := 150.0
+@export var keep_frenzy_distance := 250.0
 
 var boss_summoned := false
 @export var boss_hover_height := 70.0
@@ -51,6 +51,9 @@ func _physics_process(delta: float) -> void:
 					frenzy_time_left = 0.0
 		if player and frenzy_time_left > 0.0:
 			track_player_with_light(delta)
+			if !$PlayerDetectedSound.playing :
+				$PlayerDetectedSound.play()
+				print("SoundPlay")
 			var target_position := player.global_position
 			if boss_summoned:
 				target_position.y -= boss_hover_height

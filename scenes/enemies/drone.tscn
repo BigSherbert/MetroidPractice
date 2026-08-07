@@ -7,9 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://lf71uxgp7wtq" path="res://graphics/lights/ScanningLIght70FadeAntiAliasing.png" id="4_xgp3v"]
 [ext_resource type="AudioStream" uid="uid://bya7p4j2a1uh2" path="res://audio/hit.wav" id="5_md0p7"]
 [ext_resource type="AudioStream" uid="uid://dtnqyh7corvdx" path="res://audio/explosion.wav" id="6_cq5ml"]
+[ext_resource type="AudioStream" uid="uid://cul8plipdh0nq" path="res://audio/DrainPower.wav" id="8_2myhj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hha1d"]
-radius = 14.0
+radius = 21.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xgp3v"]
 shader = ExtResource("3_lt60k")
@@ -128,13 +129,14 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="DetectionScanZone" type="CollisionPolygon2D" parent="ScanPivot/DetectionArea" unique_id=1385998925]
-polygon = PackedVector2Array(0, 0, 126, -32, 126, 31)
+polygon = PackedVector2Array(0, 0, 189, -48, 189, 46.5)
 
 [node name="BroadRangeDetection" type="CollisionShape2D" parent="ScanPivot/DetectionArea" unique_id=1015136559]
 shape = SubResource("CircleShape2D_hha1d")
 
 [node name="ScanningLight" type="Sprite2D" parent="ScanPivot" unique_id=1632603900]
-position = Vector2(0, -32)
+position = Vector2(0, -48)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_xgp3v")
 centered = false
 
@@ -171,6 +173,9 @@ collision_mask = 2
 [node name="SelfDestructCollision" type="CollisionShape2D" parent="SelfDestructArea" unique_id=876128156]
 visible = false
 shape = SubResource("CircleShape2D_rxo6g")
+
+[node name="PlayerDetectedSound" type="AudioStreamPlayer2D" parent="." unique_id=244169802]
+stream = ExtResource("8_2myhj")
 
 [connection signal="body_entered" from="ScanPivot/DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="ScanPivot/DetectionArea" to="." method="_on_detection_area_body_exited"]

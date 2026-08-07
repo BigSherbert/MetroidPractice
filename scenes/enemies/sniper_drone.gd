@@ -22,7 +22,7 @@ var scan_time := 0.0
 
 #FrenzyMode
 @export var frenzy_duration := 5.0
-@export var give_up_distance := 350.0
+@export var give_up_distance := 475.0
 @export var keep_frenzy_distance := 150.0
 
 # Combat movement: stay near the player without ramming straight into them.

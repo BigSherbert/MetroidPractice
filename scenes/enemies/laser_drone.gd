@@ -17,7 +17,7 @@ var scan_time := 0.0
 const fire_time := 0.35
 const blast_radius := 35.0
 const frenzy_duration := 5.0
-const give_up_distance := 350.0
+const give_up_distance := 525.0
 const scan_speed := 1.5
 const flash_speed := 8.0
 

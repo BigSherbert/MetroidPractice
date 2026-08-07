@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dtnqyh7corvdx" path="res://audio/explosion.wav" id="6_fujtf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ndaap"]
-radius = 14.0
+radius = 21.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iqa5j"]
 shader = ExtResource("3_k6bvu")
@@ -129,13 +129,14 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="DetectionScanZone" type="CollisionPolygon2D" parent="ScanPivot/DetectionArea" unique_id=414957226]
-polygon = PackedVector2Array(0, 0, 126, -32, 126, 32)
+polygon = PackedVector2Array(0, 0, 189, -48, 189, 48)
 
 [node name="BroadRangeDetection" type="CollisionShape2D" parent="ScanPivot/DetectionArea" unique_id=1583521899]
 shape = SubResource("CircleShape2D_ndaap")
 
 [node name="ScanningLight" type="Sprite2D" parent="ScanPivot" unique_id=2007880969]
-position = Vector2(0, -32)
+position = Vector2(0, -48)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_v1wfb")
 centered = false
 

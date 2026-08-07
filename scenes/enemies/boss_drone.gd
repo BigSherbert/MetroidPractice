@@ -3,18 +3,21 @@ extends CharacterBody2D
 const ENEMY_LASER_SCENE := preload("res://scenes/bullets/laser.tscn")
 const DRONE_SCENE := preload("res://scenes/enemies/drone.tscn")
 const SNIPER_DRONE_SCENE := preload("res://scenes/enemies/sniper_drone.tscn")
+const EXPLOSION_TEXTURE := preload("res://graphics/fire/explosion.png")
 
 @export var max_health := 36
 @export var activation_range := 300.0
 @export var laser_damage := 3
 @export var laser_length := 260.0
 @export var laser_charge_time := 0.9
+@export var laser_lock_delay := 0.6
 @export var aoe_damage := 3
 @export var aoe_radius := 82.0
 @export var aoe_charge_time := 1.15
 @export var frenzy_volleys := 10
 @export var frenzy_delay := 0.13
 @export var drones_per_summon := 3
+@export var summoned_drone_health :=1
 
 var health: int
 var player: CharacterBody2D
@@ -47,6 +50,10 @@ func _physics_process(_delta: float) -> void:
 		player = get_tree().get_first_node_in_group("Player") as CharacterBody2D
 	if player:
 		$AnimatedSprite2D.flip_h = player.global_position.x > global_position.x
+		if player.global_position.x > global_position.x :
+			$LaserOrigin.scale.x = 1
+		else :
+			$LaserOrigin.scale.x = -1
 		if not active and global_position.distance_to(player.global_position) <= activation_range:
 			start_fight()
 
@@ -58,7 +65,7 @@ func start_fight() -> void:
 	var intro := create_tween()
 	intro.tween_property(self, "modulate", Color(1.5, 0.7, 0.7, 1.0), 0.12)
 	intro.tween_property(self, "modulate", Color.WHITE, 0.25)
-	await get_tree().create_timer(0.6).timeout
+	await get_tree().create_timer(laser_lock_delay).timeout
 	attack_loop()
 
 func attack_loop() -> void:
@@ -94,19 +101,39 @@ func laser_attack() -> void:
 			stop_laser()
 			return
 		$LaserPivot.global_rotation = (player.global_position - $LaserPivot.global_position).angle()
-		var pulse := remap(sin(charge * 20.0), -1.0, 1.0, 0.2, 1.0)
+		var pulse := remap(sin(charge * 20.0),-1.0,1.0,0.2,1.0)
 		$LaserOrigin.modulate.a = pulse
 		charge += get_physics_process_delta_time()
 		await get_tree().physics_frame
+	$LaserOrigin.modulate.a = 1.0
+	await get_tree().create_timer(0.6).timeout
+	if exploding:
+		stop_laser()
+		return
 	$LaserPivot/WarningLine.visible = false
 	$LaserPivot/LaserBeam.visible = true
 	$LaserPivot/DamageArea/DamageCollision.set_deferred("disabled", false)
-	$LaserOrigin.modulate.a = 1.0
 	$LaserSound.play()
 	await get_tree().physics_frame
 	damage_player_in_beam()
 	await get_tree().create_timer(0.32).timeout
 	stop_laser()
+
+func spawn_aoe_explosion() -> void:
+	var explosion := Sprite2D.new()
+	explosion.texture = EXPLOSION_TEXTURE
+	explosion.hframes = 8
+	var angle := randf_range(0.0, TAU)
+	var distance := sqrt(randf()) * aoe_radius
+	explosion.position = Vector2(cos(angle),sin(angle)) * distance
+	explosion.scale = Vector2(1.5, 1.5)
+	$AOE.add_child(explosion)
+	for frame in 8:
+		explosion.frame = frame
+		await get_tree().create_timer(0.06).timeout
+	explosion.queue_free()
+
+
 func charge_aoe_attack() -> void:
 	if exploding:
 		return
@@ -117,11 +144,20 @@ func charge_aoe_attack() -> void:
 	var tween := create_tween()
 	tween.set_trans(Tween.TRANS_QUAD)
 	tween.set_ease(Tween.EASE_IN)
-	tween.tween_property($AOE/WarningRing, "modulate:a", 1.0, duration)
-	tween.parallel().tween_property($AOE/WarningRing, "width", 5.0, duration)
-	await tween.finished
+	tween.tween_property($AOE/WarningRing,"modulate:a",1.0,duration)
+	tween.parallel().tween_property($AOE/WarningRing,"width",5.0,duration)
+	var elapsed := 0.0
+	while elapsed < duration:
+		if exploding:
+			return
+		spawn_aoe_explosion()
+		await get_tree().create_timer(0.15).timeout
+		elapsed += 0.15
 	if exploding:
 		return
+	# Big burst of explosions when it actually detonates.
+	for i in 10:
+		spawn_aoe_explosion()
 	$AOE/DamageCollision.set_deferred("disabled", false)
 	$ExplosionSound.play()
 	if player and player.has_method("shake"):
@@ -143,7 +179,7 @@ func bullet_frenzy() -> void:
 		if player == null or exploding:
 			return
 		var base_dir := (player.global_position - global_position).normalized()
-		# A small 3-shot fan is readable, but becomes nasty when repeated quickly.
+		#A small 3-shot fan is readable, but becomes nasty when repeated quickly.
 		spawn_enemy_laser(base_dir.rotated(deg_to_rad(-12.0)))
 		spawn_enemy_laser(base_dir)
 		spawn_enemy_laser(base_dir.rotated(deg_to_rad(12.0)))
@@ -170,9 +206,10 @@ func summon_drones() -> void:
 	for i in count:
 		var scene := SNIPER_DRONE_SCENE if i % 2 == 0 else DRONE_SCENE
 		var drone := scene.instantiate()
+		drone.set("health", summoned_drone_health)
 		get_tree().current_scene.add_child(drone)
 		drone.global_position = points[i].global_position
-		# Existing drones already use these variables for frenzy mode.
+		#Existing drones already use these variables for frenzy mode.
 		drone.set("player", player)
 		drone.set("frenzy_time_left", 999.0)
 		drone.set("starting_position", drone.global_position)

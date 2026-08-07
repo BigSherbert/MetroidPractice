@@ -26,6 +26,10 @@ func _ready() -> void:
 	$AnimatedSprite2D.material = $AnimatedSprite2D.material.duplicate()
 	starting_position = global_position
 	$ScanPivot/ScanningLight.modulate = Color(0.3, 0.7, 1.0, 0.35)
+	
+	$LaserOrigin.visible = false
+	$LaserOrigin.modulate.a = 0.0
+	
 	set_laser_visible(false)
 	update_laser_length()
 
@@ -35,6 +39,11 @@ func _physics_process(delta: float) -> void:
 	
 	if player:
 		$AnimatedSprite2D.flip_h = player.global_position.x > global_position.x
+		if player.global_position.x > global_position.x :
+			$LaserOrigin.scale.x = 1
+		else :
+			$LaserOrigin.scale.x = -1
+	
 	
 	if player and frenzy_time_left > 0.0:
 		frenzy_time_left -= delta
@@ -95,6 +104,14 @@ func _on_detection_area_body_exited(detected_player: CharacterBody2D) -> void:
 		stop_attacking()
 		player = null
 
+#LaserOriginFlash
+func flash_laser_origin() -> void:
+	$LaserOrigin.visible = true
+	$LaserOrigin.modulate.a = 0.0
+	var tween := create_tween()
+	tween.tween_property($LaserOrigin, "modulate:a", 1.0, 0.08)
+	await tween.finished
+
 func laser_attack() -> void:
 	if attacking or player == null or exploding:
 		return
@@ -110,23 +127,28 @@ func laser_attack() -> void:
 			stop_attacking()
 			return
 		
-		$LaserPivot.global_rotation = (
-			player.global_position - $LaserPivot.global_position
-		).angle()
+		$LaserPivot.global_rotation = (player.global_position - $LaserPivot.global_position).angle()
 		aim_time += get_physics_process_delta_time()
 		await get_tree().physics_frame
 	
 	$LaserPivot/WarningLine.visible = false
 	$LaserPivot/LaserBeam.visible = true
 	$LaserPivot/DamageArea/DamageCollision.set_deferred("disabled", false)
+	
+	flash_laser_origin()
 	$LaserSound.play()
 	
 	await get_tree().physics_frame
 	damage_player_in_beam()
+	
 	await get_tree().create_timer(fire_time).timeout
 	
 	$LaserPivot/LaserBeam.visible = false
 	$LaserPivot/DamageArea/DamageCollision.set_deferred("disabled", true)
+	
+	$LaserOrigin.visible = false
+	$LaserOrigin.modulate.a = 0.0
+	
 	await get_tree().create_timer(cooldown_time).timeout
 	
 	attacking = false

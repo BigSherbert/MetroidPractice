@@ -358,6 +358,11 @@ func enter_phase_two() -> void:
 	var phase_tween := create_tween()
 	phase_tween.tween_property(self, "modulate", Color(1.4, 0.35, 0.35, 1.0), 0.15)
 	phase_tween.tween_property(self, "modulate", Color.WHITE, 0.3)
+	var color_tween := create_tween()
+	color_tween.set_parallel(true)
+	color_tween.tween_property($AnimatedSprite2D.material, "shader_parameter/RainbowAmount", 0.9, 0.45)
+	color_tween.tween_property($AnimatedSprite2D.material, "shader_parameter/RainbowSpeed", 0.52, 0.45)
+	color_tween.tween_property($AnimatedSprite2D.material, "shader_parameter/PulseStrength", 0.15, 0.45)
 	if player and player.has_method("shake"):
 		player.shake(10.0)
 

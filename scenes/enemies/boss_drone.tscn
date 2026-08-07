@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cgvqqfs8n35f8" path="res://scenes/enemies/boss_drone.gd" id="1_vdot7"]
 [ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="2_ckp0d"]
-[ext_resource type="Shader" uid="uid://b5b57keca7ymr" path="res://scenes/shaders/sniper_drone.tres" id="3_k6bvu"]
+[ext_resource type="Shader" path="res://scenes/shaders/boss_drone.gdshader" id="3_k6bvu"]
 [ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="3_v1wfb"]
 [ext_resource type="AudioStream" uid="uid://bya7p4j2a1uh2" path="res://audio/hit.wav" id="5_8wdkm"]
 [ext_resource type="AudioStream" uid="uid://dtnqyh7corvdx" path="res://audio/explosion.wav" id="6_fujtf"]
@@ -12,8 +12,12 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iqa5j"]
 shader = ExtResource("3_k6bvu")
-shader_parameter/HitShaderColor = Color(0.584314, 0.517647, 0, 1)
+shader_parameter/HitShaderColor = Color(1, 0.92, 0.25, 1)
 shader_parameter/HitShaderMix = 1.0
+shader_parameter/RainbowAmount = 0.62
+shader_parameter/RainbowSpeed = 0.22
+shader_parameter/RainbowScale = 1.15
+shader_parameter/PulseStrength = 0.08
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y3ws1"]
 atlas = ExtResource("2_ckp0d")
@@ -166,7 +170,7 @@ collision_mask = 11
 script = ExtResource("1_vdot7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1466721568]
-modulate = Color(0.6432914, 0.31885248, 0.8608111, 1)
+modulate = Color(0.95, 0.95, 1, 1)
 material = SubResource("ShaderMaterial_iqa5j")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ndaap")

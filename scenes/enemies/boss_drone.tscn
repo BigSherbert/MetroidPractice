@@ -1,0 +1,274 @@
+[gd_scene format=3 uid="uid://boiqmdl18kuli"]
+
+[ext_resource type="Script" uid="uid://cgvqqfs8n35f8" path="res://scenes/enemies/boss_drone.gd" id="1_vdot7"]
+[ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="2_ckp0d"]
+[ext_resource type="Shader" uid="uid://b5b57keca7ymr" path="res://scenes/shaders/sniper_drone.tres" id="3_k6bvu"]
+[ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="3_v1wfb"]
+[ext_resource type="AudioStream" uid="uid://bya7p4j2a1uh2" path="res://audio/hit.wav" id="5_8wdkm"]
+[ext_resource type="Texture2D" uid="uid://lf71uxgp7wtq" path="res://graphics/lights/ScanningLIght70FadeAntiAliasing.png" id="5_v1wfb"]
+[ext_resource type="AudioStream" uid="uid://dtnqyh7corvdx" path="res://audio/explosion.wav" id="6_fujtf"]
+[ext_resource type="AudioStream" uid="uid://cbv5f8upicq1l" path="res://audio/power_up.wav" id="8_4ayn4"]
+[ext_resource type="AudioStream" uid="uid://b7i74dviugu27" path="res://audio/laser_2.wav" id="9_dco0m"]
+[ext_resource type="Texture2D" uid="uid://c7y4v1bh7cebw" path="res://graphics/fire/LaserOrigin.png" id="10_dco0m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ndaap"]
+radius = 14.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iqa5j"]
+shader = ExtResource("3_k6bvu")
+shader_parameter/HitShaderColor = Color(0.584314, 0.517647, 0, 1)
+shader_parameter/HitShaderMix = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3ws1"]
+atlas = ExtResource("2_ckp0d")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyfay"]
+atlas = ExtResource("2_ckp0d")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgp3v"]
+atlas = ExtResource("2_ckp0d")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lt60k"]
+atlas = ExtResource("2_ckp0d")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ndaap"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3ws1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dyfay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgp3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lt60k")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_xgp3v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_lt60k"]
+resource_name = "explode"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cq5ml"]
+_data = {
+&"RESET": SubResource("Animation_xgp3v"),
+&"explode": SubResource("Animation_lt60k")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rxo6g"]
+radius = 13.038404
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_beam"]
+size = Vector2(240, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_boss_aoe"]
+radius = 82.0
+
+[node name="BossDrone" type="CharacterBody2D" unique_id=1702920544 groups=["Bosses"]]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_vdot7")
+
+[node name="ScanPivot" type="Node2D" parent="." unique_id=2032546888]
+
+[node name="DetectionArea" type="Area2D" parent="ScanPivot" unique_id=159991383]
+collision_layer = 0
+collision_mask = 2
+
+[node name="DetectionScanZone" type="CollisionPolygon2D" parent="ScanPivot/DetectionArea" unique_id=414957226]
+polygon = PackedVector2Array(0, 0, 126, -32, 126, 32)
+
+[node name="BroadRangeDetection" type="CollisionShape2D" parent="ScanPivot/DetectionArea" unique_id=1583521899]
+shape = SubResource("CircleShape2D_ndaap")
+
+[node name="ScanningLight" type="Sprite2D" parent="ScanPivot" unique_id=2007880969]
+position = Vector2(0, -32)
+texture = ExtResource("5_v1wfb")
+centered = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1466721568]
+modulate = Color(0.6432914, 0.31885248, 0.8608111, 1)
+material = SubResource("ShaderMaterial_iqa5j")
+sprite_frames = SubResource("SpriteFrames_ndaap")
+autoplay = "default"
+flip_h = true
+
+[node name="DroneCollisionArea" type="CollisionPolygon2D" parent="." unique_id=1753711551]
+visible = false
+polygon = PackedVector2Array(4, -7, 4, -6, 3, -6, 3, -3, 2, -3, 2, -4, -2, -4, -2, -6, -3, -6, -3, -7, -9, -7, -9, -6, -10, -6, -10, -2, -9, -2, -9, -1, -6, -1, -6, 4, -5, 4, -5, 5, -4, 5, -4, 6, -3, 6, -3, 7, 2, 7, 2, 6, 3, 6, 3, 5, 4, 5, 4, 4, 5, 4, 5, 0, 5, -1, 6, -1, 10, -1, 10, -2, 11, -2, 11, -6, 10, -6, 10, -7)
+
+[node name="ShotAtSound" type="AudioStreamPlayer2D" parent="." unique_id=749825087]
+stream = ExtResource("5_8wdkm")
+
+[node name="Explosion" type="Sprite2D" parent="." unique_id=478221840]
+visible = false
+position = Vector2(0, -6)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("3_v1wfb")
+hframes = 8
+
+[node name="ExplosionAnimation" type="AnimationPlayer" parent="." unique_id=84576907]
+libraries/ = SubResource("AnimationLibrary_cq5ml")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="." unique_id=354372358]
+stream = ExtResource("6_fujtf")
+
+[node name="SelfDestructArea" type="Area2D" parent="." unique_id=73665796]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="SelfDestructCollision" type="CollisionShape2D" parent="SelfDestructArea" unique_id=876128156]
+visible = false
+shape = SubResource("CircleShape2D_rxo6g")
+
+[node name="ChargeSound" type="AudioStreamPlayer2D" parent="." unique_id=1917149859]
+stream = ExtResource("8_4ayn4")
+
+[node name="LaserSound" type="AudioStreamPlayer2D" parent="." unique_id=183224953]
+stream = ExtResource("9_dco0m")
+
+[node name="LaserPivot" type="Node2D" parent="." unique_id=573042379]
+
+[node name="WarningLine" type="Line2D" parent="LaserPivot" unique_id=1980693506]
+visible = false
+points = PackedVector2Array(0, 0, 240, 0)
+width = 1.0
+default_color = Color(1, 0.101960786, 0.101960786, 0.54901963)
+
+[node name="LaserBeam" type="Line2D" parent="LaserPivot" unique_id=1747484045]
+visible = false
+points = PackedVector2Array(0, 0, 240, 0)
+width = 8.0
+default_color = Color(1, 0.101960786, 0.050980393, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="DamageArea" type="Area2D" parent="LaserPivot" unique_id=1019070115]
+collision_layer = 0
+collision_mask = 2
+
+[node name="DamageCollision" type="CollisionShape2D" parent="LaserPivot/DamageArea" unique_id=333282220]
+position = Vector2(120, 0)
+shape = SubResource("RectangleShape2D_beam")
+disabled = true
+
+[node name="LaserOrigin" type="Sprite2D" parent="." unique_id=251949975]
+visible = false
+position = Vector2(0, -1)
+texture = ExtResource("10_dco0m")
+centered = false
+
+[node name="AOE" type="Area2D" parent="." unique_id=90668158]
+collision_layer = 0
+collision_mask = 2
+
+[node name="DamageCollision" type="CollisionShape2D" parent="AOE" unique_id=680277410]
+shape = SubResource("CircleShape2D_boss_aoe")
+disabled = true
+
+[node name="WarningRing" type="Line2D" parent="AOE" unique_id=480392686]
+visible = false
+width = 2.0
+default_color = Color(1, 0.15, 0.05, 0.85)
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=2026489980]
+
+[node name="Left" type="Marker2D" parent="SpawnPoints" unique_id=1244912149]
+position = Vector2(-70, -35)
+
+[node name="Right" type="Marker2D" parent="SpawnPoints" unique_id=924639808]
+position = Vector2(70, -35)
+
+[node name="UpperLeft" type="Marker2D" parent="SpawnPoints" unique_id=911121144]
+position = Vector2(-45, -75)
+
+[node name="UpperRight" type="Marker2D" parent="SpawnPoints" unique_id=1559667127]
+position = Vector2(45, -75)
+
+[node name="BossHUD" type="CanvasLayer" parent="." unique_id=1729112529]
+layer = 10
+
+[node name="BossBar" type="ProgressBar" parent="BossHUD" unique_id=1439656665]
+offset_left = 220.0
+offset_top = 24.0
+offset_right = 930.0
+offset_bottom = 50.0
+value = 100.0
+show_percentage = false
+
+[node name="BossName" type="Label" parent="BossHUD" unique_id=17471592]
+offset_left = 220.0
+offset_top = 2.0
+offset_right = 930.0
+offset_bottom = 24.0
+text = "THEREMON-762 | SENTRY CLASS DEFENSE DRONE"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="ScanPivot/DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="ScanPivot/DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="animation_finished" from="ExplosionAnimation" to="." method="_on_explosion_animation_finished"]
+[connection signal="body_entered" from="SelfDestructArea" to="." method="_on_self_destruct_area_body_entered"]
+[connection signal="body_entered" from="LaserPivot/DamageArea" to="." method="_on_damage_area_body_entered"]

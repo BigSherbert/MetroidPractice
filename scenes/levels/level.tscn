@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://b20ucwcyv1fhm" path="res://scenes/traps/electric_shock.tscn" id="12_mq31s"]
 [ext_resource type="Script" uid="uid://broxq36b7hjpm" path="res://scenes/levels/bossfight.gd" id="13_qhnmj"]
 [ext_resource type="PackedScene" uid="uid://g1cvqgp54llm" path="res://scenes/ui/player_hud.tscn" id="17_b8j7q"]
+[ext_resource type="PackedScene" uid="uid://boiqmdl18kuli" path="res://scenes/enemies/boss_drone.tscn" id="20_4ab0e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xb4v1"]
 texture = ExtResource("4_xb4v1")
@@ -4504,7 +4505,7 @@ scale = Vector2(2, 1)
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Entities" unique_id=1849349854 instance=ExtResource("1_377w7")]
-position = Vector2(135, -243)
+position = Vector2(1273, 342)
 
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
 metadata/_edit_lock_ = true
@@ -4523,6 +4524,9 @@ position = Vector2(2170, -1069)
 position = Vector2(587, 34)
 
 [node name="Boss" type="Node2D" parent="." unique_id=326272805]
+position = Vector2(1775, 206)
+
+[node name="BossDrone" parent="Boss" unique_id=1702920544 instance=ExtResource("20_4ab0e")]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1867902884]
 color = Color(0.7647059, 0.7647059, 0.7647059, 1)

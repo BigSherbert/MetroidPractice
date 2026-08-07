@@ -176,6 +176,8 @@ shape = SubResource("CircleShape2D_rxo6g")
 
 [node name="PlayerDetectedSound" type="AudioStreamPlayer2D" parent="." unique_id=244169802]
 stream = ExtResource("8_2myhj")
+max_distance = 1000.0
+attenuation = 2.0
 
 [connection signal="body_entered" from="ScanPivot/DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="ScanPivot/DetectionArea" to="." method="_on_detection_area_body_exited"]

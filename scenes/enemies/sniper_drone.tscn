@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bya7p4j2a1uh2" path="res://audio/hit.wav" id="5_8wdkm"]
 [ext_resource type="Texture2D" uid="uid://lf71uxgp7wtq" path="res://graphics/lights/ScanningLIght70FadeAntiAliasing.png" id="5_v1wfb"]
 [ext_resource type="AudioStream" uid="uid://dtnqyh7corvdx" path="res://audio/explosion.wav" id="6_fujtf"]
+[ext_resource type="AudioStream" uid="uid://cul8plipdh0nq" path="res://audio/DrainPower.wav" id="7_detect"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ndaap"]
 radius = 21.0
@@ -165,6 +166,11 @@ libraries/ = SubResource("AnimationLibrary_cq5ml")
 
 [node name="ExplosionSound" type="AudioStreamPlayer2D" parent="." unique_id=354372358]
 stream = ExtResource("6_fujtf")
+
+[node name="PlayerDetectedSound" type="AudioStreamPlayer2D" parent="." unique_id=1084661307]
+stream = ExtResource("7_detect")
+max_distance = 1000.0
+attenuation = 2.0
 
 [node name="SelfDestructArea" type="Area2D" parent="." unique_id=73665796]
 visible = false

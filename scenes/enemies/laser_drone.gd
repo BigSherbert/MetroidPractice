@@ -22,6 +22,7 @@ const scan_speed := 1.5
 const flash_speed := 8.0
 
 var frenzy_time_left := 0.0
+var frenzy_sound_running := false
 
 func _ready() -> void:
 	$AnimatedSprite2D.material = $AnimatedSprite2D.material.duplicate()
@@ -92,10 +93,31 @@ func track_player_with_light(delta: float) -> void:
 	var red_flash := remap(sin(scan_time), -1.0, 1.0, 0.2, 0.9)
 	$ScanPivot/ScanningLight.modulate = Color(1.0, 0.1, 0.1, red_flash)
 
+func play_detection_alert() -> void:
+	if frenzy_sound_running:
+		return
+
+	frenzy_sound_running = true
+	await get_tree().create_timer(randf_range(0.0, 0.15)).timeout
+
+	while not exploding and player != null and frenzy_time_left > 0.0:
+		$PlayerDetectedSound.pitch_scale = randf_range(0.85, 1.15)
+		$PlayerDetectedSound.volume_db = randf_range(-4.0, 0.0)
+		$PlayerDetectedSound.play()
+		await $PlayerDetectedSound.finished
+
+		if exploding or player == null or frenzy_time_left <= 0.0:
+			break
+
+		await get_tree().create_timer(randf_range(0.15, 0.45)).timeout
+
+	frenzy_sound_running = false
+
 func _on_detection_area_body_entered(detected_player: CharacterBody2D) -> void:
 	player = detected_player
 	frenzy_time_left = frenzy_duration
 	scan_time = 0.0
+	play_detection_alert()
 	
 	if not attacking:
 		laser_attack()
@@ -205,10 +227,13 @@ func _on_self_destruct_area_body_entered(body: Node2D) -> void:
 	drone_explode()
 
 func shot_at() -> void:
+	var was_in_frenzy := player != null and frenzy_time_left > 0.0
 	var found_player := get_tree().get_first_node_in_group("Player") as CharacterBody2D
 	if found_player:
 		player = found_player
 		frenzy_time_left = frenzy_duration
+		if not was_in_frenzy and health > 1:
+			play_detection_alert()
 		if not attacking:
 			laser_attack()
 	

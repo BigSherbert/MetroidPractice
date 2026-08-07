@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://broxq36b7hjpm" path="res://scenes/levels/bossfight.gd" id="13_qhnmj"]
 [ext_resource type="PackedScene" uid="uid://g1cvqgp54llm" path="res://scenes/ui/player_hud.tscn" id="17_b8j7q"]
 [ext_resource type="PackedScene" uid="uid://boiqmdl18kuli" path="res://scenes/enemies/boss_drone.tscn" id="20_4ab0e"]
+[ext_resource type="AudioStream" uid="uid://1wib33ytpjbl" path="res://audio/Music/Spook.mp3" id="22_p62il"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xb4v1"]
 texture = ExtResource("4_xb4v1")
@@ -4537,7 +4538,54 @@ scan_speed = 0.0
 scan_min_angle = 135.0
 scan_max_angle = 135.0
 
-[node name="Entrance2" type="Node2D" parent="Enemies" unique_id=312418477]
+[node name="Drone3" parent="Enemies/Entrance" unique_id=587883568 instance=ExtResource("6_d4w6o")]
+position = Vector2(1952, -1051)
+scan_speed = 1.0
+scan_min_angle = -15.0
+scan_max_angle = 90.0
+
+[node name="Drone4" parent="Enemies/Entrance" unique_id=1872438579 instance=ExtResource("6_d4w6o")]
+position = Vector2(1658, -1099)
+scan_speed = 1.0
+scan_min_angle = -15.0
+scan_max_angle = 90.0
+
+[node name="Drone5" parent="Enemies/Entrance" unique_id=652423811 instance=ExtResource("6_d4w6o")]
+position = Vector2(1611, -1091)
+scan_speed = 1.0
+scan_min_angle = 0.0
+scan_max_angle = 80.0
+
+[node name="Drone6" parent="Enemies/Entrance" unique_id=151792232 instance=ExtResource("6_d4w6o")]
+position = Vector2(856, -967)
+scan_speed = 0.0
+scan_min_angle = 0.0
+scan_max_angle = 0.0
+
+[node name="Drone9" parent="Enemies/Entrance" unique_id=19276798 instance=ExtResource("6_d4w6o")]
+position = Vector2(880, -951)
+scan_speed = 0.0
+scan_min_angle = 0.0
+scan_max_angle = 0.0
+
+[node name="Drone7" parent="Enemies/Entrance" unique_id=1815413704 instance=ExtResource("6_d4w6o")]
+position = Vector2(334, -956)
+scan_speed = 0.0
+scan_min_angle = 0.0
+scan_max_angle = 0.0
+
+[node name="Drone8" parent="Enemies/Entrance" unique_id=822740462 instance=ExtResource("6_d4w6o")]
+position = Vector2(306, -978)
+scan_speed = 0.0
+scan_min_angle = 0.0
+scan_max_angle = 0.0
+
+[node name="SniperDrone" parent="Enemies/Entrance" unique_id=1308625617 instance=ExtResource("7_mbbpy")]
+position = Vector2(239, -1102)
+scan_min_angle = 15.0
+scan_max_angle = 90.0
+
+[node name="SubFloor2" type="Node2D" parent="Enemies" unique_id=312418477]
 
 [node name="Boss" type="Node2D" parent="." unique_id=326272805]
 position = Vector2(1775, 206)
@@ -4551,6 +4599,12 @@ shadow_enabled = true
 
 [node name="PlayerHUD" parent="." unique_id=963443982 instance=ExtResource("17_b8j7q")]
 
+[node name="BGMusic" type="AudioStreamPlayer2D" parent="." unique_id=1127971816]
+stream = ExtResource("22_p62il")
+autoplay = true
+max_distance = 4096.0
+attenuation = 0.0
+
 [connection signal="body_entered" from="CameraZones/SubFloor2Zone" to="CameraZones/SubFloor2Zone" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraZones/SubFloor2Zone" to="PlayerHUD" method="_on_sub_floor_2_zone_body_entered"]
 [connection signal="body_entered" from="CameraZones/SubFloor3Zone" to="CameraZones/SubFloor3Zone" method="_on_body_entered"]
@@ -4561,3 +4615,4 @@ shadow_enabled = true
 [connection signal="body_entered" from="CameraZones/BossFight" to="PlayerHUD" method="_on_boss_fight_body_entered"]
 [connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]
 [connection signal="droneshoot" from="Enemies/SniperDrone" to="." method="_on_sniper_drone_droneshoot"]
+[connection signal="droneshoot" from="Enemies/Entrance/SniperDrone" to="." method="_on_sniper_drone_droneshoot"]

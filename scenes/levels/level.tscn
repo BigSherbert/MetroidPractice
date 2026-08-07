@@ -4505,7 +4505,7 @@ scale = Vector2(2, 1)
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Entities" unique_id=1849349854 instance=ExtResource("1_377w7")]
-position = Vector2(2714, -958)
+position = Vector2(3066, -951)
 
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
 metadata/_edit_lock_ = true
@@ -4536,6 +4536,8 @@ position = Vector2(2421, -1099)
 scan_speed = 0.0
 scan_min_angle = 135.0
 scan_max_angle = 135.0
+
+[node name="Entrance" type="Node2D" parent="Enemies" unique_id=312418477]
 
 [node name="Boss" type="Node2D" parent="." unique_id=326272805]
 position = Vector2(1775, 206)

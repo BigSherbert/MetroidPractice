@@ -121,6 +121,44 @@ size = Vector2(240, 8)
 [sub_resource type="CircleShape2D" id="CircleShape2D_boss_aoe"]
 radius = 82.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud_panel"]
+bg_color = Color(0.035, 0.018, 0.055, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.72, 0.12, 0.95, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_bg"]
+bg_color = Color(0.08, 0.025, 0.11, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.38, 0.08, 0.5, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_fill"]
+bg_color = Color(0.88, 0.08, 0.52, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.35, 0.78, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [node name="BossDrone" type="CharacterBody2D" unique_id=1702920544 groups=["Bosses"]]
 scale = Vector2(3, 3)
 collision_layer = 4
@@ -130,6 +168,7 @@ script = ExtResource("1_vdot7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1466721568]
 modulate = Color(0.6432914, 0.31885248, 0.8608111, 1)
 material = SubResource("ShaderMaterial_iqa5j")
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ndaap")
 autoplay = "default"
 flip_h = true
@@ -208,10 +247,15 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_boss_aoe")
 disabled = true
 
+[node name="WarningFill" type="Polygon2D" parent="AOE"]
+visible = false
+color = Color(1, 0.04, 0.02, 0.72)
+z_index = -1
+
 [node name="WarningRing" type="Line2D" parent="AOE" unique_id=480392686]
 visible = false
 width = 2.0
-default_color = Color(1, 0.15, 0.05, 0.85)
+default_color = Color(1, 0.08, 0.03, 1)
 
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=2026489980]
 
@@ -230,22 +274,45 @@ position = Vector2(45, -75)
 [node name="BossHUD" type="CanvasLayer" parent="." unique_id=1729112529]
 layer = 10
 
-[node name="BossBar" type="ProgressBar" parent="BossHUD" unique_id=1439656665]
-modulate = Color(0.71985084, 0.0029511852, 0.96636945, 1)
-offset_left = 220.0
-offset_top = 24.0
-offset_right = 930.0
-offset_bottom = 50.0
-value = 100.0
-show_percentage = false
+[node name="HUDPanel" type="Panel" parent="BossHUD"]
+offset_left = 180.0
+offset_top = 18.0
+offset_right = 1100.0
+offset_bottom = 96.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hud_panel")
 
 [node name="BossName" type="Label" parent="BossHUD" unique_id=17471592]
-offset_left = 220.0
-offset_top = 2.0
-offset_right = 930.0
-offset_bottom = 24.0
-text = "THEREMON-762 | SENTRY CLASS DEFENSE DRONE"
+offset_left = 204.0
+offset_top = 24.0
+offset_right = 1076.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(1, 0.72, 0.94, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 19
+text = "THEREMON-762  //  SENTRY CLASS DEFENSE DRONE"
 horizontal_alignment = 1
+
+[node name="ThreatLabel" type="Label" parent="BossHUD"]
+offset_left = 204.0
+offset_top = 49.0
+offset_right = 1076.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(0.92, 0.42, 0.8, 0.9)
+theme_override_font_sizes/font_size = 10
+text = "/// HOSTILE CORE SIGNATURE DETECTED ///"
+horizontal_alignment = 1
+
+[node name="BossBar" type="ProgressBar" parent="BossHUD" unique_id=1439656665]
+offset_left = 204.0
+offset_top = 68.0
+offset_right = 1076.0
+offset_bottom = 86.0
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bar_fill")
+value = 100.0
+show_percentage = false
 
 [connection signal="animation_finished" from="ExplosionAnimation" to="." method="_on_explosion_animation_finished"]
 [connection signal="body_entered" from="SelfDestructArea" to="." method="_on_self_destruct_area_body_entered"]

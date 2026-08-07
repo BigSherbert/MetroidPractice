@@ -8,16 +8,17 @@ const EXPLOSION_SOUND := preload("res://audio/explosion.wav")
 
 @export var max_health := 36
 @export var activation_range := 300.0
-@export var move_speed := 55.0
-@export var move_radius := 140.0
-@export var move_change_time := 2.0
+@export var move_speed := 70.0
+@export var move_radius := 260.0
+@export var move_vertical_radius := 110.0
+@export var move_change_time := 2.2
 @export var laser_damage := 3
 @export var laser_length := 260.0
 @export var laser_charge_time := 0.9
 @export var laser_lock_delay := 0.8
 @export var aoe_damage := 3
 @export var aoe_radius := 82.0
-@export var aoe_charge_time := 1.15
+@export var aoe_charge_time := 2.0
 @export var frenzy_volleys := 10
 @export var frenzy_delay := 0.13
 @export var drones_per_summon := 3
@@ -33,6 +34,8 @@ var active := false
 var attacking := false
 var exploding := false
 var phase_two := false
+var intro_playing := false
+var boss_sprite_color := Color.WHITE
 var spawned_drones: Array[Node] = []
 
 func _ready() -> void:
@@ -40,7 +43,10 @@ func _ready() -> void:
 	starting_position = global_position
 	choose_move_target()
 	$AnimatedSprite2D.material = $AnimatedSprite2D.material.duplicate()
+	boss_sprite_color = $AnimatedSprite2D.modulate
+	$AnimatedSprite2D.modulate.a = 0.0
 	$BossHUD.visible = false
+	set_hud_alpha(0.0)
 	$BossHUD/BossBar.max_value = max_health
 	$BossHUD/BossBar.value = health
 	$LaserPivot/WarningLine.visible = false
@@ -48,6 +54,7 @@ func _ready() -> void:
 	$LaserPivot/DamageArea/DamageCollision.disabled = true
 	$LaserOrigin.visible = false
 	$AOE/DamageCollision.disabled = true
+	$AOE/WarningFill.visible = false
 	$AOE/WarningRing.visible = false
 	build_aoe_ring()
 	update_laser_length()
@@ -55,10 +62,20 @@ func _ready() -> void:
 
 func choose_move_target() -> void:
 	var side := -1.0 if global_position.x > starting_position.x else 1.0
-	move_target = starting_position + Vector2(randf_range(60.0, move_radius) * side, randf_range(-60.0, 60.0))
+	move_target = starting_position + Vector2(
+		randf_range(120.0, move_radius) * side,
+		randf_range(-move_vertical_radius, move_vertical_radius)
+	)
 
 func _physics_process(delta: float) -> void:
 	if exploding:
+		return
+	if player == null:
+		player = get_tree().get_first_node_in_group("Player") as CharacterBody2D
+	if player and not active and global_position.distance_to(player.global_position) <= activation_range:
+		start_fight()
+	if not active or intro_playing:
+		velocity = Vector2.ZERO
 		return
 	if attacking:
 		velocity = velocity.move_toward(Vector2.ZERO, 200.0 * delta)
@@ -73,23 +90,50 @@ func _physics_process(delta: float) -> void:
 	if global_position.distance_to(move_target) < 10.0:
 		velocity = Vector2.ZERO
 	move_and_slide()
-	if player == null:
-		player = get_tree().get_first_node_in_group("Player") as CharacterBody2D
 	if player:
 		$AnimatedSprite2D.flip_h = player.global_position.x > global_position.x
 		$LaserOrigin.scale.x = 1 if player.global_position.x > global_position.x else -1
-		if not active and global_position.distance_to(player.global_position) <= activation_range:
-			start_fight()
+
+func set_hud_alpha(alpha: float) -> void:
+	for child in $BossHUD.get_children():
+		if child is CanvasItem:
+			child.modulate.a = alpha
 
 func start_fight() -> void:
 	if active or exploding:
 		return
 	active = true
+	intro_playing = true
+	velocity = Vector2.ZERO
+
+	# Give the player a beat to register that the arena has changed.
+	await get_tree().create_timer(0.45).timeout
+	if exploding:
+		return
+
+	$ExplosionSound.play()
+	if player and player.has_method("shake"):
+		player.shake(7.0)
+
+	# Reveal the boss itself first. This only fades the sprite, not its attack geometry.
+	var reveal := create_tween()
+	reveal.set_trans(Tween.TRANS_QUAD)
+	reveal.set_ease(Tween.EASE_OUT)
+	reveal.tween_property($AnimatedSprite2D, "modulate", boss_sprite_color, 0.8)
+	await reveal.finished
+	if exploding:
+		return
+
+	# Then bring in the HUD as the actual fight begins.
 	$BossHUD.visible = true
-	var intro := create_tween()
-	intro.tween_property(self, "modulate", Color(1.5, 0.7, 0.7, 1.0), 0.12)
-	intro.tween_property(self, "modulate", Color.WHITE, 0.25)
-	await get_tree().create_timer(0.8).timeout
+	var hud_intro := create_tween()
+	hud_intro.set_parallel(true)
+	for child in $BossHUD.get_children():
+		if child is CanvasItem:
+			hud_intro.tween_property(child, "modulate:a", 1.0, 0.4)
+	await hud_intro.finished
+	await get_tree().create_timer(0.35).timeout
+	intro_playing = false
 	attack_loop()
 
 func attack_loop() -> void:
@@ -176,25 +220,45 @@ func spawn_aoe_explosion() -> void:
 func charge_aoe_attack() -> void:
 	if exploding:
 		return
+
+	# A very obvious, generous danger telegraph. Red means "leave this circle";
+	# explosions and damage do not happen until the warning has fully charged.
+	$AOE/WarningFill.visible = true
 	$AOE/WarningRing.visible = true
-	$AOE/WarningRing.modulate.a = 0.2
+	$AOE/WarningFill.modulate.a = 0.08
+	$AOE/WarningRing.modulate.a = 0.35
+	$AOE/WarningRing.width = 2.0
 	$ChargeSound.play()
-	var duration := aoe_charge_time * (0.8 if phase_two else 1.0)
-	var tween := create_tween()
-	tween.set_trans(Tween.TRANS_QUAD)
-	tween.set_ease(Tween.EASE_IN)
-	tween.tween_property($AOE/WarningRing, "modulate:a", 1.0, duration)
-	tween.parallel().tween_property($AOE/WarningRing, "width", 5.0, duration)
+
+	# Keep phase two threatening, but still give the player lots of time to escape.
+	var duration := aoe_charge_time * (0.9 if phase_two else 1.0)
+	var warning_tween := create_tween()
+	warning_tween.set_trans(Tween.TRANS_QUAD)
+	warning_tween.set_ease(Tween.EASE_IN)
+	warning_tween.tween_property($AOE/WarningFill, "modulate:a", 0.62, duration)
+	warning_tween.parallel().tween_property($AOE/WarningRing, "modulate:a", 1.0, duration)
+	warning_tween.parallel().tween_property($AOE/WarningRing, "width", 6.0, duration)
+
+	# During the final half-second, pulse the outline so the impact timing is unmistakable.
 	var elapsed := 0.0
 	while elapsed < duration:
 		if exploding:
+			$AOE/WarningFill.visible = false
+			$AOE/WarningRing.visible = false
 			return
-		spawn_aoe_explosion()
-		await get_tree().create_timer(0.15).timeout
-		elapsed += 0.15
+		if duration - elapsed <= 0.5:
+			var pulse := remap(sin(elapsed * 30.0), -1.0, 1.0, 0.65, 1.0)
+			$AOE/WarningRing.modulate.a = pulse
+		await get_tree().create_timer(0.05).timeout
+		elapsed += 0.05
+
 	if exploding:
 		return
-	for i in 10:
+
+	# Warning ends here. The blast begins now.
+	$AOE/WarningFill.visible = false
+	$AOE/WarningRing.visible = false
+	for i in 12:
 		spawn_aoe_explosion()
 	$ExplosionSound.play()
 	if player and player.has_method("shake"):
@@ -204,8 +268,9 @@ func charge_aoe_attack() -> void:
 		var actual_aoe_radius: float = aoe_radius * abs(global_scale.x)
 		if distance_to_player <= actual_aoe_radius:
 			player.take_damage(aoe_damage)
-	await get_tree().create_timer(0.12).timeout
-	$AOE/WarningRing.visible = false
+
+	# Brief recovery so a successful dodge creates a clean chance to shoot back.
+	await get_tree().create_timer(0.5).timeout
 	$AOE/WarningRing.width = 2.0
 
 func bullet_frenzy() -> void:
@@ -269,10 +334,11 @@ func _on_spawned_drone_shoot(pos: Vector2, dir: Vector2) -> void:
 		get_tree().current_scene.add_child(laser)
 
 func shot_at() -> void:
-	if exploding:
+	if exploding or intro_playing:
 		return
 	if not active:
 		start_fight()
+		return
 	health = max(health - 1, 0)
 	$BossHUD/BossBar.value = health
 	$ShotAtSound.play()
@@ -286,6 +352,10 @@ func shot_at() -> void:
 
 func enter_phase_two() -> void:
 	phase_two = true
+	$BossHUD/ThreatLabel.text = "/// CORE OVERLOAD // PHASE 2 ///"
+	var hud_flash := create_tween()
+	hud_flash.tween_property($BossHUD/ThreatLabel, "modulate", Color(1.4, 0.35, 0.35, 1.0), 0.12)
+	hud_flash.tween_property($BossHUD/ThreatLabel, "modulate", Color.WHITE, 0.3)
 	var phase_tween := create_tween()
 	phase_tween.tween_property(self, "modulate", Color(1.4, 0.35, 0.35, 1.0), 0.15)
 	phase_tween.tween_property(self, "modulate", Color.WHITE, 0.3)
@@ -311,11 +381,17 @@ func update_laser_length() -> void:
 	$LaserPivot/DamageArea/DamageCollision.position.x = laser_length / 2.0
 
 func build_aoe_ring() -> void:
-	var points := PackedVector2Array()
-	for i in 49:
+	var ring_points := PackedVector2Array()
+	var fill_points := PackedVector2Array()
+	for i in 48:
 		var angle := TAU * float(i) / 48.0
-		points.append(Vector2(cos(angle), sin(angle)) * aoe_radius)
-	$AOE/WarningRing.points = points
+		var point := Vector2(cos(angle), sin(angle)) * aoe_radius
+		ring_points.append(point)
+		fill_points.append(point)
+	# Close the Line2D ring by repeating the first point.
+	ring_points.append(ring_points[0])
+	$AOE/WarningRing.points = ring_points
+	$AOE/WarningFill.polygon = fill_points
 	var aoe_shape := $AOE/DamageCollision.shape as CircleShape2D
 	aoe_shape.radius = aoe_radius
 
@@ -333,6 +409,7 @@ func drone_explode() -> void:
 	active = false
 	attacking = false
 	stop_laser()
+	$AOE/WarningFill.visible = false
 	$AOE/WarningRing.visible = false
 	$AOE/DamageCollision.set_deferred("disabled", true)
 	$DroneCollisionArea.set_deferred("disabled", true)

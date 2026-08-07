@@ -2,18 +2,20 @@
 
 [ext_resource type="Script" uid="uid://cgvqqfs8n35f8" path="res://scenes/enemies/boss_drone.gd" id="1_vdot7"]
 [ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="2_ckp0d"]
-[ext_resource type="Shader" path="res://scenes/shaders/boss_drone.gdshader" id="3_k6bvu"]
+[ext_resource type="Shader" uid="uid://dxwjorwg6hyio" path="res://scenes/shaders/boss_drone.gdshader" id="3_k6bvu"]
 [ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="3_v1wfb"]
 [ext_resource type="AudioStream" uid="uid://bya7p4j2a1uh2" path="res://audio/hit.wav" id="5_8wdkm"]
 [ext_resource type="AudioStream" uid="uid://dtnqyh7corvdx" path="res://audio/explosion.wav" id="6_fujtf"]
+[ext_resource type="AudioStream" uid="uid://dibx3optftpyb" path="res://audio/WorryingTimes.wav" id="7_3sjmg"]
 [ext_resource type="AudioStream" uid="uid://cbv5f8upicq1l" path="res://audio/power_up.wav" id="8_4ayn4"]
+[ext_resource type="AudioStream" uid="uid://be7bj735jj0e" path="res://audio/earthquake.wav" id="8_prqot"]
 [ext_resource type="AudioStream" uid="uid://b7i74dviugu27" path="res://audio/laser_2.wav" id="9_dco0m"]
 [ext_resource type="Texture2D" uid="uid://c7y4v1bh7cebw" path="res://graphics/fire/LaserOrigin.png" id="10_dco0m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iqa5j"]
 shader = ExtResource("3_k6bvu")
-shader_parameter/HitShaderColor = Color(1, 0.92, 0.25, 1)
 shader_parameter/HitShaderMix = 1.0
+shader_parameter/HitShaderColor = Color(1, 0.92, 0.25, 1)
 shader_parameter/RainbowAmount = 0.62
 shader_parameter/RainbowSpeed = 0.22
 shader_parameter/RainbowScale = 1.15
@@ -197,6 +199,12 @@ libraries/ = SubResource("AnimationLibrary_cq5ml")
 
 [node name="ExplosionSound" type="AudioStreamPlayer2D" parent="." unique_id=354372358]
 stream = ExtResource("6_fujtf")
+
+[node name="IntroSound" type="AudioStreamPlayer2D" parent="." unique_id=1927768257]
+stream = ExtResource("7_3sjmg")
+
+[node name="Tadaa" type="AudioStreamPlayer2D" parent="." unique_id=502172420]
+stream = ExtResource("8_prqot")
 
 [node name="SelfDestructArea" type="Area2D" parent="." unique_id=73665796]
 visible = false

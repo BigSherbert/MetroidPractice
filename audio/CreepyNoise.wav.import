@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c55as5qjjvm8d"
-path="res://.godot/imported/CreepyNoise.wav-8bd3b26421187088e854c1cb807cf968.sample"
+path="res://.godot/imported/CreepyNoise.wav-7f193b9b69908688a6ea5f888a3b8a63.sample"
 
 [deps]
 
-source_file="res://audio/Unused/CreepyNoise.wav"
-dest_files=["res://.godot/imported/CreepyNoise.wav-8bd3b26421187088e854c1cb807cf968.sample"]
+source_file="res://audio/CreepyNoise.wav"
+dest_files=["res://.godot/imported/CreepyNoise.wav-7f193b9b69908688a6ea5f888a3b8a63.sample"]
 
 [params]
 

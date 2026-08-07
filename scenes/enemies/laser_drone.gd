@@ -13,6 +13,7 @@ var scan_time := 0.0
 @export var charge_time := 0.8
 @export var aim_lock_warning_time := 0.55
 @export var cooldown_time := 2.5
+@export var ally_alert_distance := 150.0
 
 const fire_time := 0.35
 const blast_radius := 35.0
@@ -123,6 +124,25 @@ func play_detection_alert() -> void:
 
 	frenzy_sound_running = false
 
+func alert_nearby_drones(target: CharacterBody2D) -> void:
+	for drone in get_tree().get_nodes_in_group("Drones"):
+		if drone == self or drone.global_position.distance_to(global_position) > ally_alert_distance:
+			continue
+		if drone.has_method("activate_frenzy_from_ally"):
+			drone.activate_frenzy_from_ally(target)
+
+func activate_frenzy_from_ally(target: CharacterBody2D) -> void:
+	if exploding:
+		return
+	var was_in_frenzy := player != null and frenzy_time_left > 0.0
+	player = target
+	frenzy_time_left = frenzy_duration
+	scan_time = 0.0
+	if not was_in_frenzy:
+		play_detection_alert()
+	if not attacking:
+		laser_attack()
+
 func _on_detection_area_body_entered(detected_player: CharacterBody2D) -> void:
 	player = detected_player
 	frenzy_time_left = frenzy_duration
@@ -131,6 +151,7 @@ func _on_detection_area_body_entered(detected_player: CharacterBody2D) -> void:
 	
 	if not attacking:
 		laser_attack()
+	alert_nearby_drones(detected_player)
 
 func _on_detection_area_body_exited(detected_player: CharacterBody2D) -> void:
 	if detected_player == player and frenzy_time_left <= 0.0:
@@ -246,6 +267,7 @@ func shot_at() -> void:
 			play_detection_alert()
 		if not attacking:
 			laser_attack()
+		alert_nearby_drones(found_player)
 	
 	health -= 1
 	$ShotAtSound.play()

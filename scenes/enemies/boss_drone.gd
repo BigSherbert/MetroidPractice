@@ -106,12 +106,14 @@ func start_fight() -> void:
 	intro_playing = true
 	velocity = Vector2.ZERO
 
-	# Give the player a beat to register that the arena has changed.
+	#Give the player a beat to register that the arena has changed.
 	await get_tree().create_timer(0.45).timeout
 	if exploding:
 		return
 
-	$ExplosionSound.play()
+	$IntroSound.play()
+	await $IntroSound.finished
+	$Tadaa.play()
 	if player and player.has_method("shake"):
 		player.shake(7.0)
 

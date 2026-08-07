@@ -4506,7 +4506,7 @@ scale = Vector2(2, 1)
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Entities" unique_id=1849349854 instance=ExtResource("1_377w7")]
-position = Vector2(2510, -553)
+position = Vector2(1226, 329)
 
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
 metadata/_edit_lock_ = true
@@ -4515,25 +4515,18 @@ metadata/_edit_lock_ = true
 
 [node name="Enemies" type="Node2D" parent="." unique_id=512384362]
 
-[node name="Drone" parent="Enemies" unique_id=1412520183 instance=ExtResource("6_d4w6o")]
-position = Vector2(2284, -1372)
-
-[node name="SniperDrone" parent="Enemies" unique_id=607920499 instance=ExtResource("7_mbbpy")]
-position = Vector2(1258, 230)
-
-[node name="LaserDrone" parent="Enemies" unique_id=1736893057 instance=ExtResource("8_laser_drone")]
-position = Vector2(2301, -1304)
-
 [node name="Entrance" type="Node2D" parent="Enemies" unique_id=1367822101]
 
 [node name="Drone" parent="Enemies/Entrance" unique_id=922621318 instance=ExtResource("6_d4w6o")]
 position = Vector2(2318, -1051)
+ally_alert_distance = 50.0
 scan_speed = 0.0
 scan_min_angle = 45.0
 scan_max_angle = 45.0
 
 [node name="Drone2" parent="Enemies/Entrance" unique_id=2138511930 instance=ExtResource("6_d4w6o")]
 position = Vector2(2421, -1099)
+ally_alert_distance = 50.0
 scan_speed = 0.0
 scan_min_angle = 135.0
 scan_max_angle = 135.0
@@ -4588,7 +4581,7 @@ scan_max_angle = 90.0
 [node name="SubFloor2" type="Node2D" parent="Enemies" unique_id=312418477]
 
 [node name="Drone5" parent="Enemies/SubFloor2" unique_id=947810877 instance=ExtResource("6_d4w6o")]
-position = Vector2(3948, -563)
+position = Vector2(3814, -553)
 scan_min_angle = 180.0
 scan_max_angle = 180.0
 
@@ -4634,9 +4627,6 @@ scan_max_angle = 145.0
 
 [node name="SubFloor3" type="Node2D" parent="Enemies" unique_id=1547200103]
 
-[node name="Drone2" parent="Enemies/SubFloor3" unique_id=36490975 instance=ExtResource("6_d4w6o")]
-position = Vector2(-352, -262)
-
 [node name="Drone3" parent="Enemies/SubFloor3" unique_id=978232330 instance=ExtResource("6_d4w6o")]
 position = Vector2(3211, -169)
 
@@ -4664,17 +4654,11 @@ position = Vector2(2488, -157)
 [node name="Drone11" parent="Enemies/SubFloor3" unique_id=580366751 instance=ExtResource("6_d4w6o")]
 position = Vector2(2530, -164)
 
-[node name="SniperDrone2" parent="Enemies/SubFloor3" unique_id=1845687298 instance=ExtResource("7_mbbpy")]
-position = Vector2(-366, -208)
-
 [node name="SniperDrone3" parent="Enemies/SubFloor3" unique_id=680959074 instance=ExtResource("7_mbbpy")]
 position = Vector2(734, -342)
 
 [node name="SniperDrone4" parent="Enemies/SubFloor3" unique_id=326728747 instance=ExtResource("7_mbbpy")]
 position = Vector2(851, -156)
-
-[node name="LaserDrone2" parent="Enemies/SubFloor3" unique_id=1702920544 instance=ExtResource("8_laser_drone")]
-position = Vector2(-269, -212)
 
 [node name="LaserDrone3" parent="Enemies/SubFloor3" unique_id=1344303837 instance=ExtResource("8_laser_drone")]
 position = Vector2(3702, -346)
@@ -4700,6 +4684,26 @@ scan_max_angle = 90.0
 position = Vector2(1510, -347)
 scan_min_angle = 90.0
 scan_max_angle = 90.0
+
+[node name="BossFloorEntrance" type="Node2D" parent="Enemies" unique_id=1705315543]
+
+[node name="SniperDrone3" parent="Enemies/BossFloorEntrance" unique_id=1116202723 instance=ExtResource("7_mbbpy")]
+position = Vector2(38, 147)
+
+[node name="SniperDrone4" parent="Enemies/BossFloorEntrance" unique_id=442626425 instance=ExtResource("7_mbbpy")]
+position = Vector2(34, 318)
+
+[node name="SniperDrone7" parent="Enemies/BossFloorEntrance" unique_id=122679 instance=ExtResource("7_mbbpy")]
+position = Vector2(563, 182)
+
+[node name="SniperDrone8" parent="Enemies/BossFloorEntrance" unique_id=1179145676 instance=ExtResource("7_mbbpy")]
+position = Vector2(851, 288)
+
+[node name="SniperDrone9" parent="Enemies/BossFloorEntrance" unique_id=1417177759 instance=ExtResource("7_mbbpy")]
+position = Vector2(952, 117)
+
+[node name="SniperDrone6" parent="Enemies/BossFloorEntrance" unique_id=27967220 instance=ExtResource("7_mbbpy")]
+position = Vector2(459, 460)
 
 [node name="Boss" type="Node2D" parent="." unique_id=326272805]
 position = Vector2(1775, 206)
@@ -4728,12 +4732,16 @@ attenuation = 0.0
 [connection signal="body_entered" from="CameraZones/BossFight" to="CameraZones/BossFight" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraZones/BossFight" to="PlayerHUD" method="_on_boss_fight_body_entered"]
 [connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]
-[connection signal="droneshoot" from="Enemies/SniperDrone" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/Entrance/SniperDrone" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/SubFloor2/SniperDrone3" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/SubFloor2/SniperDrone4" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/SubFloor2/SniperDrone5" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/SubFloor2/SniperDrone6" to="." method="_on_sniper_drone_droneshoot"]
-[connection signal="droneshoot" from="Enemies/SubFloor3/SniperDrone2" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/SubFloor3/SniperDrone3" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/SubFloor3/SniperDrone4" to="." method="_on_sniper_drone_droneshoot"]
+[connection signal="droneshoot" from="Enemies/BossFloorEntrance/SniperDrone3" to="." method="_on_sniper_drone_droneshoot"]
+[connection signal="droneshoot" from="Enemies/BossFloorEntrance/SniperDrone4" to="." method="_on_sniper_drone_droneshoot"]
+[connection signal="droneshoot" from="Enemies/BossFloorEntrance/SniperDrone7" to="." method="_on_sniper_drone_droneshoot"]
+[connection signal="droneshoot" from="Enemies/BossFloorEntrance/SniperDrone8" to="." method="_on_sniper_drone_droneshoot"]
+[connection signal="droneshoot" from="Enemies/BossFloorEntrance/SniperDrone9" to="." method="_on_sniper_drone_droneshoot"]
+[connection signal="droneshoot" from="Enemies/BossFloorEntrance/SniperDrone6" to="." method="_on_sniper_drone_droneshoot"]

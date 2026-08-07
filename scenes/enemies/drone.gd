@@ -8,6 +8,7 @@ var player: CharacterBody2D
 
 @export var health := 3
 @export var blast_radius := 35
+@export var ally_alert_distance := 150.0
 
 #Scanning Variables
 @export var scan_speed := 1.5
@@ -139,12 +140,30 @@ func play_detection_alert() -> void:
 
 	frenzy_sound_running = false
 
+func alert_nearby_drones(target: CharacterBody2D) -> void:
+	for drone in get_tree().get_nodes_in_group("Drones"):
+		if drone == self or drone.global_position.distance_to(global_position) > ally_alert_distance:
+			continue
+		if drone.has_method("activate_frenzy_from_ally"):
+			drone.activate_frenzy_from_ally(target)
+
+func activate_frenzy_from_ally(target: CharacterBody2D) -> void:
+	if exploding:
+		return
+	var was_in_frenzy := player != null and frenzy_time_left > 0.0
+	player = target
+	frenzy_time_left = frenzy_duration
+	scan_time = 0.0
+	if not was_in_frenzy:
+		play_detection_alert()
+
 #Triggered when Player (Or characterbody2d in Player Collision Layer) enters the Detection Area
 func _on_detection_area_body_entered(detectedplayer: CharacterBody2D) -> void:
 	player = detectedplayer
 	frenzy_time_left = frenzy_duration
 	scan_time = 0.0
 	play_detection_alert()
+	alert_nearby_drones(detectedplayer)
 
 #Cancel Drone Detection
 #If player runs away and leaves detection area, stop the drone.
@@ -171,6 +190,7 @@ func shot_at():
 		scan_time = 0.0
 		if not was_in_frenzy and health > 1:
 			play_detection_alert()
+		alert_nearby_drones(found_player)
 	print("Drone was shot_at")
 	health -= 1
 	print("Drone Health: ", health)

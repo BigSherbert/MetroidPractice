@@ -11,6 +11,7 @@ var scan_time := 0.0
 @export var laser_damage := 3
 @export var laser_length := 240.0
 @export var charge_time := 0.8
+@export var aim_lock_warning_time := 0.45
 @export var cooldown_time := 2.5
 
 const fire_time := 0.35
@@ -121,16 +122,30 @@ func laser_attack() -> void:
 	$LaserPivot/WarningLine.visible = true
 	$ChargeSound.play()
 	
+	# Track the player for the first part of the charge, then LOCK the beam.
+	# That locked warning line is the player's cue to dodge before damage begins.
+	var tracking_time := max(charge_time - aim_lock_warning_time, 0.0)
 	var aim_time := 0.0
-	while aim_time < charge_time:
+	while aim_time < tracking_time:
 		if player == null or exploding:
 			stop_attacking()
 			return
-		
+
 		$LaserPivot.global_rotation = (player.global_position - $LaserPivot.global_position).angle()
 		aim_time += get_physics_process_delta_time()
 		await get_tree().physics_frame
-	
+
+	# Final aim sample. From here until the shot, the warning line no longer follows.
+	if player == null or exploding:
+		stop_attacking()
+		return
+	$LaserPivot.global_rotation = (player.global_position - $LaserPivot.global_position).angle()
+
+	await get_tree().create_timer(aim_lock_warning_time).timeout
+	if player == null or exploding:
+		stop_attacking()
+		return
+
 	$LaserPivot/WarningLine.visible = false
 	$LaserPivot/LaserBeam.visible = true
 	$LaserPivot/DamageArea/DamageCollision.set_deferred("disabled", false)

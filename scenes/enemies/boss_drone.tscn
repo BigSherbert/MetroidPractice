@@ -171,6 +171,7 @@ material = SubResource("ShaderMaterial_iqa5j")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ndaap")
 autoplay = "default"
+frame_progress = 0.27182302
 flip_h = true
 
 [node name="DroneCollisionArea" type="CollisionPolygon2D" parent="." unique_id=1753711551]
@@ -247,10 +248,10 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_boss_aoe")
 disabled = true
 
-[node name="WarningFill" type="Polygon2D" parent="AOE"]
+[node name="WarningFill" type="Polygon2D" parent="AOE" unique_id=1941277396]
 visible = false
-color = Color(1, 0.04, 0.02, 0.72)
 z_index = -1
+color = Color(1, 0.04, 0.02, 0.72)
 
 [node name="WarningRing" type="Line2D" parent="AOE" unique_id=480392686]
 visible = false
@@ -274,7 +275,7 @@ position = Vector2(45, -75)
 [node name="BossHUD" type="CanvasLayer" parent="." unique_id=1729112529]
 layer = 10
 
-[node name="HUDPanel" type="Panel" parent="BossHUD"]
+[node name="HUDPanel" type="Panel" parent="BossHUD" unique_id=1065048841]
 offset_left = 180.0
 offset_top = 18.0
 offset_right = 1100.0
@@ -294,7 +295,7 @@ theme_override_font_sizes/font_size = 19
 text = "THEREMON-762  //  SENTRY CLASS DEFENSE DRONE"
 horizontal_alignment = 1
 
-[node name="ThreatLabel" type="Label" parent="BossHUD"]
+[node name="ThreatLabel" type="Label" parent="BossHUD" unique_id=1767799067]
 offset_left = 204.0
 offset_top = 49.0
 offset_right = 1076.0

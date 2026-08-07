@@ -314,9 +314,8 @@ func summon_drones() -> void:
 		drone.set("health", summoned_drone_health)
 		get_tree().current_scene.add_child(drone)
 		drone.global_position = points[i].global_position
-		drone.set("player", player)
-		drone.set("frenzy_time_left", 999.0)
-		drone.set("starting_position", drone.global_position)
+		if drone.has_method("activate_boss_summon"):
+			drone.activate_boss_summon(player)
 		if drone.has_signal("droneshoot"):
 			drone.connect("droneshoot", _on_spawned_drone_shoot)
 		spawned_drones.append(drone)
@@ -408,6 +407,10 @@ func drone_explode() -> void:
 	exploding = true
 	active = false
 	attacking = false
+	for drone in spawned_drones:
+		if is_instance_valid(drone) and drone.has_method("drone_explode"):
+			drone.drone_explode()
+	spawned_drones.clear()
 	stop_laser()
 	$AOE/WarningFill.visible = false
 	$AOE/WarningRing.visible = false

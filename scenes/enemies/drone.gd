@@ -23,6 +23,8 @@ var frenzy_time_left := 0.0
 var starting_position: Vector2
 @export var keep_frenzy_distance := 150.0
 
+var boss_summoned := false
+@export var boss_hover_height := 70.0
 
 func _ready() -> void:
 	#Give the drone its own shader
@@ -33,39 +35,36 @@ func _ready() -> void:
 	$ScanPivot/ScanningLight.modulate = Color(0.3, 0.7, 1.0, 0.35)
 
 
-
 func _physics_process(delta: float) -> void:
 	if player and frenzy_time_left > 0.0:
-		frenzy_time_left -= delta
-		var distance_to_player := global_position.distance_to(player.global_position)
-
-		#Immediately give up if the player gets far away.
-		if distance_to_player > give_up_distance:
-			player = null
-			frenzy_time_left = 0.0
-
-		#When the timer expires, stay frenzied if the player is still close.
-		elif frenzy_time_left <= 0.0:
-			if distance_to_player <= keep_frenzy_distance:
-				frenzy_time_left = frenzy_duration
-			else:
+		if not boss_summoned:
+			frenzy_time_left -= delta
+			var distance_to_player := global_position.distance_to(player.global_position)
+			if distance_to_player > give_up_distance:
 				player = null
 				frenzy_time_left = 0.0
-
+			elif frenzy_time_left <= 0.0:
+				if distance_to_player <= keep_frenzy_distance:
+					frenzy_time_left = frenzy_duration
+				else:
+					player = null
+					frenzy_time_left = 0.0
 		if player and frenzy_time_left > 0.0:
 			track_player_with_light(delta)
-			direction = (player.global_position - global_position).normalized()
+			var target_position := player.global_position
+			if boss_summoned:
+				target_position.y -= boss_hover_height
+			direction = (target_position - global_position).normalized()
 			velocity = direction * speed
-
 			if velocity.x > 0:
 				$AnimatedSprite2D.flip_h = true
 			elif velocity.x < 0:
 				$AnimatedSprite2D.flip_h = false
-
 			move_and_slide()
 			return
-
-	#Return to the original position.
+	if boss_summoned:
+		velocity = Vector2.ZERO
+		return
 	if global_position.distance_to(starting_position) > 2.0:
 		direction = (starting_position - global_position).normalized()
 		velocity = direction * speed
@@ -74,7 +73,6 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		global_position = starting_position
 		scan_with_light(delta)
-
 
 
 #Drone Detection
@@ -113,8 +111,11 @@ func track_player_with_light(delta: float) -> void:
 	)
 	$ScanPivot/ScanningLight.modulate = Color(1.0, 0.1, 0.1, redflash)
 
-
-
+func activate_boss_summon(target: CharacterBody2D) -> void:
+	boss_summoned = true
+	player = target
+	frenzy_time_left = 999999.0
+	scan_time = 0.0
 
 #Triggered when Player (Or characterbody2d in Player Collision Layer) enters the Detection Area
 func _on_detection_area_body_entered(detectedplayer: CharacterBody2D) -> void:

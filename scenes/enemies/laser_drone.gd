@@ -9,17 +9,20 @@ var scan_time := 0.0
 @export var speed := 40.0
 @export var health := 4
 @export var laser_damage := 3
-@export var laser_length := 240.0
+@export var laser_length := 500.0
 @export var charge_time := 0.8
 @export var aim_lock_warning_time := 0.55
 @export var cooldown_time := 2.5
 
 const fire_time := 0.35
 const blast_radius := 35.0
-const frenzy_duration := 5.0
+const frenzy_duration := 10.0
 const give_up_distance := 525.0
+@export var keep_frenzy_distance := 600.0
 const scan_speed := 1.5
 const flash_speed := 8.0
+@export var scan_min_angle := -65.0
+@export var scan_max_angle := 25.0
 
 var frenzy_time_left := 0.0
 var frenzy_sound_running := false
@@ -54,7 +57,14 @@ func _physics_process(delta: float) -> void:
 			stop_attacking()
 			player = null
 			frenzy_time_left = 0.0
-		else:
+		elif frenzy_time_left <= 0.0:
+			if distance_to_player <= keep_frenzy_distance:
+				frenzy_time_left = frenzy_duration
+			else:
+				stop_attacking()
+				player = null
+				frenzy_time_left = 0.0
+		if player and frenzy_time_left > 0.0:
 			track_player_with_light(delta)
 			if not attacking:
 				var direction := (player.global_position - global_position).normalized()
@@ -77,7 +87,7 @@ func return_to_start(delta: float) -> void:
 
 func scan_with_light(delta: float) -> void:
 	scan_time += delta * scan_speed
-	var scan_rotation := remap(sin(scan_time), -1.0, 1.0, -65.0, 25.0)
+	var scan_rotation := remap(sin(scan_time), -1.0, 1.0, scan_min_angle, scan_max_angle)
 	if $AnimatedSprite2D.flip_h:
 		$ScanPivot.rotation_degrees = scan_rotation
 	else:

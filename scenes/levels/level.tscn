@@ -4364,154 +4364,194 @@ travel_angle = 30.0
 move_speed = 104.0
 
 [node name="CameraZones" type="Node2D" parent="." unique_id=968389540]
+metadata/_edit_lock_ = true
 
 [node name="SubFloor2Zone" type="Area2D" parent="CameraZones" unique_id=923113939]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_xfk5q")
+metadata/_edit_lock_ = true
 
 [node name="SubFloor2Collision" type="CollisionShape2D" parent="CameraZones/SubFloor2Zone" unique_id=1468162172]
 position = Vector2(170, -831.5)
 shape = SubResource("RectangleShape2D_ndaap")
+metadata/_edit_lock_ = true
 
 [node name="SubFloor2Respawn" type="Marker2D" parent="CameraZones/SubFloor2Zone" unique_id=1903219732]
 position = Vector2(170, -575)
+metadata/_edit_lock_ = true
 
 [node name="SubFloor3Zone" type="Area2D" parent="CameraZones" unique_id=1413610707]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("10_8iyoh")
+metadata/_edit_lock_ = true
 
 [node name="SubFloor3Collision" type="CollisionShape2D" parent="CameraZones/SubFloor3Zone" unique_id=457673492]
 position = Vector2(4507, -442)
 shape = SubResource("RectangleShape2D_ndaap")
+metadata/_edit_lock_ = true
 
 [node name="SubFloor3Respawn" type="Marker2D" parent="CameraZones/SubFloor3Zone" unique_id=30247004]
 position = Vector2(4511, -209)
+metadata/_edit_lock_ = true
 
 [node name="BossFloorEntrance" type="Area2D" parent="CameraZones" unique_id=1892780091]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("11_mq31s")
+metadata/_edit_lock_ = true
 
 [node name="BossFloorEntranceCollision" type="CollisionShape2D" parent="CameraZones/BossFloorEntrance" unique_id=1238049195]
 position = Vector2(135, -96.75)
 shape = SubResource("RectangleShape2D_ndaap")
+metadata/_edit_lock_ = true
 
 [node name="BossFloorEntranceRespawn" type="Marker2D" parent="CameraZones/BossFloorEntrance" unique_id=1937695733]
 position = Vector2(135, -41)
+metadata/_edit_lock_ = true
 
 [node name="BossFight" type="Area2D" parent="CameraZones" unique_id=792925544]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("13_qhnmj")
+metadata/_edit_lock_ = true
 
 [node name="BossFightCollision" type="CollisionShape2D" parent="CameraZones/BossFight" unique_id=431644300]
 position = Vector2(1299, 140)
 shape = SubResource("RectangleShape2D_rxo6g")
+metadata/_edit_lock_ = true
 
 [node name="BossFightRespawn" type="Marker2D" parent="CameraZones/BossFight" unique_id=775191826]
 position = Vector2(1322, 342)
+metadata/_edit_lock_ = true
 
 [node name="Traps" type="Node2D" parent="." unique_id=111803494]
+metadata/_edit_lock_ = true
 
 [node name="SubFloor2Trap" parent="Traps" unique_id=804037970 instance=ExtResource("12_mq31s")]
 position = Vector2(1458, -534)
+metadata/_edit_lock_ = true
 
 [node name="SubFloor2Trap2" parent="Traps" unique_id=317438652 instance=ExtResource("12_mq31s")]
 position = Vector2(1527, -538)
 scale = Vector2(2, 1)
+metadata/_edit_lock_ = true
 
 [node name="SubFloor2Trap3" parent="Traps" unique_id=1548941636 instance=ExtResource("12_mq31s")]
 position = Vector2(1583, -534)
+metadata/_edit_lock_ = true
 
 [node name="SubFloor2Trap4" parent="Traps" unique_id=2099653264 instance=ExtResource("12_mq31s")]
 position = Vector2(2822, -534)
+metadata/_edit_lock_ = true
 
 [node name="SubFloor2Trap5" parent="Traps" unique_id=1333870431 instance=ExtResource("12_mq31s")]
 position = Vector2(2891, -538)
 scale = Vector2(2, 1)
+metadata/_edit_lock_ = true
 
 [node name="SubFloor2Trap6" parent="Traps" unique_id=126002751 instance=ExtResource("12_mq31s")]
 position = Vector2(2947, -534)
+metadata/_edit_lock_ = true
 
 [node name="SubFloor3Trap" parent="Traps" unique_id=1625208860 instance=ExtResource("12_mq31s")]
 position = Vector2(3533.0002, -150)
 scale = Vector2(5, 1)
+metadata/_edit_lock_ = true
 
 [node name="SubFloor3Trap2" parent="Traps" unique_id=2138079153 instance=ExtResource("12_mq31s")]
 position = Vector2(3746, -152)
 scale = Vector2(5, 1)
+metadata/_edit_lock_ = true
 
 [node name="SubFloor3Trap3" parent="Traps" unique_id=1208088396 instance=ExtResource("12_mq31s")]
 position = Vector2(3326, -152)
+metadata/_edit_lock_ = true
 
 [node name="SubFloor3Trap4" parent="Traps" unique_id=659690894 instance=ExtResource("12_mq31s")]
 position = Vector2(3436, -158)
+metadata/_edit_lock_ = true
 
 [node name="SubFloor3Trap5" parent="Traps" unique_id=74635056 instance=ExtResource("12_mq31s")]
 position = Vector2(3549, -146)
+metadata/_edit_lock_ = true
 
 [node name="SubFloor3Trap6" parent="Traps" unique_id=1300957194 instance=ExtResource("12_mq31s")]
 position = Vector2(3680, -163)
+metadata/_edit_lock_ = true
 
 [node name="SubFloor3Trap7" parent="Traps" unique_id=1413065866 instance=ExtResource("12_mq31s")]
 position = Vector2(3828, -147)
+metadata/_edit_lock_ = true
 
 [node name="SubFloor3Trap8" parent="Traps" unique_id=1384686669 instance=ExtResource("12_mq31s")]
 position = Vector2(3940, -158)
+metadata/_edit_lock_ = true
 
 [node name="SubFloor3Trap9" parent="Traps" unique_id=1414582099 instance=ExtResource("12_mq31s")]
 position = Vector2(727, -158)
+metadata/_edit_lock_ = true
 
 [node name="SubFloor3Trap10" parent="Traps" unique_id=1517189610 instance=ExtResource("12_mq31s")]
 position = Vector2(735, -150)
+metadata/_edit_lock_ = true
 
 [node name="SubFloor3Trap11" parent="Traps" unique_id=518094430 instance=ExtResource("12_mq31s")]
 position = Vector2(779, -157)
+metadata/_edit_lock_ = true
 
 [node name="BossFloorEntranceTrap" parent="Traps" unique_id=1175476341 instance=ExtResource("12_mq31s")]
 position = Vector2(587, 533)
 scale = Vector2(11.5, 1)
+metadata/_edit_lock_ = true
 
 [node name="BossFloorEntranceTrap2" parent="Traps" unique_id=1151374617 instance=ExtResource("12_mq31s")]
 position = Vector2(587, 516)
 scale = Vector2(11.5, 1)
+metadata/_edit_lock_ = true
 
 [node name="BossFloorEntranceTrap3" parent="Traps" unique_id=1389982981 instance=ExtResource("12_mq31s")]
 position = Vector2(587, 505)
 scale = Vector2(11.5, 1)
+metadata/_edit_lock_ = true
 
 [node name="BossFloorEntranceTrap4" parent="Traps" unique_id=1078399016 instance=ExtResource("12_mq31s")]
 position = Vector2(97, 494)
 scale = Vector2(2, 1)
+metadata/_edit_lock_ = true
 
 [node name="BossFloorEntranceTrap5" parent="Traps" unique_id=1016027084 instance=ExtResource("12_mq31s")]
 position = Vector2(312, 505)
 scale = Vector2(2, 1)
+metadata/_edit_lock_ = true
 
 [node name="BossFloorEntranceTrap6" parent="Traps" unique_id=1123808354 instance=ExtResource("12_mq31s")]
 position = Vector2(568, 494)
 scale = Vector2(2, 1)
+metadata/_edit_lock_ = true
 
 [node name="BossFloorEntranceTrap7" parent="Traps" unique_id=1684731735 instance=ExtResource("12_mq31s")]
 position = Vector2(805, 522)
 scale = Vector2(2, 1)
+metadata/_edit_lock_ = true
 
 [node name="BossFloorEntranceTrap8" parent="Traps" unique_id=2014156196 instance=ExtResource("12_mq31s")]
 position = Vector2(1020, 505)
 scale = Vector2(2, 1)
+metadata/_edit_lock_ = true
 
 [node name="Entities" type="Node2D" parent="." unique_id=629147067]
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Entities" unique_id=1849349854 instance=ExtResource("1_377w7")]
-position = Vector2(1226, 329)
+position = Vector2(2572, -970)
 
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
 metadata/_edit_lock_ = true
 
 [node name="Lasers" type="Node2D" parent="." unique_id=63172689]
+metadata/_edit_lock_ = true
 
 [node name="Enemies" type="Node2D" parent="." unique_id=512384362]
 
@@ -4615,15 +4655,35 @@ position = Vector2(1879, -669)
 scan_min_angle = 90.0
 scan_max_angle = 150.0
 
+[node name="Drone6" parent="Enemies/SubFloor2" unique_id=41350377 instance=ExtResource("6_d4w6o")]
+position = Vector2(2396, -673)
+scan_min_angle = 90.0
+scan_max_angle = 90.0
+
+[node name="SniperDrone7" parent="Enemies/SubFloor2" unique_id=1397519848 instance=ExtResource("7_mbbpy")]
+position = Vector2(2420, -672)
+scan_min_angle = 90.0
+scan_max_angle = 150.0
+
+[node name="SniperDrone8" parent="Enemies/SubFloor2" unique_id=1560638602 instance=ExtResource("7_mbbpy")]
+position = Vector2(2370, -654)
+scan_min_angle = 90.0
+scan_max_angle = 150.0
+
 [node name="LaserDrone3" parent="Enemies/SubFloor2" unique_id=2101944712 instance=ExtResource("8_laser_drone")]
 position = Vector2(3091, -706)
+scan_min_angle = 40.0
+scan_max_angle = 145.0
+
+[node name="LaserDrone5" parent="Enemies/SubFloor2" unique_id=1702920544 instance=ExtResource("8_laser_drone")]
+position = Vector2(3415, -707)
 scan_min_angle = 40.0
 scan_max_angle = 145.0
 
 [node name="LaserDrone4" parent="Enemies/SubFloor2" unique_id=759856584 instance=ExtResource("8_laser_drone")]
 position = Vector2(4098, -672)
 scan_min_angle = 90.0
-scan_max_angle = 145.0
+scan_max_angle = 180.0
 
 [node name="SubFloor3" type="Node2D" parent="Enemies" unique_id=1547200103]
 
@@ -4662,18 +4722,18 @@ position = Vector2(851, -156)
 
 [node name="LaserDrone3" parent="Enemies/SubFloor3" unique_id=1344303837 instance=ExtResource("8_laser_drone")]
 position = Vector2(3702, -346)
-scan_min_angle = 90.0
-scan_max_angle = 90.0
+scan_min_angle = 0.0
+scan_max_angle = 180.0
 
 [node name="LaserDrone4" parent="Enemies/SubFloor3" unique_id=1269270197 instance=ExtResource("8_laser_drone")]
 position = Vector2(3398, -354)
-scan_min_angle = 90.0
-scan_max_angle = 90.0
+scan_min_angle = 0.0
+scan_max_angle = 180.0
 
 [node name="LaserDrone5" parent="Enemies/SubFloor3" unique_id=2100644722 instance=ExtResource("8_laser_drone")]
 position = Vector2(3219, -346)
-scan_min_angle = 90.0
-scan_max_angle = 90.0
+scan_min_angle = 0.0
+scan_max_angle = 180.0
 
 [node name="LaserDrone6" parent="Enemies/SubFloor3" unique_id=1593172309 instance=ExtResource("8_laser_drone")]
 position = Vector2(2071, -350)
@@ -4737,6 +4797,8 @@ attenuation = 0.0
 [connection signal="droneshoot" from="Enemies/SubFloor2/SniperDrone4" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/SubFloor2/SniperDrone5" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/SubFloor2/SniperDrone6" to="." method="_on_sniper_drone_droneshoot"]
+[connection signal="droneshoot" from="Enemies/SubFloor2/SniperDrone7" to="." method="_on_sniper_drone_droneshoot"]
+[connection signal="droneshoot" from="Enemies/SubFloor2/SniperDrone8" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/SubFloor3/SniperDrone3" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/SubFloor3/SniperDrone4" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/BossFloorEntrance/SniperDrone3" to="." method="_on_sniper_drone_droneshoot"]

@@ -3,12 +3,12 @@ extends CharacterBody2D
 var exploding := false
 
 var direction : Vector2
-@export var speed := 50
+@export var speed := 100
 var player: CharacterBody2D
 
 @export var health := 3
 @export var blast_radius := 35
-@export var ally_alert_distance := 150.0
+@export var ally_alert_distance := 200.0
 
 #Scanning Variables
 @export var scan_speed := 1.5

@@ -13,7 +13,7 @@ var scan_time := 0.0
 @export var charge_time := 0.8
 @export var aim_lock_warning_time := 0.55
 @export var cooldown_time := 2.5
-@export var ally_alert_distance := 150.0
+@export var ally_alert_distance := 200.0
 
 const fire_time := 0.35
 const blast_radius := 35.0

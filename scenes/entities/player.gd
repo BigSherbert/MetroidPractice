@@ -29,7 +29,8 @@ var health: int
 #Casuals gonna Casual though...
 var invincible := false
 #Starting with .5
-@export var invincibility_time := 0.5
+#Fuckin Casuals, setting to .25
+@export var invincibility_time := 0.25
 
 
 #Creating a Custom Signals

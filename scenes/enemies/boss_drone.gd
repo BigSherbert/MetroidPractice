@@ -7,7 +7,6 @@ const EXPLOSION_TEXTURE := preload("res://graphics/fire/explosion.png")
 const EXPLOSION_SOUND := preload("res://audio/explosion.wav")
 
 @export var max_health := 36
-@export var activation_range := 300.0
 @export var move_speed := 70.0
 @export var move_radius := 260.0
 @export var move_vertical_radius := 110.0
@@ -72,8 +71,6 @@ func _physics_process(delta: float) -> void:
 		return
 	if player == null:
 		player = get_tree().get_first_node_in_group("Player") as CharacterBody2D
-	if player and not active and global_position.distance_to(player.global_position) <= activation_range:
-		start_fight()
 	if not active or intro_playing:
 		velocity = Vector2.ZERO
 		return
@@ -338,7 +335,6 @@ func shot_at() -> void:
 	if exploding or intro_playing:
 		return
 	if not active:
-		start_fight()
 		return
 	health = max(health - 1, 0)
 	$BossHUD/BossBar.value = health

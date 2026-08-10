@@ -26,7 +26,10 @@ var starting_position: Vector2
 @export var keep_frenzy_distance := 250.0
 
 var boss_summoned := false
-@export var boss_hover_height := 70.0
+var avoiding_obstacle := false
+var avoid_direction := 1.0
+var avoid_time_left := 0.0
+@export var boss_avoid_time := 0.45
 
 func _ready() -> void:
 	#Give the drone its own shader
@@ -53,16 +56,32 @@ func _physics_process(delta: float) -> void:
 					frenzy_time_left = 0.0
 		if player and frenzy_time_left > 0.0:
 			track_player_with_light(delta)
-			var target_position := player.global_position
-			if boss_summoned:
-				target_position.y -= boss_hover_height
-			direction = (target_position - global_position).normalized()
-			velocity = direction * speed
+
+			if boss_summoned and avoiding_obstacle:
+				avoid_time_left -= delta
+				velocity = Vector2(avoid_direction * speed, 0.0)
+				if avoid_time_left <= 0.0:
+					avoiding_obstacle = false
+			else:
+				direction = (player.global_position - global_position).normalized()
+				velocity = direction * speed
+
 			if velocity.x > 0:
 				$AnimatedSprite2D.flip_h = true
 			elif velocity.x < 0:
 				$AnimatedSprite2D.flip_h = false
+
 			move_and_slide()
+
+			if boss_summoned and not avoiding_obstacle:
+				for i in range(get_slide_collision_count()):
+					var collision := get_slide_collision(i)
+					var normal := collision.get_normal()
+					if abs(normal.y) > 0.7:
+						avoiding_obstacle = true
+						avoid_time_left = boss_avoid_time
+						avoid_direction = 1.0 if player.global_position.x > global_position.x else -1.0
+						break
 			return
 	if boss_summoned:
 		velocity = Vector2.ZERO
@@ -118,6 +137,8 @@ func activate_boss_summon(target: CharacterBody2D) -> void:
 	player = target
 	frenzy_time_left = 999999.0
 	scan_time = 0.0
+	avoiding_obstacle = false
+	avoid_time_left = 0.0
 	play_detection_alert()
 
 func play_detection_alert() -> void:

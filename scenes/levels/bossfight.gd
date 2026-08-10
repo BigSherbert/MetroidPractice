@@ -26,3 +26,7 @@ func _on_body_entered(body: Node2D) -> void:
 	tween.parallel().tween_property(camera, "offset", camera_offset, 1.5)
 	
 	AutoloadState.set_checkpoint($BossFightRespawn.global_position,camera_y,camera_limit_left,camera_limit_right,camera_limit_bottom,camera_zoom,camera_offset)
+
+	var boss := get_tree().get_first_node_in_group("Bosses")
+	if boss and boss.has_method("start_fight"):
+		boss.start_fight()

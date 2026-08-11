@@ -5,24 +5,60 @@
 [ext_resource type="FontFile" uid="uid://44djgwg2vb3h" path="res://fonts/Ethnocentric-Regular.otf" id="3"]
 
 [sub_resource type="StyleBoxFlat" id="Panel"]
-bg_color = Color(0.01, 0.022, 0.032, 0.93)
+bg_color = Color(0.01, 0.022, 0.032, 0.94)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.15, 0.58, 0.58, 0.75)
+border_color = Color(0.15, 0.58, 0.58, 0.8)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
-[sub_resource type="StyleBoxFlat" id="Button"]
-bg_color = Color(0.03, 0.1, 0.11, 0.95)
+[sub_resource type="StyleBoxFlat" id="ButtonNormal"]
+bg_color = Color(0.03, 0.075, 0.09, 0.88)
 border_width_left = 2
 border_width_top = 1
 border_width_right = 2
 border_width_bottom = 1
-border_color = Color(0.28, 0.75, 0.72, 0.9)
+border_color = Color(0.13, 0.46, 0.49, 0.8)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="ButtonHover"]
+bg_color = Color(0.06, 0.19, 0.2, 0.96)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 3
+border_width_bottom = 1
+border_color = Color(0.42, 1, 0.89, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="ButtonFocus"]
+bg_color = Color(0.045, 0.14, 0.15, 0.98)
+border_width_left = 3
+border_width_top = 2
+border_width_right = 3
+border_width_bottom = 2
+border_color = Color(0.42, 1, 0.89, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="ButtonPressed"]
+bg_color = Color(0.08, 0.28, 0.27, 1)
+border_width_left = 3
+border_width_top = 2
+border_width_right = 3
+border_width_bottom = 2
+border_color = Color(0.75, 1, 0.88, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -56,7 +92,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.003, 0.01, 0.018, 0.76)
+color = Color(0.003, 0.01, 0.018, 0.8)
 
 [node name="CreditsPanel" type="PanelContainer" parent="." unique_id=1167244389]
 layout_mode = 1
@@ -65,76 +101,72 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -390.0
-offset_top = -250.0
-offset_right = 390.0
-offset_bottom = 225.0
+offset_left = -335.0
+offset_top = -305.0
+offset_right = 335.0
+offset_bottom = 305.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("Panel")
 
-[node name="Content" type="VBoxContainer" parent="CreditsPanel" unique_id=878049051]
+[node name="Margin" type="MarginContainer" parent="CreditsPanel"]
 layout_mode = 2
-theme_override_constants/separation = 14
+theme_override_constants/margin_left = 42
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 42
+theme_override_constants/margin_bottom = 28
+
+[node name="Content" type="VBoxContainer" parent="CreditsPanel/Margin" unique_id=878049051]
+layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Title" type="Label" parent="CreditsPanel/Content" unique_id=1898656166]
+[node name="Title" type="Label" parent="CreditsPanel/Margin/Content" unique_id=1898656166]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.74, 1, 0.95, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.22, 0.24, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("3")
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 34
 text = "CREDITS"
 horizontal_alignment = 1
 
-[node name="Divider" type="HSeparator" parent="CreditsPanel/Content" unique_id=1351769298]
+[node name="Divider" type="HSeparator" parent="CreditsPanel/Margin/Content" unique_id=1351769298]
 layout_mode = 2
 
-[node name="CreditsText" type="Label" parent="CreditsPanel/Content" unique_id=1638106125]
+[node name="CreditsText" type="Label" parent="CreditsPanel/Margin/Content" unique_id=1638106125]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.78, 0.88, 0.88, 1)
-theme_override_font_sizes/font_size = 19
-text = "Development:
--Karl Johnson
-
-Art Credits:
--Valerie Johnson
--Kyle Fraser
--Steve VonDali
-
-Special Thanks:
--Kyle Fleming
--MaryBeth Wilkes
-
-Playtest:
-Super_Helpful
-Trashman
-Ivy"
+theme_override_colors/font_color = Color(0.8, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 17
+text = "DEVELOPMENT\nKarl Johnson\n\nART\nValerie Johnson  •  Kyle Fraser  •  Steve VonDali\n\nMUSIC\nAnimasonic\nsoundcloud.com/animasonicmusic/5-more-than-a-taste\n\nSPECIAL THANKS\nKyle Fleming  •  Norman and Coop  •  MaryBeth Wilkes\n\nPLAYTESTING\nSuper_Helpful  •  Trashman  •  Ivy"
 horizontal_alignment = 1
 
-[node name="Hint" type="Label" parent="CreditsPanel/Content" unique_id=1911931123]
+[node name="Divider3" type="HSeparator" parent="CreditsPanel/Margin/Content" unique_id=1816393741]
+layout_mode = 2
+
+[node name="Hint" type="Label" parent="CreditsPanel/Margin/Content" unique_id=1911931123]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.39, 0.62, 0.63, 1)
-text = "Made with Godot 4.7.1"
+theme_override_font_sizes/font_size = 13
+text = "MADE WITH GODOT 4.7.1"
 horizontal_alignment = 1
 
-[node name="BackButton" type="Button" parent="." unique_id=855065263]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -130.0
-offset_top = -82.0
-offset_right = 130.0
-offset_bottom = -30.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Spacer" type="Control" parent="CreditsPanel/Margin/Content"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="CreditsPanel/Margin/Content" unique_id=855065263]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
 theme_override_colors/font_color = Color(0.85, 1, 0.95, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("Button")
-theme_override_styles/hover = SubResource("Button")
-theme_override_styles/focus = SubResource("Button")
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/pressed = SubResource("ButtonPressed")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonFocus")
 text = "BACK"
 
 [node name="Fade" type="ColorRect" parent="." unique_id=118385036]
@@ -147,4 +179,4 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="CreditsPanel/Margin/Content/BackButton" to="." method="_on_back_button_pressed"]

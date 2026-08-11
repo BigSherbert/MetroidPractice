@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	elapsed += delta
 	$DrEllis.visible = elapsed >= 0.8
 	$Flower.visible = elapsed >= 2.0
-	$Caption.visible = elapsed >= 2.8 and elapsed < 5.4
+	$Caption.visible = elapsed >= 2.8
 	$GameOver.visible = elapsed >= 5.4
 	$ReturnHint.visible = elapsed >= 6.4
 	if elapsed >= 5.4:

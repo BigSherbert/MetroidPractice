@@ -429,6 +429,8 @@ func drone_explode() -> void:
 
 func _on_explosion_animation_finished(anim_name: StringName) -> void:
 	if anim_name == &"explode":
+		#small delay
+		await get_tree().create_timer(0.45).timeout
 		get_tree().change_scene_to_file("res://scenes/menu/ending_cutscene.tscn")
 
 

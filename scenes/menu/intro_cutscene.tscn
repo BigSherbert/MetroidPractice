@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://sp5f5ats2qat"]
+
+[ext_resource type="Script" uid="uid://v1oakmrv73dl" path="res://scenes/menu/intro_cutscene.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://4hbc6ykbfpvu" path="res://fonts/BetterVCR 25.09.ttf" id="2"]
+[ext_resource type="Texture2D" uid="uid://lvk5vw2cciq7" path="res://graphics/cutscene/DrEllisIntro.png" id="2_1h68j"]
+[ext_resource type="Texture2D" uid="uid://6lax0iws5mdy" path="res://graphics/cutscene/FLOWER!!!!.png" id="3_x08bh"]
+[ext_resource type="AudioStream" uid="uid://bfwlpwqyiot5n" path="res://audio/Beep_2.wav" id="5_vrry0"]
+[ext_resource type="AudioStream" uid="uid://be7bj735jj0e" path="res://audio/earthquake.wav" id="6_tojiq"]
+
+[node name="IntroCutscene" type="Control" unique_id=961978116]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="DrEllis" type="TextureRect" parent="." unique_id=972444571]
+texture_filter = 1
+layout_mode = 0
+offset_left = 155.0
+offset_top = 180.0
+offset_right = 415.0
+offset_bottom = 505.0
+mouse_filter = 2
+texture = ExtResource("2_1h68j")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Flower" type="TextureRect" parent="." unique_id=1867577753]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 390.0
+offset_top = 185.0
+offset_right = 890.0
+offset_bottom = 470.0
+mouse_filter = 2
+texture = ExtResource("3_x08bh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Caption" type="Label" parent="." unique_id=709536210]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 600.0
+offset_right = 1180.0
+offset_bottom = 670.0
+theme_override_colors/font_color = Color(0.94, 0.96, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 26
+text = "DR. ELLIS HAS SEARCHED THE STARS FOR FLOWER..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Skip" type="Label" parent="." unique_id=20565123]
+layout_mode = 0
+offset_left = 990.0
+offset_top = 30.0
+offset_right = 1240.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(0.55, 0.62, 0.72, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 14
+text = "SPACE / ESC: SKIP"
+horizontal_alignment = 2
+
+[node name="Fade" type="ColorRect" parent="." unique_id=534171803]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="RadarAlert" type="AudioStreamPlayer2D" parent="." unique_id=782260476]
+stream = ExtResource("5_vrry0")
+
+[node name="ShipLanding" type="AudioStreamPlayer2D" parent="." unique_id=1341312117]
+stream = ExtResource("6_tojiq")

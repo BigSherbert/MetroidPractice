@@ -9,7 +9,7 @@ func _ready() -> void:
 func _on_start_button_pressed() -> void:
 	AutoloadState.reset_run()
 	await _fade_out()
-	get_tree().change_scene_to_file("res://scenes/levels/level.tscn")
+	get_tree().change_scene_to_file("res://scenes/menu/intro_cutscene.tscn")
 
 func _on_credits_button_pressed() -> void:
 	await _fade_out()

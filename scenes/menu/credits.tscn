@@ -93,15 +93,22 @@ layout_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.78, 0.88, 0.88, 1)
 theme_override_font_sizes/font_size = 19
-text = "MANY Thanks:
--Ivy
--Trash
--Super Helpful
--Kyle 1
--Kyle 2
--Steve
--MB
--Valerie"
+text = "Development:
+-Karl Johnson
+
+Art Credits:
+-Valerie Johnson
+-Kyle Fraser
+-Steve VonDali
+
+Special Thanks:
+-Kyle Fleming
+-MaryBeth Wilkes
+
+Playtest:
+Super_Helpful
+Trashman
+Ivy"
 horizontal_alignment = 1
 
 [node name="Hint" type="Label" parent="CreditsPanel/Content" unique_id=1911931123]

@@ -102,7 +102,7 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="ReloadTimer" type="Timer" parent="." unique_id=1061173486]
-wait_time = 0.05
+wait_time = 0.15
 one_shot = true
 
 [node name="Legs" type="Sprite2D" parent="." unique_id=1255759013]

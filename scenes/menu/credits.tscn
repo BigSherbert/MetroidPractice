@@ -121,10 +121,10 @@ layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Divider2" type="HSeparator" parent="CreditsPanel/Content" unique_id=981705618]
+[node name="Divider2" type="HSeparator" parent="CreditsPanel/Margin/Content" unique_id=981705618]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="CreditsPanel/Content" unique_id=1898656166]
+[node name="Title" type="Label" parent="CreditsPanel/Margin/Content" unique_id=1898656166]
 
 layout_mode = 2
 theme_override_colors/font_color = Color(0.74, 1, 0.95, 1)
@@ -139,7 +139,7 @@ horizontal_alignment = 1
 [node name="Divider" type="HSeparator" parent="CreditsPanel/Margin/Content" unique_id=1351769298]
 layout_mode = 2
 
-[node name="CreditsText" type="Label" parent="CreditsPanel/Margin/Content" unique_id=1638106125]
+[node name="CreditsTextTop" type="Label" parent="CreditsPanel/Margin/Content"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.78, 0.88, 0.88, 1)
 theme_override_font_sizes/font_size = 19
@@ -150,10 +150,23 @@ Art Credits:
 -Valerie Johnson
 -Kyle Fraser
 -Steve VonDali
--Animasonic
-(soundcloud.com/animasonicmusic/5-more-than-a-taste)
+-Animasonic"
+horizontal_alignment = 1
 
-Special Thanks:
+[node name="AnimasonicLink" type="LinkButton" parent="CreditsPanel/Margin/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.42, 1, 0.89, 1)
+theme_override_colors/font_hover_color = Color(0.75, 1, 0.95, 1)
+theme_override_font_sizes/font_size = 19
+text = "soundcloud.com/animasonicmusic/5-more-than-a-taste"
+uri = "https://soundcloud.com/animasonicmusic/5-more-than-a-taste"
+underline = 1
+
+[node name="CreditsTextBottom" type="Label" parent="CreditsPanel/Margin/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.88, 0.88, 1)
+theme_override_font_sizes/font_size = 19
+text = "Special Thanks:
 -Kyle Fleming
 -Norman and Coop
 -MaryBeth Wilkes
@@ -164,10 +177,10 @@ Trashman
 Ivy"
 horizontal_alignment = 1
 
-[node name="Divider3" type="HSeparator" parent="CreditsPanel/Content" unique_id=1816393741]
+[node name="Divider3" type="HSeparator" parent="CreditsPanel/Margin/Content" unique_id=1816393741]
 layout_mode = 2
 
-[node name="Hint" type="Label" parent="CreditsPanel/Content" unique_id=1911931123]
+[node name="Hint" type="Label" parent="CreditsPanel/Margin/Content" unique_id=1911931123]
 
 layout_mode = 2
 theme_override_colors/font_color = Color(0.39, 0.62, 0.63, 1)
@@ -202,4 +215,5 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
+[connection signal="pressed" from="CreditsPanel/Margin/Content/AnimasonicLink" to="." method="_on_animasonic_link_pressed"]
 [connection signal="pressed" from="CreditsPanel/Margin/Content/BackButton" to="." method="_on_back_button_pressed"]

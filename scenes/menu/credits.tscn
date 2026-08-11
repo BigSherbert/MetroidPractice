@@ -78,6 +78,9 @@ layout_mode = 2
 theme_override_constants/separation = 14
 alignment = 1
 
+[node name="Divider2" type="HSeparator" parent="CreditsPanel/Content" unique_id=981705618]
+layout_mode = 2
+
 [node name="Title" type="Label" parent="CreditsPanel/Content" unique_id=1898656166]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.74, 1, 0.95, 1)
@@ -100,9 +103,12 @@ Art Credits:
 -Valerie Johnson
 -Kyle Fraser
 -Steve VonDali
+-Animasonic
+(soundcloud.com/animasonicmusic/5-more-than-a-taste)
 
 Special Thanks:
 -Kyle Fleming
+-Norman and Coop
 -MaryBeth Wilkes
 
 Playtest:
@@ -110,6 +116,9 @@ Super_Helpful
 Trashman
 Ivy"
 horizontal_alignment = 1
+
+[node name="Divider3" type="HSeparator" parent="CreditsPanel/Content" unique_id=1816393741]
+layout_mode = 2
 
 [node name="Hint" type="Label" parent="CreditsPanel/Content" unique_id=1911931123]
 layout_mode = 2

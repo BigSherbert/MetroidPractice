@@ -4545,7 +4545,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Entities" unique_id=1849349854 instance=ExtResource("1_377w7")]
-position = Vector2(2530, -970)
+position = Vector2(4620, -575)
 
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
 metadata/_edit_lock_ = true
@@ -4690,6 +4690,12 @@ scan_max_angle = 180.0
 [node name="Drone3" parent="Enemies/SubFloor3" unique_id=978232330 instance=ExtResource("6_d4w6o")]
 position = Vector2(3211, -169)
 
+[node name="Drone12" parent="Enemies/SubFloor3" unique_id=1826751647 instance=ExtResource("6_d4w6o")]
+position = Vector2(3235, -193)
+
+[node name="Drone13" parent="Enemies/SubFloor3" unique_id=1431419585 instance=ExtResource("6_d4w6o")]
+position = Vector2(3243, -161)
+
 [node name="Drone4" parent="Enemies/SubFloor3" unique_id=2050863733 instance=ExtResource("6_d4w6o")]
 position = Vector2(2770, -174)
 
@@ -4711,14 +4717,23 @@ position = Vector2(2596, -174)
 [node name="Drone10" parent="Enemies/SubFloor3" unique_id=1589771214 instance=ExtResource("6_d4w6o")]
 position = Vector2(2488, -157)
 
+[node name="Drone14" parent="Enemies/SubFloor3" unique_id=1509434329 instance=ExtResource("6_d4w6o")]
+position = Vector2(2028, -166)
+
 [node name="Drone11" parent="Enemies/SubFloor3" unique_id=580366751 instance=ExtResource("6_d4w6o")]
 position = Vector2(2530, -164)
 
 [node name="SniperDrone3" parent="Enemies/SubFloor3" unique_id=680959074 instance=ExtResource("7_mbbpy")]
 position = Vector2(734, -342)
 
+[node name="SniperDrone6" parent="Enemies/SubFloor3" unique_id=1421980204 instance=ExtResource("7_mbbpy")]
+position = Vector2(1486, -336)
+
 [node name="SniperDrone4" parent="Enemies/SubFloor3" unique_id=326728747 instance=ExtResource("7_mbbpy")]
-position = Vector2(851, -156)
+position = Vector2(723, -177)
+
+[node name="SniperDrone5" parent="Enemies/SubFloor3" unique_id=585593125 instance=ExtResource("7_mbbpy")]
+position = Vector2(755, -163)
 
 [node name="LaserDrone3" parent="Enemies/SubFloor3" unique_id=1344303837 instance=ExtResource("8_laser_drone")]
 position = Vector2(3702, -346)
@@ -4800,7 +4815,9 @@ attenuation = 0.0
 [connection signal="droneshoot" from="Enemies/SubFloor2/SniperDrone7" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/SubFloor2/SniperDrone8" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/SubFloor3/SniperDrone3" to="." method="_on_sniper_drone_droneshoot"]
+[connection signal="droneshoot" from="Enemies/SubFloor3/SniperDrone6" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/SubFloor3/SniperDrone4" to="." method="_on_sniper_drone_droneshoot"]
+[connection signal="droneshoot" from="Enemies/SubFloor3/SniperDrone5" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/BossFloorEntrance/SniperDrone3" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/BossFloorEntrance/SniperDrone4" to="." method="_on_sniper_drone_droneshoot"]
 [connection signal="droneshoot" from="Enemies/BossFloorEntrance/SniperDrone7" to="." method="_on_sniper_drone_droneshoot"]

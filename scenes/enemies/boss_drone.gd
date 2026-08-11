@@ -6,7 +6,7 @@ const SNIPER_DRONE_SCENE := preload("res://scenes/enemies/sniper_drone.tscn")
 const EXPLOSION_TEXTURE := preload("res://graphics/fire/explosion.png")
 const EXPLOSION_SOUND := preload("res://audio/explosion.wav")
 
-@export var max_health := 36
+@export var max_health := 72
 @export var move_speed := 70.0
 @export var move_radius := 260.0
 @export var move_vertical_radius := 110.0

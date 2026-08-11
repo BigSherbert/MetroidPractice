@@ -11,5 +11,7 @@ This release contains:
 Note that these files will be unsigned in Windows so Windows may not recognize the files, however you can still run them safely by following the prompts.
 
 ![Gameplay screenshot](Screenshot1.png)
+
 ![Gameplay screenshot](Screenshot2.png)
+
 ![Gameplay screenshot](Screenshot3.png) 

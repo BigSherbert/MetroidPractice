@@ -4504,56 +4504,56 @@ metadata/_edit_lock_ = true
 [node name="BossFloorEntranceTrap" parent="Traps" unique_id=1175476341 instance=ExtResource("12_mq31s")]
 position = Vector2(587, 533)
 scale = Vector2(11.5, 1)
+instant_death = true
 metadata/_edit_lock_ = true
 
 [node name="BossFloorEntranceTrap2" parent="Traps" unique_id=1151374617 instance=ExtResource("12_mq31s")]
 position = Vector2(587, 516)
 scale = Vector2(11.5, 1)
+instant_death = true
 metadata/_edit_lock_ = true
 
 [node name="BossFloorEntranceTrap3" parent="Traps" unique_id=1389982981 instance=ExtResource("12_mq31s")]
 position = Vector2(587, 505)
 scale = Vector2(11.5, 1)
+instant_death = true
 metadata/_edit_lock_ = true
 
 [node name="BossFloorEntranceTrap4" parent="Traps" unique_id=1078399016 instance=ExtResource("12_mq31s")]
 position = Vector2(97, 494)
 scale = Vector2(2, 1)
+instant_death = true
 metadata/_edit_lock_ = true
 
 [node name="BossFloorEntranceTrap5" parent="Traps" unique_id=1016027084 instance=ExtResource("12_mq31s")]
 position = Vector2(312, 505)
 scale = Vector2(2, 1)
+instant_death = true
 metadata/_edit_lock_ = true
 
 [node name="BossFloorEntranceTrap6" parent="Traps" unique_id=1123808354 instance=ExtResource("12_mq31s")]
 position = Vector2(568, 494)
 scale = Vector2(2, 1)
+instant_death = true
 metadata/_edit_lock_ = true
 
 [node name="BossFloorEntranceTrap7" parent="Traps" unique_id=1684731735 instance=ExtResource("12_mq31s")]
 position = Vector2(805, 522)
 scale = Vector2(2, 1)
+instant_death = true
 metadata/_edit_lock_ = true
 
 [node name="BossFloorEntranceTrap8" parent="Traps" unique_id=2014156196 instance=ExtResource("12_mq31s")]
 position = Vector2(1020, 505)
 scale = Vector2(2, 1)
+instant_death = true
 metadata/_edit_lock_ = true
 
 [node name="Entities" type="Node2D" parent="." unique_id=629147067]
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Entities" unique_id=1849349854 instance=ExtResource("1_377w7")]
-position = Vector2(2746, -975)
-
-[node name="Label" type="Label" parent="Entities" unique_id=993379080]
-offset_left = 2620.0
-offset_top = -1024.0
-offset_right = 2949.0
-offset_bottom = -989.0
-text = "<---- Go this Way Trash Man
-"
+position = Vector2(135, -201)
 
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
 metadata/_edit_lock_ = true

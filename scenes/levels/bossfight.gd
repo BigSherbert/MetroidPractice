@@ -7,9 +7,22 @@ extends Area2D
 @export var camera_zoom:= Vector2(1.25,1.25)
 @export var camera_offset:= Vector2(0,0)
 
+var activated := false
+
+func _ready() -> void:
+	await get_tree().physics_frame
+	for body in get_overlapping_bodies():
+		if body.is_in_group("Player"):
+			activate_boss_fight(body)
+			break
+
 func _on_body_entered(body: Node2D) -> void:
-	if not body.is_in_group("Player"):
+	activate_boss_fight(body)
+
+func activate_boss_fight(body: Node2D) -> void:
+	if activated or not body.is_in_group("Player"):
 		return
+	activated = true
 	var camera := body.get_node_or_null("Camera2D") as Camera2D
 	if camera == null:
 		return

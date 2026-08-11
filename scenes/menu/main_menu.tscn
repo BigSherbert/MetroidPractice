@@ -107,7 +107,7 @@ theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 42
-text = "METROID PRACTICE"
+text = "Grand Marais"
 horizontal_alignment = 1
 
 [node name="MenuPanel" type="PanelContainer" parent="." unique_id=458033759]
@@ -134,7 +134,7 @@ alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.44, 0.75, 0.76, 1)
 theme_override_font_sizes/font_size = 16
-text = "The Journey Begins"
+text = "Drone Factory // Online"
 horizontal_alignment = 1
 
 [node name="StartButton" type="Button" parent="MenuPanel/MenuButtons" unique_id=493754550]

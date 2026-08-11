@@ -28,6 +28,7 @@ var health: int
 #If you get shot 3 times you should lose 3 health like the scrub you are.
 #Casuals gonna Casual though...
 var invincible := false
+var dying := false
 #Starting with .5
 #Fuckin Casuals, setting to .25
 @export var invincibility_time := 0.25
@@ -134,7 +135,7 @@ func shot_at() -> void:
 
 func take_damage(amount: int, knockback := Vector2.ZERO) -> void:
 	#i-frame nonsense
-	if invincible:
+	if dying or invincible:
 		return
 	shake()
 	invincible = true
@@ -159,7 +160,17 @@ func take_damage(amount: int, knockback := Vector2.ZERO) -> void:
 	invincible = false
 
 
+func instant_death() -> void:
+	if dying:
+		return
+	health = 0
+	health_changed.emit(health, max_health)
+	player_die()
+
 func player_die() -> void:
+	if dying:
+		return
+	dying = true
 	print("Player died lol")
 	set_physics_process(false)
 	var can_respawn := AutoloadState.lose_life()

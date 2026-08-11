@@ -13,6 +13,7 @@ extends Area2D
 @export var maximum_pitch: float = 1.1
 
 @export var damage_amount : int = 1
+@export var instant_death := false
 
 var player: CharacterBody2D = null
 
@@ -55,6 +56,8 @@ func _on_electric_effect_frame_changed() -> void:
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
 		player = body
+		if instant_death and body.has_method("instant_death"):
+			body.instant_death()
 
 func _on_body_exited(body):
 	if body == player:

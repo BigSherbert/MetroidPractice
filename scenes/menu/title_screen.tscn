@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://dgb0i77nw5sbo"]
 
-[ext_resource type="Script" path="res://scenes/menu/title_screen.gd" id="1"]
-[ext_resource type="Texture2D" path="res://Screenshot1.png" id="2"]
-[ext_resource type="FontFile" path="res://fonts/Ethnocentric-Regular.otf" id="3"]
+[ext_resource type="Script" uid="uid://plb36rybqq8n" path="res://scenes/menu/title_screen.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cb1o3mud6gy6d" path="res://Screenshot1.png" id="2"]
+[ext_resource type="FontFile" uid="uid://44djgwg2vb3h" path="res://fonts/Ethnocentric-Regular.otf" id="3"]
 
 [sub_resource type="StyleBoxFlat" id="Style_title"]
 bg_color = Color(0.015, 0.027, 0.039, 0.78)
@@ -16,7 +16,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="TitleScreen" type="Control"]
+[node name="TitleScreen" type="Control" unique_id=1028667051]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=450898984]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,7 +36,7 @@ texture = ExtResource("2")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Darken" type="ColorRect" parent="."]
+[node name="Darken" type="ColorRect" parent="." unique_id=1744053048]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,7 +46,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.008, 0.015, 0.025, 0.6)
 
-[node name="TitlePanel" type="PanelContainer" parent="."]
+[node name="TitlePanel" type="PanelContainer" parent="." unique_id=523793101]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -61,12 +61,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("Style_title")
 
-[node name="Content" type="VBoxContainer" parent="TitlePanel"]
+[node name="Content" type="VBoxContainer" parent="TitlePanel" unique_id=234089602]
 layout_mode = 2
 theme_override_constants/separation = 24
 alignment = 1
 
-[node name="Title" type="Label" parent="TitlePanel/Content"]
+[node name="Title" type="Label" parent="TitlePanel/Content" unique_id=648476616]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.74, 1, 0.96, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.35, 0.36, 0.9)
@@ -74,22 +74,23 @@ theme_override_constants/shadow_offset_x = 4
 theme_override_constants/shadow_offset_y = 4
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 54
-text = "METROID PRACTICE"
+text = "gRAND mARAIS"
 horizontal_alignment = 1
 
-[node name="Divider" type="HSeparator" parent="TitlePanel/Content"]
+[node name="Divider" type="HSeparator" parent="TitlePanel/Content" unique_id=1326845576]
 layout_mode = 2
 
-[node name="Subtitle" type="Label" parent="TitlePanel/Content"]
+[node name="Subtitle" type="Label" parent="TitlePanel/Content" unique_id=438459963]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.62, 0.78, 0.8, 1)
 theme_override_font_sizes/font_size = 20
-text = "SIGNAL ACQUIRED // FACILITY ONLINE"
+text = "Drone Factory // Online"
 horizontal_alignment = 1
 
-[node name="Prompt" type="Label" parent="."]
+[node name="Prompt" type="Label" parent="." unique_id=832761564]
 layout_mode = 1
 anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -100.0
@@ -101,7 +102,7 @@ theme_override_font_sizes/font_size = 24
 text = "PRESS ANY KEY"
 horizontal_alignment = 1
 
-[node name="Version" type="Label" parent="."]
+[node name="Version" type="Label" parent="." unique_id=1197716564]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -118,7 +119,7 @@ theme_override_colors/font_color = Color(0.42, 0.57, 0.59, 1)
 text = "DEVELOPMENT BUILD"
 horizontal_alignment = 2
 
-[node name="Fade" type="ColorRect" parent="."]
+[node name="Fade" type="ColorRect" parent="." unique_id=1466367286]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

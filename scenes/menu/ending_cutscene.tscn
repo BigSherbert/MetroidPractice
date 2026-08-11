@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://c8gi0lbyl0d8x"]
+
+[ext_resource type="Script" uid="uid://d368dq0s3vfkx" path="res://scenes/menu/ending_cutscene.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://4hbc6ykbfpvu" path="res://fonts/BetterVCR 25.09.ttf" id="2"]
+[ext_resource type="Texture2D" uid="uid://lvk5vw2cciq7" path="res://graphics/cutscene/DrEllisIntro.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://6lax0iws5mdy" path="res://graphics/cutscene/FLOWER!!!!.png" id="4"]
+
+[node name="EndingCutscene" type="Control" unique_id=1722427269]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1596604985]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.027, 0.063, 0.122, 1)
+
+[node name="Ground" type="ColorRect" parent="." unique_id=1298090582]
+layout_mode = 0
+offset_top = 500.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.09, 0.106, 0.16, 1)
+
+[node name="DrEllis" type="TextureRect" parent="." unique_id=1712855493]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 491.0
+offset_top = 216.0
+offset_right = 751.0
+offset_bottom = 541.0
+texture = ExtResource("3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Flower" type="TextureRect" parent="." unique_id=994548328]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 509.0
+offset_top = 258.0
+offset_right = 1009.0
+offset_bottom = 543.0
+texture = ExtResource("4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Caption" type="Label" parent="." unique_id=575198885]
+visible = false
+layout_mode = 0
+offset_left = 100.0
+offset_top = 570.0
+offset_right = 1180.0
+offset_bottom = 625.0
+theme_override_colors/font_color = Color(0.94, 0.96, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 27
+text = "AT LAST... DR. ELLIS AND FLOWER ARE REUNITED."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOver" type="Label" parent="." unique_id=1506632876]
+visible = false
+layout_mode = 0
+offset_left = 200.0
+offset_top = 70.0
+offset_right = 1080.0
+offset_bottom = 165.0
+theme_override_colors/font_color = Color(1, 0.48, 0.08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 64
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReturnHint" type="Label" parent="." unique_id=1784342145]
+visible = false
+layout_mode = 0
+offset_left = 300.0
+offset_top = 650.0
+offset_right = 980.0
+offset_bottom = 685.0
+theme_override_colors/font_color = Color(0.55, 0.62, 0.72, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 16
+text = "ENTER / ESC: RETURN TO MENU"
+horizontal_alignment = 1
+
+[node name="Fade" type="ColorRect" parent="." unique_id=656011093]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)

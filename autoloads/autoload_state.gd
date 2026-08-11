@@ -2,6 +2,20 @@ extends Node
 
 const MAX_LIVES := 3
 
+const SPOOK_MUSIC := preload("res://audio/Music/Spook.mp3")
+var music_player: AudioStreamPlayer
+
+func _ready() -> void:
+	music_player = AudioStreamPlayer.new()
+	music_player.name = "GlobalMusic"
+	music_player.stream = SPOOK_MUSIC
+	music_player.volume_db = -6.0
+	add_child(music_player)
+	if music_player.stream is AudioStreamMP3:
+		music_player.stream.loop = true
+	music_player.play()
+
+
 var lives := MAX_LIVES
 
 var has_checkpoint := false

@@ -112,7 +112,7 @@ func _draw_radar() -> void:
 func _draw_landing() -> void:
 	draw_rect(Rect2(0,430,1280,290),Color("171b29"))
 	for x in range(0,1280,64):
-		draw_rect(Rect2(x,430+(x%128)/16,32,4),Color("31384d"))
+		draw_rect(Rect2(x, 430 + (x % 128) / 16.0, 32, 4), Color("31384d"))
 	var t: float = clampf((elapsed - 12.0) / 2.4, 0.0, 1.0)
 	var ship_pos: Vector2 = Vector2(640,160).lerp(Vector2(640,380),t)
 	var tex: Texture2D = preload("res://graphics/random/SpaceShip/EllisType4.png")
@@ -122,6 +122,6 @@ func _draw_landing() -> void:
 			draw_rect(Rect2(ship_pos+Vector2(x,-5),Vector2(18,70+randf()*20)),Color(0.1,0.8,1.0,0.35))
 
 func _play_radar_alert() -> void:
-	for i in 3:
+	for i in 5:
 		$RadarAlert.play()
 		await $RadarAlert.finished

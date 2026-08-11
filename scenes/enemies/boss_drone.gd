@@ -6,7 +6,7 @@ const SNIPER_DRONE_SCENE := preload("res://scenes/enemies/sniper_drone.tscn")
 const EXPLOSION_TEXTURE := preload("res://graphics/fire/explosion.png")
 const EXPLOSION_SOUND := preload("res://audio/explosion.wav")
 
-@export var max_health := 72
+@export var max_health := 55
 @export var move_speed := 70.0
 @export var move_radius := 260.0
 @export var move_vertical_radius := 110.0
@@ -429,7 +429,7 @@ func drone_explode() -> void:
 
 func _on_explosion_animation_finished(anim_name: StringName) -> void:
 	if anim_name == &"explode":
-		queue_free()
+		get_tree().change_scene_to_file("res://scenes/menu/ending_cutscene.tscn")
 
 
 func _on_self_destruct_area_body_entered(body: Node2D) -> void:

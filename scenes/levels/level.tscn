@@ -4545,7 +4545,15 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="Entities" unique_id=1849349854 instance=ExtResource("1_377w7")]
-position = Vector2(4620, -575)
+position = Vector2(2746, -975)
+
+[node name="Label" type="Label" parent="Entities" unique_id=993379080]
+offset_left = 2620.0
+offset_top = -1024.0
+offset_right = 2949.0
+offset_bottom = -989.0
+text = "<---- Go this Way Trash Man
+"
 
 [node name="Bullets" type="Node2D" parent="." unique_id=124244421]
 metadata/_edit_lock_ = true

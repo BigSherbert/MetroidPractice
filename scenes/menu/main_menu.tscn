@@ -1,0 +1,209 @@
+[gd_scene format=3 uid="uid://djg053yk48rt8"]
+
+[ext_resource type="Script" uid="uid://dsdq4q4qpb7d7" path="res://scenes/menu/main_menu.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dq5lo0x8nga0u" path="res://Screenshot2.png" id="2"]
+[ext_resource type="FontFile" uid="uid://44djgwg2vb3h" path="res://fonts/Ethnocentric-Regular.otf" id="3"]
+
+[sub_resource type="StyleBoxFlat" id="Panel"]
+bg_color = Color(0.012, 0.025, 0.035, 0.91)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12, 0.55, 0.57, 0.75)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="ButtonNormal"]
+bg_color = Color(0.03, 0.075, 0.09, 0.88)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0.13, 0.46, 0.49, 0.8)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="ButtonPressed"]
+bg_color = Color(0.08, 0.28, 0.27, 1)
+border_width_left = 3
+border_width_top = 2
+border_width_right = 3
+border_width_bottom = 2
+border_color = Color(0.75, 1, 0.88, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="ButtonHover"]
+bg_color = Color(0.06, 0.19, 0.2, 0.96)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 3
+border_width_bottom = 1
+border_color = Color(0.42, 1, 0.89, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="ButtonFocus"]
+bg_color = Color(0.045, 0.14, 0.15, 0.98)
+border_width_left = 3
+border_width_top = 2
+border_width_right = 3
+border_width_bottom = 2
+border_color = Color(0.42, 1, 0.89, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="MainMenu" type="Control" unique_id=680123857]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1128693514]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Darken" type="ColorRect" parent="." unique_id=1522141103]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.004, 0.012, 0.02, 0.7)
+
+[node name="GameTitle" type="Label" parent="." unique_id=200852949]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 72.0
+offset_bottom = 145.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.72, 1, 0.95, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.28, 0.3, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 42
+text = "METROID PRACTICE"
+horizontal_alignment = 1
+
+[node name="MenuPanel" type="PanelContainer" parent="." unique_id=458033759]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = -160.0
+offset_right = 245.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="MenuButtons" type="VBoxContainer" parent="MenuPanel" unique_id=1634671077]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Header" type="Label" parent="MenuPanel/MenuButtons" unique_id=1040906163]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.44, 0.75, 0.76, 1)
+theme_override_font_sizes/font_size = 16
+text = "The Journey Begins"
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="MenuPanel/MenuButtons" unique_id=493754550]
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../CreditsButton")
+theme_override_colors/font_color = Color(0.8, 1, 0.94, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/pressed = SubResource("ButtonPressed")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonFocus")
+text = "START GAME"
+
+[node name="CreditsButton" type="Button" parent="MenuPanel/MenuButtons" unique_id=579734997]
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+theme_override_colors/font_color = Color(0.8, 1, 0.94, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/pressed = SubResource("ButtonPressed")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonFocus")
+text = "CREDITS"
+
+[node name="QuitButton" type="Button" parent="MenuPanel/MenuButtons" unique_id=871213814]
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+focus_neighbor_top = NodePath("../CreditsButton")
+theme_override_colors/font_color = Color(0.8, 1, 0.94, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/pressed = SubResource("ButtonPressed")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonFocus")
+text = "QUIT"
+
+[node name="Footer" type="Label" parent="." unique_id=39695397]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -48.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.39, 0.55, 0.56, 1)
+text = "WASD TO MOVE  //  SPACE TO JUMP  //  MOUSE TO FIRE"
+horizontal_alignment = 1
+
+[node name="Fade" type="ColorRect" parent="." unique_id=705832480]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[connection signal="pressed" from="MenuPanel/MenuButtons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MenuPanel/MenuButtons/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MenuPanel/MenuButtons/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -11,6 +11,15 @@ var activated := false
 
 func _ready() -> void:
 	await get_tree().physics_frame
+
+	var player := get_tree().get_first_node_in_group("Player") as Node2D
+	if player == null:
+		return
+
+	if AutoloadState.has_checkpoint and AutoloadState.checkpoint_position.is_equal_approx($BossFightRespawn.global_position):
+		activate_boss_fight(player)
+		return
+
 	for body in get_overlapping_bodies():
 		if body.is_in_group("Player"):
 			activate_boss_fight(body)

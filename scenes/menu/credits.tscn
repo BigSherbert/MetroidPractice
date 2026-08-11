@@ -121,7 +121,11 @@ layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Title" type="Label" parent="CreditsPanel/Margin/Content" unique_id=1898656166]
+[node name="Divider2" type="HSeparator" parent="CreditsPanel/Content" unique_id=981705618]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CreditsPanel/Content" unique_id=1898656166]
+
 layout_mode = 2
 theme_override_colors/font_color = Color(0.74, 1, 0.95, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.22, 0.24, 1)
@@ -137,15 +141,34 @@ layout_mode = 2
 
 [node name="CreditsText" type="Label" parent="CreditsPanel/Margin/Content" unique_id=1638106125]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.8, 0.9, 0.9, 1)
-theme_override_font_sizes/font_size = 17
-text = "DEVELOPMENT\nKarl Johnson\n\nART\nValerie Johnson  •  Kyle Fraser  •  Steve VonDali\n\nMUSIC\nAnimasonic\nsoundcloud.com/animasonicmusic/5-more-than-a-taste\n\nSPECIAL THANKS\nKyle Fleming  •  Norman and Coop  •  MaryBeth Wilkes\n\nPLAYTESTING\nSuper_Helpful  •  Trashman  •  Ivy"
+theme_override_colors/font_color = Color(0.78, 0.88, 0.88, 1)
+theme_override_font_sizes/font_size = 19
+text = "Development:
+-Karl Johnson
+
+Art Credits:
+-Valerie Johnson
+-Kyle Fraser
+-Steve VonDali
+-Animasonic
+(soundcloud.com/animasonicmusic/5-more-than-a-taste)
+
+Special Thanks:
+-Kyle Fleming
+-Norman and Coop
+-MaryBeth Wilkes
+
+Playtest:
+Super_Helpful
+Trashman
+Ivy"
 horizontal_alignment = 1
 
-[node name="Divider3" type="HSeparator" parent="CreditsPanel/Margin/Content" unique_id=1816393741]
+[node name="Divider3" type="HSeparator" parent="CreditsPanel/Content" unique_id=1816393741]
 layout_mode = 2
 
-[node name="Hint" type="Label" parent="CreditsPanel/Margin/Content" unique_id=1911931123]
+[node name="Hint" type="Label" parent="CreditsPanel/Content" unique_id=1911931123]
+
 layout_mode = 2
 theme_override_colors/font_color = Color(0.39, 0.62, 0.63, 1)
 theme_override_font_sizes/font_size = 13

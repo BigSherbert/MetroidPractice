@@ -29,6 +29,8 @@ PauseManager="*res://autoloads/pause_manager.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=3
+
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="uid://dvdckf0ip34ne"
 
